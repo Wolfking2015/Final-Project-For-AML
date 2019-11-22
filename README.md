@@ -6,8 +6,8 @@
 This repository contains all the files for final projects.
 
 ## Database source: Kaggle
-The database is about the on-time performance of the domestic flgiht provided by The U.S. Department of Transportation's (DOT) Bureau of Transportation Statistics (BTS). The database is open source on Kaggle.
-Detail information can be found here:
+The database is about the on-time performance of the domestic flgiht provided by The U.S. Department of Transportation's (DOT) Bureau of Transportation Statistics (BTS). The database is open source on Kaggle. \
+**Detail information can be found here: ** \
 <https://www.kaggle.com/giovamata/airlinedelaycauses>
 
 ![Plane](https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/plane_travel_world_international.png?itok=jG3sYPty)
