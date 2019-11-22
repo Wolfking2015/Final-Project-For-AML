@@ -1,7 +1,7 @@
 # Final Project for BIOF 509
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/py4ds/final-project/master?urlpath=lab/tree/final-project.ipynb)
-[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/py4ds/final-project/blob/master/final-project.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Wolfking2015/final-project/master?urlpath=lab/tree/final-project.ipynb)
+[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Wolfking2015/final-project/blob/master/final-project.ipynb)
 
 This repository contains all the files for final projects.
 
