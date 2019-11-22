@@ -10,6 +10,8 @@ The database is about the on-time performance of the domestic flgiht provided by
 Detail information can be found here:
 <https://www.kaggle.com/giovamata/airlinedelaycauses>
 
+![Plane](https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/plane_travel_world_international.png?itok=jG3sYPty)
+
 
 ## License
 
