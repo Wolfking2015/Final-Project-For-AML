@@ -1,0 +1,77 @@
+{
+  "manifest": {
+    "name": "@jupyterlab/notebook",
+    "version": "0.19.2",
+    "description": "JupyterLab - Notebook",
+    "homepage": "https://github.com/jupyterlab/jupyterlab",
+    "bugs": {
+      "url": "https://github.com/jupyterlab/jupyterlab/issues"
+    },
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Project Jupyter"
+    },
+    "files": [
+      "lib/*.d.ts",
+      "lib/*.js.map",
+      "lib/*.js",
+      "style/*.css"
+    ],
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jupyterlab/jupyterlab.git"
+    },
+    "scripts": {
+      "build": "tsc -b",
+      "clean": "rimraf lib",
+      "docs": "typedoc --options tdoptions.json --theme ../../typedoc-theme src",
+      "prepublishOnly": "npm run build",
+      "watch": "tsc -b --watch"
+    },
+    "dependencies": {
+      "@jupyterlab/apputils": "^0.19.1",
+      "@jupyterlab/cells": "^0.19.1",
+      "@jupyterlab/codeeditor": "^0.19.1",
+      "@jupyterlab/coreutils": "^2.2.1",
+      "@jupyterlab/docregistry": "^0.19.1",
+      "@jupyterlab/observables": "^2.1.1",
+      "@jupyterlab/rendermime": "^0.19.1",
+      "@jupyterlab/services": "^3.2.1",
+      "@phosphor/algorithm": "^1.1.2",
+      "@phosphor/coreutils": "^1.3.0",
+      "@phosphor/domutils": "^1.1.2",
+      "@phosphor/dragdrop": "^1.3.0",
+      "@phosphor/messaging": "^1.2.2",
+      "@phosphor/properties": "^1.1.2",
+      "@phosphor/signaling": "^1.2.2",
+      "@phosphor/virtualdom": "^1.1.2",
+      "@phosphor/widgets": "^1.6.0",
+      "react": "~16.4.2"
+    },
+    "devDependencies": {
+      "rimraf": "~2.6.2",
+      "typedoc": "~0.12.0",
+      "typescript": "~3.1.1"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@jupyterlab/notebook-0.19.2-ede77c45579007583d2bd01e485f3755e5214c07/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# @jupyterlab/notebook\n\nA JupyterLab package which implements the primary interface to the Jupyter notebook.\n\nNotebook cells are implemented in [@jupyterlab/cells](../cells).\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@jupyterlab/notebook/-/notebook-0.19.2.tgz#ede77c45579007583d2bd01e485f3755e5214c07",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@jupyterlab/notebook/-/notebook-0.19.2.tgz",
+    "hash": "ede77c45579007583d2bd01e485f3755e5214c07",
+    "registry": "npm",
+    "packageName": "@jupyterlab/notebook"
+  },
+  "registry": "npm",
+  "hash": "ede77c45579007583d2bd01e485f3755e5214c07"
+}

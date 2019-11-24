@@ -1,0 +1,47 @@
+{
+  "manifest": {
+    "name": "@jupyterlab/theming",
+    "version": "0.9.0",
+    "description": "JupyterLab - Theming",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "files": [
+      "lib/*.d.ts",
+      "lib/*.js",
+      "style/*.css",
+      "style/images/*.*",
+      "style/icons/*.*",
+      "style/icons/**/*.*"
+    ],
+    "dependencies": {},
+    "devDependencies": {
+      "rimraf": "^2.5.2",
+      "typescript": "~2.4.1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jupyterlab/jupyterlab.git"
+    },
+    "author": {
+      "name": "Project Jupyter"
+    },
+    "license": "BSD-3-Clause",
+    "bugs": {
+      "url": "https://github.com/jupyterlab/jupyterlab/issues"
+    },
+    "homepage": "https://github.com/jupyterlab/jupyterlab",
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@jupyterlab/theming-0.9.0-7c165542d60ee3d2e266cc596e5aae1a100387b3/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@jupyterlab/theming/-/theming-0.9.0.tgz#7c165542d60ee3d2e266cc596e5aae1a100387b3",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@jupyterlab/theming/-/theming-0.9.0.tgz",
+    "hash": "7c165542d60ee3d2e266cc596e5aae1a100387b3",
+    "registry": "npm",
+    "packageName": "@jupyterlab/theming"
+  },
+  "registry": "npm",
+  "hash": "7c165542d60ee3d2e266cc596e5aae1a100387b3"
+}

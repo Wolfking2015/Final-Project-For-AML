@@ -1,0 +1,57 @@
+{
+  "manifest": {
+    "name": "vega-force",
+    "version": "3.0.0",
+    "description": "Force simulation transform for Vega dataflows.",
+    "keywords": [
+      "vega",
+      "force"
+    ],
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Jeffrey Heer",
+      "url": "http://idl.cs.washington.edu"
+    },
+    "main": "build/vega-force.js",
+    "module": "index",
+    "jsnext:main": "index",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vega/vega-force.git"
+    },
+    "scripts": {
+      "build": "npm run test && uglifyjs build/vega-force.js -c -m -o build/vega-force.min.js",
+      "pretest": "rm -rf build && mkdir build && rollup -g d3-force:d3,vega-dataflow:vega,vega-util:vega -f umd -n vega.transforms -o build/vega-force.js -- index.js",
+      "test": "tape 'test/**/*-test.js' && eslint index.js src test",
+      "prepublish": "npm run build",
+      "postpublish": "git push && git push --tags && zip -j build/vega-force.zip -- LICENSE README.md build/vega-force.js build/vega-force.min.js"
+    },
+    "dependencies": {
+      "d3-force": "^1.1.0",
+      "vega-dataflow": "^4.0.0",
+      "vega-util": "^1.7.0"
+    },
+    "devDependencies": {
+      "eslint": "4",
+      "rollup": "0.58.2",
+      "tape": "4",
+      "uglify-js": "3"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-force-3.0.0-f5d10bb0a49e41c47f2d83441e407510948eb89a/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# vega-force\n\nForce simulation transform for Vega dataflows.\n\nThis module provides the following Vega data transform:\n\n- [**Force**](https://vega.github.io/vega/docs/transforms/force/) [&lt;&gt;](https://github.com/vega/vega-force/blob/master/src/Force.js \"Source\")\n",
+    "licenseText": "Copyright (c) 2016, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-force/-/vega-force-3.0.0.tgz#f5d10bb0a49e41c47f2d83441e407510948eb89a",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-force/-/vega-force-3.0.0.tgz",
+    "hash": "f5d10bb0a49e41c47f2d83441e407510948eb89a",
+    "registry": "npm",
+    "packageName": "vega-force"
+  },
+  "registry": "npm",
+  "hash": "f5d10bb0a49e41c47f2d83441e407510948eb89a"
+}

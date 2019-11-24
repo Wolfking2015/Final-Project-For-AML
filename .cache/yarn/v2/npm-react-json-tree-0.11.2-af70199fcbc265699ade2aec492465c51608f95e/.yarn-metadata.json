@@ -1,0 +1,134 @@
+{
+  "manifest": {
+    "name": "react-json-tree",
+    "version": "0.11.2",
+    "description": "React JSON Viewer Component, Extracted from redux-devtools",
+    "main": "lib/index.js",
+    "scripts": {
+      "clean": "rimraf lib",
+      "build": "babel src --out-dir lib",
+      "build:umd": "rimraf ./umd && webpack --progress --config webpack.config.umd.js",
+      "build:umd:min": "webpack --env.minimize --progress --config webpack.config.umd.js",
+      "lint": "eslint --max-warnings=0 src test examples/src",
+      "test": "npm run lint && NODE_ENV=test mocha --compilers js:babel-core/register --recursive",
+      "test:watch": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive --watch",
+      "test:cov": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha -- --recursive",
+      "prepare": "npm run build",
+      "prepublishOnly": "npm run test && npm run clean && npm run build && npm run build:umd && npm run build:umd:min",
+      "start": "cd examples && npm start",
+      "precommit": "lint-staged"
+    },
+    "files": [
+      "lib",
+      "src",
+      "umd"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/reduxjs/redux-devtools.git"
+    },
+    "keywords": [
+      "react",
+      "json viewer"
+    ],
+    "author": {
+      "name": "Shu Uesugi",
+      "email": "shu@chibicode.com",
+      "url": "http://github.com/chibicode"
+    },
+    "contributors": [
+      {
+        "name": "Alexander Kuznetsov",
+        "email": "alexkuz@gmail.com",
+        "url": "http://kuzya.org/"
+      },
+      {
+        "name": "Dave Vedder",
+        "email": "veddermatic@gmail.com",
+        "url": "http://www.eskimospy.com/"
+      },
+      {
+        "name": "Daniele Zannotti",
+        "email": "dzannotti@me.com",
+        "url": "http://www.github.com/dzannotti"
+      },
+      {
+        "name": "Mihail Diordiev",
+        "email": "zalmoxisus@gmail.com",
+        "url": "https://github.com/zalmoxisus"
+      }
+    ],
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/reduxjs/redux-devtools/issues"
+    },
+    "homepage": "https://github.com/reduxjs/redux-devtools",
+    "devDependencies": {
+      "babel-cli": "^6.26.0",
+      "babel-core": "^6.26.0",
+      "babel-eslint": "^8.0.1",
+      "babel-loader": "^7.1.5",
+      "babel-plugin-transform-class-properties": "^6.24.1",
+      "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
+      "babel-plugin-transform-es3-property-literals": "^6.22.0",
+      "babel-plugin-transform-object-rest-spread": "^6.26.0",
+      "babel-plugin-transform-runtime": "^6.23.0",
+      "babel-preset-env": "^1.6.1",
+      "babel-preset-react": "^6.5.0",
+      "eslint": "^4.10",
+      "eslint-config-prettier": "^2.6.0",
+      "eslint-config-standard": "^10.2.1",
+      "eslint-plugin-babel": "^4.1.2",
+      "eslint-plugin-import": "^2.8.0",
+      "eslint-plugin-node": "^5.2.1",
+      "eslint-plugin-prettier": "^2.3.1",
+      "eslint-plugin-promise": "^3.6.0",
+      "eslint-plugin-react": "7.4.0",
+      "eslint-plugin-standard": "^3.0.1",
+      "expect": "^21.2.1",
+      "husky": "^0.14.3",
+      "isparta": "^4.0.0",
+      "lint-staged": "^4.3.0",
+      "mocha": "^4.0.1",
+      "prettier": "^1.7.4",
+      "react": "^16.0.0",
+      "react-dom": "^16.0.0",
+      "react-test-renderer": "^16.0.0",
+      "rimraf": "^2.5.2",
+      "terser-webpack-plugin": "^1.2.1",
+      "webpack": "^4.27.1",
+      "webpack-cli": "^3.2.0"
+    },
+    "peerDependencies": {
+      "react": "^15.0.0 || ^16.0.0",
+      "react-dom": "^15.0.0 || ^16.0.0"
+    },
+    "dependencies": {
+      "babel-runtime": "^6.6.1",
+      "prop-types": "^15.5.8",
+      "react-base16-styling": "^0.5.1"
+    },
+    "lint-staged": {
+      "*.{js,json,css}": [
+        "prettier --single-quote --write",
+        "git add"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-react-json-tree-0.11.2-af70199fcbc265699ade2aec492465c51608f95e/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# react-json-tree\n\nReact JSON Viewer Component, Extracted from [redux-devtools](https://github.com/reduxjs/redux-devtools). Supports [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#iterable) objects, such as [Immutable.js](https://facebook.github.io/immutable-js/).\n\n![](https://img.shields.io/npm/v/react-json-tree.svg)\n\n### Usage\n\n```jsx\nimport JSONTree from 'react-json-tree'\n// If you're using Immutable.js: `npm i --save immutable`\nimport { Map } from 'immutable'\n\n// Inside a React component:\nconst json = {\n  array: [1, 2, 3],\n  bool: true,\n  object: {\n    foo: 'bar'\n  },\n  immutable: Map({ key: 'value' })\n}\n\n<JSONTree data={json} />\n```\n\n#### Result:\n\n![](http://cl.ly/image/3f2C2k2t3D0o/screenshot%202015-08-26%20at%2010.24.12%20AM.png)\n\nCheck out [examples](examples) directory for more details.\n\n### Theming\n\nThis component now uses [react-base16-styling](https://github.com/alexkuz/react-base16-styling) module, which allows to customize component via `theme` property, which can be the following:\n- [base16](http://chriskempson.github.io/base16) theme data. [The example theme data can be found here](https://github.com/gaearon/redux-devtools/tree/75322b15ee7ba03fddf10ac3399881e302848874/src/react/themes).\n- object that contains style objects, strings (that treated as classnames) or functions. A function is used to extend its first argument `{ style, className }` and should return an object with the same structure. Other arguments depend on particular context (and should be described here). See [createStylingFromTheme.js](https://github.com/alexkuz/react-json-tree/blob/feature-refactor-styling/src/createStylingFromTheme.js) for the list of styling object keys. Also, this object can extend `base16` theme via `extend` property.\n\nEvery theme has a light version, which is enabled with `invertTheme` prop.\n\n```jsx\nconst theme = {\n  scheme: 'monokai',\n  author: 'wimer hazenberg (http://www.monokai.nl)',\n  base00: '#272822',\n  base01: '#383830',\n  base02: '#49483e',\n  base03: '#75715e',\n  base04: '#a59f85',\n  base05: '#f8f8f2',\n  base06: '#f5f4f1',\n  base07: '#f9f8f5',\n  base08: '#f92672',\n  base09: '#fd971f',\n  base0A: '#f4bf75',\n  base0B: '#a6e22e',\n  base0C: '#a1efe4',\n  base0D: '#66d9ef',\n  base0E: '#ae81ff',\n  base0F: '#cc6633'\n};\n\n<div>\n  <JSONTree data={data} theme={theme} invertTheme={false} />\n</div>\n\n```\n\n#### Result (Monokai theme, dark background):\n\n![](http://cl.ly/image/330o2L1J3V0h/screenshot%202015-08-26%20at%2010.48.24%20AM.png)\n\n#### Advanced Customization\n\n```jsx\n<div>\n  <JSONTree data={data} theme={{\n    extend: theme,\n    // underline keys for literal values\n    valueLabel: {\n      textDecoration: 'underline'\n    },\n    // switch key for objects to uppercase when object is expanded.\n    // `nestedNodeLabel` receives additional arguments `expanded` and `keyPath`\n    nestedNodeLabel: ({ style }, nodeType, expanded) => ({\n      style: {\n        ...style,\n        textTransform: expanded ? 'uppercase' : style.textTransform\n      }\n    })\n  }} />\n</div>\n```\n\n#### Customize Labels for Arrays, Objects, and Iterables\n\nYou can pass `getItemString` to customize the way arrays, objects, and iterable nodes are displayed (optional).\n\nBy default, it'll be:\n\n```jsx\n<JSONTree getItemString={(type, data, itemType, itemString)\n  => <span>{itemType} {itemString}</span>}\n```\n\nBut if you pass the following:\n\n```jsx\nconst getItemString = (type, data, itemType, itemString)\n  => (<span> // {type}</span>);\n```\n\nThen the preview of child elements now look like this:\n\n![](http://cl.ly/image/1J1a0b0T0K3c/screenshot%202015-10-07%20at%203.44.31%20PM.png)\n\n#### Customize Rendering\n\nYou can pass the following properties to customize rendered labels and values:\n\n```jsx\n<JSONTree\n    labelRenderer={raw => <strong>{raw}</strong>}\n    valueRenderer={raw => <em>{raw}</em>}\n/>\n```\n\nIn this example the label and value will be rendered with `<strong>` and `<em>` wrappers respectively.\n\nFor `labelRenderer`, you can provide a full path - [see this PR](https://github.com/chibicode/react-json-tree/pull/32).\n\n#### More Options\n\n- `shouldExpandNode: function(keyName, data, level)` - determines if node should be expanded (root is expanded by default)\n- `hideRoot: Boolean` - if `true`, the root node is hidden.\n- `sortObjectKeys: Boolean | function(a, b)` - sorts object keys with compare function (optional). Isn't applied to iterable maps like `Immutable.Map`.\n\n### Credits\n\n- All credits to [Dave Vedder](http://www.eskimospy.com/) ([veddermatic@gmail.com](mailto:veddermatic@gmail.com)), who wrote the original code as [JSONViewer](https://bitbucket.org/davevedder/react-json-viewer/).\n- Extracted from [redux-devtools](https://github.com/gaearon/redux-devtools), which contained ES6 + inline style port of [JSONViewer](https://bitbucket.org/davevedder/react-json-viewer/) by [Daniele Zannotti](http://www.github.com/dzannotti) ([dzannotti@me.com](mailto:dzannotti@me.com))\n- [Iterable support](https://github.com/gaearon/redux-devtools/pull/79) thanks to [Daniel K](https://github.com/FredyC).\n- npm package created by [Shu Uesugi](http://github.com/chibicode) ([shu@chibicode.com](mailto:shu@chibicode.com)) per [this issue](https://github.com/gaearon/redux-devtools/issues/85).\n- Improved and maintained by [Alexander Kuznetsov](https://github.com/alexkuz). The repository was merged into [`redux-devtools` monorepo](https://github.com/reduxjs/redux-devtools) from [`alexkuz/react-json-tree`](https://github.com/alexkuz/react-json-tree).\n\n### Similar Libraries\n\n- [react-treeview](https://github.com/chenglou/react-treeview)\n- [react-json-inspector](https://github.com/Lapple/react-json-inspector)\n- [react-object-inspector](https://github.com/xyc/react-object-inspector)\n- [react-json-view](https://github.com/mac-s-g/react-json-view)\n\n### License\n\nMIT\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2015 Shusaku Uesugi, (c) 2016-present Alexander Kuznetsov\n\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/react-json-tree/-/react-json-tree-0.11.2.tgz#af70199fcbc265699ade2aec492465c51608f95e",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/react-json-tree/-/react-json-tree-0.11.2.tgz",
+    "hash": "af70199fcbc265699ade2aec492465c51608f95e",
+    "registry": "npm",
+    "packageName": "react-json-tree"
+  },
+  "registry": "npm",
+  "hash": "af70199fcbc265699ade2aec492465c51608f95e"
+}

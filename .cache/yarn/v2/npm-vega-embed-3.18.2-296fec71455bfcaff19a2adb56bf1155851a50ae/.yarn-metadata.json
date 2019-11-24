@@ -1,0 +1,130 @@
+{
+  "manifest": {
+    "name": "vega-embed",
+    "version": "3.18.2",
+    "description": "Publish Vega visualizations as embedded web components.",
+    "keywords": [
+      "vega",
+      "data",
+      "visualization",
+      "component",
+      "embed"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "http://github.com/vega/vega-embed.git"
+    },
+    "author": {
+      "name": "UW Interactive Data Lab",
+      "url": "http://idl.cs.washington.edu"
+    },
+    "contributors": [
+      {
+        "name": "Jeffrey Heer",
+        "url": "https://homes.cs.washington.edu/~jheer/"
+      },
+      {
+        "name": "Dominik Moritz",
+        "url": "https://www.domoritz.de"
+      },
+      {
+        "name": "Arvind Satyanarayan",
+        "url": "http://arvindsatya.com"
+      },
+      {
+        "name": "Younghoon Kim"
+      },
+      {
+        "name": "Yuri Astrakhan"
+      }
+    ],
+    "license": "BSD-3-Clause",
+    "main": "build/vega-embed.js",
+    "module": "build/src/embed.js",
+    "unpkg": "build/vega-embed.min.js",
+    "jsdelivr": "build/vega-embed.min.js",
+    "types": "build/src/embed.d.ts",
+    "devDependencies": {
+      "@types/d3-selection": "^1.3.1",
+      "@types/jest": "^23.1.4",
+      "@types/semver": "^5.5.0",
+      "browser-sync": "^2.24.5",
+      "concurrently": "^3.6.0",
+      "jest": "^23.3.0",
+      "jest-canvas-mock": "^1.1.0",
+      "prettier": "^1.13.7",
+      "rollup": "^0.63.4",
+      "rollup-plugin-commonjs": "^9.1.3",
+      "rollup-plugin-json": "^3.0.0",
+      "rollup-plugin-node-resolve": "^3.3.0",
+      "ts-jest": "^23.0.0",
+      "tslint": "^5.10.0",
+      "tslint-config-prettier": "^1.13.0",
+      "typescript": "^2.9.2",
+      "uglify-es": "^3.3.9"
+    },
+    "dependencies": {
+      "d3-selection": "^1.3.0",
+      "json-stringify-pretty-compact": "^1.2.0",
+      "semver": "^5.5.0",
+      "vega-lib": "^4.0.0 || ^3.3.0",
+      "vega-lite": "^2.6.0",
+      "vega-schema-url-parser": "^1.1.0",
+      "vega-themes": "^2.1.1",
+      "vega-tooltip": "^0.12.0"
+    },
+    "scripts": {
+      "build": "rollup -c",
+      "clean": "rm -rf build && rm -f src/style.ts && mkdir build",
+      "format": "tslint -p . -e 'package.json' --fix && prettier --write '{src,test}/**/*.ts'",
+      "lint": "tslint -p . -e 'package.json' && prettier --list-different '{src,test}/**/*.ts'",
+      "postbuild": "uglifyjs build/vega-embed.js -cm > build/vega-embed.min.js",
+      "prebuild": "npm run clean && ./build-style.sh && tsc",
+      "prepublishOnly": "npm run build",
+      "preversion": "npm run lint && npm run test",
+      "serve": "browser-sync start --directory -s -f build *.html",
+      "start": "npm run build && concurrently --kill-others -n Server,Typescript,Rollup 'npm run serve' 'tsc -w' 'rollup -c -w'",
+      "pretest": "./build-style.sh",
+      "test": "jest",
+      "test:inspect": "node --inspect-brk ./node_modules/.bin/jest --runInBand"
+    },
+    "jest": {
+      "setupFiles": [
+        "jest-canvas-mock"
+      ],
+      "transform": {
+        "^.+\\.tsx?$": "ts-jest"
+      },
+      "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+      "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "json",
+        "node"
+      ],
+      "testPathIgnorePatterns": [
+        "node_modules",
+        "<rootDir>/build",
+        "src"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-embed-3.18.2-296fec71455bfcaff19a2adb56bf1155851a50ae/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Vega-Embed\n\n[![npm version](https://img.shields.io/npm/v/vega-embed.svg)](https://www.npmjs.com/package/vega-embed)\n[![](https://data.jsdelivr.com/v1/package/npm/vega-embed/badge?style=rounded)](https://www.jsdelivr.com/package/npm/vega-embed)\n[![Build Status](https://travis-ci.org/vega/vega-embed.svg?branch=master)](https://travis-ci.org/vega/vega-embed)\n[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=rounded)](https://github.com/prettier/prettier)\n\n[Vega-Embed](http://github.com/vega/vega-embed) makes it easy to embed interactive [Vega](https://vega.github.io/vega) and [Vega-Lite](https://vega.github.io/vega-lite) views into web pages. With Vega Embed, you can:\n\n- Load Vega/Vega-Lite specs from source text, parsed JSON, or URLs.\n- Add action links such as \"View Source\" and \"Open in Vega Editor\".\n- Includes [Vega Tooltip](https://github.com/vega/vega-tooltip).\n- Includes [Vega Themes](https://github.com/vega/vega-themes). **Experimental: themes are not stable yet**\n\n**Vega-Lite works well with [Observable](https://beta.observablehq.com/). Learn how to use it in [our example notebook](https://beta.observablehq.com/@domoritz/hello-vega-embed).**\n\n<img src=\"embed.gif\" width=\"500\">\n\n## Basic Example\n\nYou can import Vega-Embed from a local copy or (as shown below) [from jsDelivr](hhttps://www.jsdelivr.com/package/npm/vega-embed). Please replace `[VERSION]` with the correct [Vega](https://www.jsdelivr.com/package/npm/vega), [Vega-Lite](https://www.jsdelivr.com/package/npm/vega-lite), and [Vega-Embed](https://www.jsdelivr.com/package/npm/vega-embed) versions. We recommend that you specify the major versions (`vega@4`, `vega-lite@2`, `vega-embed@3`).\n\n```html\n<!DOCTYPE html>\n<html>\n<head>\n  <!-- Import Vega 4 & Vega-Lite 2 (does not have to be from CDN) -->\n  <script src=\"https://cdn.jsdelivr.net/npm/vega@[VERSION]\"></script>\n  <script src=\"https://cdn.jsdelivr.net/npm/vega-lite@[VERSION]\"></script>\n  <!-- Import vega-embed -->\n  <script src=\"https://cdn.jsdelivr.net/npm/vega-embed@[VERSION]\"></script>\n</head>\n<body>\n\n<div id=\"vis\"></div>\n\n<script type=\"text/javascript\">\n  var spec = \"https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json\";\n  vegaEmbed('#vis', spec).then(function(result) {\n    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view\n  }).catch(console.error);\n</script>\n</body>\n</html>\n```\n\nLook at an example online at [Vega-Embed Block](https://bl.ocks.org/domoritz/455e1c7872c4b38a58b90df0c3d7b1b9).\n\n\n## API Reference\n\nThe default export of Vega-Embed is a wrapper function that automatically chooses between [`embed`](#embed) and [`container`](#container) based on the provided arguments.\n\n<a href=\"#embed\" name=\"embed\">#</a>\n<b>embed</b>(<i>el</i>, <i>spec</i>[, <i>opt</i>])\n[<>](https://github.com/vega/vega-embed/blob/master/src/embed.ts \"Source\")\n\nReturns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves to the instantiated [Vega `View` instance](https://github.com/vega/vega-view#vega-view) and a copy of the parsed JSON Vega spec. The `embed` function accepts the following arguments:\n\n| Property| Type       | Description    |\n| :------ | :--------- | :------------- |\n| `el`      |  String  | A DOM element or CSS selector indicating the element on the page in which to add the embedded view. |\n| `spec`    | String / Object | _String_ : A URL string from which to load the Vega specification. This URL will be subject to standard browser security restrictions. Typically this URL will point to a file on the same host and port number as the web page itself. <br> _Object_ :  The Vega/Vega-Lite specification as a parsed JSON object. |\n| `opt`     | Object   | _(Optional)_ A JavaScript object containing options for embedding. |\n\n_Note: Internet Explorer does not support [the ES6 Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) feature. To make it work correctly, please follow [the instructions on the Vega website](https://vega.github.io/vega/usage/#ie)._\n\n<a href=\"#container\" name=\"container\">#</a>\n<b>container</b>(<i>spec</i>[, <i>opt</i>])\n[<>](https://github.com/vega/vega-embed/blob/master/src/container.ts \"Source\")\n\nReturns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)* that resolves to an HTML element with the [Vega `View` instance](https://github.com/vega/vega-view#vega-view) as the `value` property. The function is designed to work with [Observable](https://observablehq.com/). The `container` function accepts the following arguments:\n\n| Property| Type       | Description    |\n| :------ | :--------- | :------------- |\n| `spec`    | String / Object | _String_ : A URL string from which to load the Vega specification. This URL will be subject to standard browser security restrictions. Typically this URL will point to a file on the same host and port number as the web page itself. <br> _Object_ :  The Vega/Vega-Lite specification as a parsed JSON object. |\n| `opt`     | Object   | _(Optional)_ A JavaScript object containing options for embedding. |\n\n### Options\n\n```js\nvar opt = {\n  \"mode\": ...,\n\n  \"theme\": ...,\n  \"defaultStyle\": ...,\n\n  // view config options\n  \"renderer\" : ...,\n  \"loader\" : ...,\n  \"logLevel\" : ...,\n\n  \"tooltip\": : ...,\n\n  \"onBeforeParse\" : ...,\n\n  \"width\" : ...,\n  \"height\" : ...,\n  \"padding\" : ...,\n\n  \"actions\" : {\n    \"export\": ...,\n    \"source\": ...,\n    \"compiled\": ...,\n    \"editor\": ...\n  },\n\n  \"scaleFactor\": ...,\n\n  \"config\"  : ...,\n\n  \"editorUrl\": ...,\n\n  \"sourceHeader\" : ...,\n  \"sourceFooter\": ...,\n\n  \"hover\" : ...,\n\n  \"runAsync\": ...,\n\n  \"i18n\": {\n    \"COMPILED_ACTION\": ...,\n    \"EDITOR_ACTION\": ...,\n    \"PNG_ACTION\": ...,\n    \"SOURCE_ACTION\": ...,\n    \"SVG_ACTION\": ...\n  }\n}\n```\n\n| Property | Type             | Description    |\n| :------- | :--------------- | :------------- |\n| `mode`        | String        | If specified, tells Vega-Embed to parse the spec as `vega` or `vega-lite`. Vega-Embed will parse the [`$schema` url](https://github.com/vega/schema) if the mode is not specified. Vega-Embed will default to `vega` if neither `mode`, nor `$schema` are specified. |\n| `theme`       | String        | If specified, tells Vega-Embed use the theme from [Vega Themes](https://github.com/vega/vega-themes). **Experimental: we may update themes with minor version updates of Vega-Embed.** |\n| `defaultStyle` | Boolean or String | Add default stylesheet for embed actions. |\n| `renderer`    | String        | The renderer to use for the view. One of `\"canvas\"` (default) or `\"svg\"`. See [Vega docs](https://vega.github.io/vega/docs/api/view/#view_renderer) for details. |\n| `logLevel`    | Level         | Sets the current log level. See [Vega docs](https://vega.github.io/vega/docs/api/view/#view_logLevel) for details. |\n| `tooltip`     | Handler or Boolean or Object | Provide a [tooltip handler](https://vega.github.io/vega/docs/api/view/#view_tooltip), customize the default [Vega Tooltip](https://github.com/vega/vega-tooltip) handler, or disable the default handler. |\n| `loader`      | Loader / Object | _Loader_ : Sets a custom Vega loader. _Object_ : Vega loader options for a loader that will be created. <br> See [Vega docs](https://vega.github.io/vega/docs/api/view/#view) for details. |\n| `onBeforeParse`| Function      | A callback function that can modify an input specification before it is parsed.|\n| `width`       | Number        | Sets the view width in pixels. See [Vega docs](https://vega.github.io/vega/docs/api/view/#view_width) for details. Note that Vega-Lite overrides this option. |\n| `height`      | Number        | Sets the view height in pixels. See [Vega docs](https://vega.github.io/vega/docs/api/view/#view_height) for details. Note that Vega-Lite overrides this option. |\n| `padding`     | Object        | Sets the view padding in pixels. See [Vega docs](https://vega.github.io/vega/docs/api/view/#view_padding) for details. |\n| `actions`     | Boolean / Object | Determines if action links (\"Export as PNG/SVG\", \"View Source\", \"View Vega\" (only for Vega-Lite), \"Open in Vega Editor\") are included with the embedded view. If the value is `true`, all action links will be shown and none if the value is `false`.  This property can take a key-value mapping object that maps keys (`export`, `source`, `compiled`, `editor`) to boolean values for determining if each action link should be shown.  By default, `export`, `source`, and `editor` are true and `compiled` is false. These defaults can be overridden: for example, if `actions` is `{export: false, source: true}`, the embedded visualization will have two links – \"View Source\" and \"Open in Vega Editor\".  The `export` property can take a key-value mapping object that maps keys (svg, png) to boolean values for determining if each export action link should be shown. By default, `svg` and `png` are true. |\n| `scaleFactor` | Number        | The number by which to multiply the width and height (default `1`) of an exported PNG or SVG image. |\n| `config`      | String / Object | _String_ : A URL string from which to load a [Vega](https://vega.github.io/vega/docs/config/)/[Vega-Lite](https://vega.github.io/vega-lite/docs/config.html) or [Vega-Lite](https://vega.github.io/vega-lite/docs/config.html) configuration file. This URL will be subject to standard browser security restrictions. Typically this URL will point to a file on the same host and port number as the web page itself. <br> _Object_ : A Vega/Vega-Lite configuration as a parsed JSON object to override the default configuration options. |\n| `editorUrl`    | String   | The URL at which to open embedded Vega specs in a Vega editor. Defaults to `\"http://vega.github.io/editor/\"`. Internally, Vega-Embed uses [HTML5 postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) to pass the specification information to the editor. |\n| `sourceHeader` | String   | HTML to inject into the `` tag of the page generated by the \"View Source\" and \"View Vega\" action link. For example, this can be used to add code for [syntax highlighting](https://highlightjs.org/). |\n| `sourceFooter` | String   | HTML to inject into the end of the page generated by the \"View Source\" and \"View Vega\" action link. The text will be added immediately before the closing `` tag. |\n| `hover`       | Boolean  | Enable [hover event processing](https://vega.github.io/vega/docs/api/view/#view_hover). |\n| `runAsync`     | Boolean  | Use [`runAsync`](https://vega.github.io/vega/docs/api/view/#view_runAsync) instead of [`run`](https://vega.github.io/vega/docs/api/view/#view_run). |\n| `i18n`         | Object   | This property maps keys (`COMPILED_ACTION`, `EDITOR_ACTION`, `PNG_ACTION`, `SOURCE_ACTION`, `SVG_ACTION`) to string values for the action's text. By default, the text is in English. |\n\n## Common questions\n\n### How do I send cookies when loading data?\n\nBy default, the Vega loader does not send the credentials of the current page with requests. You can override this behavior by passing `{loader: { http: { credentials: 'same-origin' }}}` as the embed option.\n\n## Build Process\n\nTo build `vega-embed.js` and view the test examples, you must have [yarn](https://yarnpkg.com/en/) installed.\n\n1. Run `yarn` in the Vega-Embed folder to install dependencies.\n2. Run `yarn build`. This will create `vega-embed.js` and the minified `vega-embed.min.js`.\n3. Run a local webserver with `yarn start` then point your web browser at the test page (e.g., `http://localhost:8000/test-vg.html`(Vega) or `http://localhost:8000/test-vl.html`(Vega-Lite)).\n\n## Release Process\n\nTo release a new version, make sure that everything works. Then run `yarn version` and bump the version number. Lastly, push to GitHub (with the release tag). [Travis](https://travis-ci.org/vega/vega-embed/builds) will build a bundle and make the [npm release](https://www.npmjs.com/package/vega-embed) automatically.\n",
+    "licenseText": "Copyright (c) 2015, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-embed/-/vega-embed-3.18.2.tgz#296fec71455bfcaff19a2adb56bf1155851a50ae",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-embed/-/vega-embed-3.18.2.tgz",
+    "hash": "296fec71455bfcaff19a2adb56bf1155851a50ae",
+    "registry": "npm",
+    "packageName": "vega-embed"
+  },
+  "registry": "npm",
+  "hash": "296fec71455bfcaff19a2adb56bf1155851a50ae"
+}

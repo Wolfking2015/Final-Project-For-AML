@@ -1,0 +1,63 @@
+{
+  "manifest": {
+    "name": "vega-geo",
+    "version": "3.1.1",
+    "description": "Geographic data transforms for Vega dataflows.",
+    "keywords": [
+      "vega",
+      "geo",
+      "projection",
+      "graticule"
+    ],
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Jeffrey Heer",
+      "url": "http://idl.cs.washington.edu"
+    },
+    "main": "build/vega-geo.js",
+    "module": "index",
+    "jsnext:main": "index",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vega/vega-geo.git"
+    },
+    "scripts": {
+      "build": "npm run test && uglifyjs build/vega-geo.js -c -m -o build/vega-geo.min.js",
+      "pretest": "rm -rf build && mkdir build && rollup -g d3-array:d3,d3-contour:d3,d3-geo:d3,vega-dataflow:vega,vega-projection:vega,vega-util:vega -f umd -n vega.transforms -o build/vega-geo.js -- index.js",
+      "test": "tape 'test/**/*-test.js' && eslint index.js src test",
+      "prepublishOnly": "npm run build",
+      "postpublish": "git push && git push --tags && zip -j build/vega-geo.zip -- LICENSE README.md build/vega-geo.js build/vega-geo.min.js"
+    },
+    "dependencies": {
+      "d3-array": "^2.0.2",
+      "d3-contour": "^1.3.2",
+      "d3-geo": "^1.11.3",
+      "vega-dataflow": "^4.1.0",
+      "vega-projection": "^1.2.0",
+      "vega-util": "^1.7.0"
+    },
+    "devDependencies": {
+      "eslint": "5",
+      "rollup": "0.67.4",
+      "tape": "4",
+      "uglify-js": "3",
+      "vega-transforms": "^2.3.1"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-geo-3.1.1-5ff84061dea93d89a453e1b56b3444a6031810f6/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# vega-geo\n\nGeographic data transforms for Vega dataflows.\n\nThis module provides the following Vega data transforms:\n\n- [**Contour**](https://vega.github.io/vega/docs/transforms/contour/) [&lt;&gt;](https://github.com/vega/vega-geo/blob/master/src/Contour.js \"Source\")\n- [**GeoJSON**](https://vega.github.io/vega/docs/transforms/geojson/) [&lt;&gt;](https://github.com/vega/vega-geo/blob/master/src/GeoJSON.js \"Source\")\n- [**GeoPath**](https://vega.github.io/vega/docs/transforms/geopath/) [&lt;&gt;](https://github.com/vega/vega-geo/blob/master/src/GeoPath.js \"Source\")\n- [**GeoPoint**](https://vega.github.io/vega/docs/transforms/geopoint/) [&lt;&gt;](https://github.com/vega/vega-geo/blob/master/src/GeoPoint.js \"Source\")\n- [**GeoShape**](https://vega.github.io/vega/docs/transforms/geoshape/) [&lt;&gt;](https://github.com/vega/vega-geo/blob/master/src/GeoShape.js \"Source\")\n- [**Graticule**](https://vega.github.io/vega/docs/transforms/graticule/) [&lt;&gt;](https://github.com/vega/vega-geo/blob/master/src/Graticule.js \"Source\")\n\nAnd also provides the following internal transform:\n\n- **Projection** [&lt;&gt;](https://github.com/vega/vega-geo/blob/master/src/Projection.js \"Source\")\n\nFor more information about cartographic projections,see the\n[Vega Projections documentation](https://vega.github.io/vega/docs/projections/).\n",
+    "licenseText": "Copyright (c) 2016, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-geo/-/vega-geo-3.1.1.tgz#5ff84061dea93d89a453e1b56b3444a6031810f6",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-geo/-/vega-geo-3.1.1.tgz",
+    "hash": "5ff84061dea93d89a453e1b56b3444a6031810f6",
+    "registry": "npm",
+    "packageName": "vega-geo"
+  },
+  "registry": "npm",
+  "hash": "5ff84061dea93d89a453e1b56b3444a6031810f6"
+}

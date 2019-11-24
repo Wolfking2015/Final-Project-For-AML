@@ -1,0 +1,42 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/helper-module-context",
+    "version": "1.5.12",
+    "description": "",
+    "main": "lib/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xtuc/webassemblyjs.git"
+    },
+    "dependencies": {
+      "debug": "^3.1.0",
+      "mamacro": "^0.0.3"
+    },
+    "devDependencies": {
+      "@webassemblyjs/wast-parser": "1.5.12"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "author": {
+      "name": "Sven Sauleau"
+    },
+    "license": "MIT",
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@webassemblyjs/helper-module-context-1.5.12-b5588ca78b33b8a0da75f9ab8c769a3707baa861/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@webassemblyjs/helper-module-context/-/helper-module-context-1.5.12.tgz#b5588ca78b33b8a0da75f9ab8c769a3707baa861",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@webassemblyjs/helper-module-context/-/helper-module-context-1.5.12.tgz",
+    "hash": "b5588ca78b33b8a0da75f9ab8c769a3707baa861",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/helper-module-context"
+  },
+  "registry": "npm",
+  "hash": "b5588ca78b33b8a0da75f9ab8c769a3707baa861"
+}

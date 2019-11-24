@@ -1,0 +1,59 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/wasm-parser",
+    "version": "1.5.12",
+    "keywords": [
+      "webassembly",
+      "javascript",
+      "ast",
+      "parser",
+      "wasm"
+    ],
+    "description": "WebAssembly binary format parser",
+    "main": "lib/index.js",
+    "scripts": {
+      "test": "mocha"
+    },
+    "author": {
+      "name": "Sven Sauleau"
+    },
+    "license": "MIT",
+    "dependencies": {
+      "@webassemblyjs/ast": "1.5.12",
+      "@webassemblyjs/helper-api-error": "1.5.12",
+      "@webassemblyjs/helper-wasm-bytecode": "1.5.12",
+      "@webassemblyjs/ieee754": "1.5.12",
+      "@webassemblyjs/leb128": "1.5.12",
+      "@webassemblyjs/utf8": "1.5.12"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xtuc/webassemblyjs.git"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "devDependencies": {
+      "@webassemblyjs/helper-buffer": "1.5.12",
+      "@webassemblyjs/helper-test-framework": "1.5.12",
+      "@webassemblyjs/wasm-gen": "1.5.12",
+      "@webassemblyjs/wast-parser": "1.5.12",
+      "wabt": "^1.0.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@webassemblyjs/wasm-parser-1.5.12-7b10b4388ecf98bd7a22e702aa62ec2f46d0c75e/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# @webassemblyjs/wasm-parser\n\n> WebAssembly binary format parser\n\n## Installation\n\n```sh\nyarn add @webassemblyjs/wasm-parser\n```\n\n## Usage\n\n```js\nimport { decode } from \"@webassemblyjs/wasm-parser\";\n\nconst decoderOpts = {};\n\nconst ast = decode(binary, decoderOpts);\n```\n\n### Decoder options\n\n- `dump`: print dump information while decoding (default `false`)\n- `ignoreCodeSection`: ignore the code section (default `false`)\n- `ignoreDataSection`: ignore the data section (default `false`)\n\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@webassemblyjs/wasm-parser/-/wasm-parser-1.5.12.tgz#7b10b4388ecf98bd7a22e702aa62ec2f46d0c75e",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@webassemblyjs/wasm-parser/-/wasm-parser-1.5.12.tgz",
+    "hash": "7b10b4388ecf98bd7a22e702aa62ec2f46d0c75e",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/wasm-parser"
+  },
+  "registry": "npm",
+  "hash": "7b10b4388ecf98bd7a22e702aa62ec2f46d0c75e"
+}

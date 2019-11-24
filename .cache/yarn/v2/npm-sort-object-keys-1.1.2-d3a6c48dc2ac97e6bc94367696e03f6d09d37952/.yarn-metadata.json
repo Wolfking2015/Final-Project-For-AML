@@ -1,0 +1,53 @@
+{
+  "manifest": {
+    "name": "sort-object-keys",
+    "version": "1.1.2",
+    "description": "Sort an object's keys, including an optional key list",
+    "keywords": [
+      "keys",
+      "object",
+      "sort"
+    ],
+    "homepage": "https://github.com/keithamus/sort-object-keys#readme",
+    "bugs": {
+      "url": "https://github.com/keithamus/sort-object-keys/issues"
+    },
+    "license": "MIT",
+    "author": {
+      "name": "Keith Cirkel",
+      "email": "npm@keithcirkel.co.uk",
+      "url": "http://keithcirkel.co.uk/"
+    },
+    "files": [
+      "index.js"
+    ],
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "git+ssh://git@github.com/keithamus/sort-object-keys.git"
+    },
+    "scripts": {
+      "semantic-release": "travis-after-all && semantic-release pre && npm publish && semantic-release post",
+      "test": "node test.js"
+    },
+    "devDependencies": {
+      "semantic-release": "^4.3.5",
+      "travis-after-all": "^1.4.4"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-sort-object-keys-1.1.2-d3a6c48dc2ac97e6bc94367696e03f6d09d37952/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Sort Object\n\n[![Build Status](https://travis-ci.org/keithamus/sort-object-keys.svg)](https://travis-ci.org/keithamus/sort-object-keys)\n\nReturns a copy of an object with all keys sorted.\n\nThe second argument is optional and is used for ordering - to provide custom sorts. You can either pass an array containing ordered keys or a function to sort the keys (same signature as in [`Array.prototype.sort()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)).\n\n```js\nconst assert = require('assert');\nconst sortObject = require('sort-object-keys');\n\nassert.equal(JSON.stringify({\n  c: 1,\n  b: 1,\n  d: 1,\n  a: 1,\n}), JSON.stringify({\n  a: 1,\n  b: 1,\n  c: 1,\n  d: 1,\n}));\n\nassert.equal(JSON.stringify(sortObject({\n  c: 1,\n  b: 1,\n  d: 1,\n  a: 1,\n}, ['b', 'a', 'd', 'c'])), JSON.stringify({\n  b: 1,\n  a: 1,\n  d: 1,\n  c: 1,\n}));\n\nfunction removeKeyAncCompareIndex(keyA, keyB){\n  var a = parseInt(keyA.slice(4));\n  var b = parseInt(keyB.slice(4));\n  return a - b;\n}\n\nassert.equal(JSON.stringify(sortObject({\n  \"key-1\": 1,\n  \"key-3\": 1,\n  \"key-10\": 1,\n  \"key-2\": 1,\n}, removeKeyAncCompareIndex)), JSON.stringify({\n  \"key-1\": 1,\n  \"key-2\": 1,\n  \"key-3\": 1,\n  \"key-10\": 1,\n}));\n```\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/sort-object-keys/-/sort-object-keys-1.1.2.tgz#d3a6c48dc2ac97e6bc94367696e03f6d09d37952",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/sort-object-keys/-/sort-object-keys-1.1.2.tgz",
+    "hash": "d3a6c48dc2ac97e6bc94367696e03f6d09d37952",
+    "registry": "npm",
+    "packageName": "sort-object-keys"
+  },
+  "registry": "npm",
+  "hash": "d3a6c48dc2ac97e6bc94367696e03f6d09d37952"
+}

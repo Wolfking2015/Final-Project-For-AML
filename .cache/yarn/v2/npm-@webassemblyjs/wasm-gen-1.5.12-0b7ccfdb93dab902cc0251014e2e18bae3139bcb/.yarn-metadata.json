@@ -1,0 +1,42 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/wasm-gen",
+    "version": "1.5.12",
+    "description": "WebAssembly binary format printer",
+    "main": "lib/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xtuc/webassemblyjs.git"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "author": {
+      "name": "Sven Sauleau"
+    },
+    "license": "MIT",
+    "dependencies": {
+      "@webassemblyjs/ast": "1.5.12",
+      "@webassemblyjs/helper-wasm-bytecode": "1.5.12",
+      "@webassemblyjs/ieee754": "1.5.12",
+      "@webassemblyjs/leb128": "1.5.12",
+      "@webassemblyjs/utf8": "1.5.12"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@webassemblyjs/wasm-gen-1.5.12-0b7ccfdb93dab902cc0251014e2e18bae3139bcb/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@webassemblyjs/wasm-gen/-/wasm-gen-1.5.12.tgz#0b7ccfdb93dab902cc0251014e2e18bae3139bcb",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@webassemblyjs/wasm-gen/-/wasm-gen-1.5.12.tgz",
+    "hash": "0b7ccfdb93dab902cc0251014e2e18bae3139bcb",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/wasm-gen"
+  },
+  "registry": "npm",
+  "hash": "0b7ccfdb93dab902cc0251014e2e18bae3139bcb"
+}

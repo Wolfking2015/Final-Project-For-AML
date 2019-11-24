@@ -1,0 +1,57 @@
+{
+  "manifest": {
+    "name": "react",
+    "description": "React is a JavaScript library for building user interfaces.",
+    "keywords": [
+      "react"
+    ],
+    "version": "16.4.2",
+    "homepage": "https://reactjs.org/",
+    "bugs": {
+      "url": "https://github.com/facebook/react/issues"
+    },
+    "license": "MIT",
+    "files": [
+      "LICENSE",
+      "README.md",
+      "index.js",
+      "cjs/",
+      "umd/"
+    ],
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/react.git"
+    },
+    "engines": {
+      "node": ">=0.10.0"
+    },
+    "dependencies": {
+      "fbjs": "^0.8.16",
+      "loose-envify": "^1.1.0",
+      "object-assign": "^4.1.1",
+      "prop-types": "^15.6.0"
+    },
+    "browserify": {
+      "transform": [
+        "loose-envify"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-react-16.4.2-2cd90154e3a9d9dd8da2991149fdca3c260e129f/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# react\n\nAn npm package to get you immediate access to [React](https://reactjs.org/),\nwithout also requiring the JSX transformer. This is especially useful for cases where you\nwant to [`browserify`](https://github.com/substack/node-browserify) your module using\n`React`.\n\n**Note:** by default, React will be in development mode. The development version includes extra warnings about common mistakes, whereas the production version includes extra performance optimizations and strips all error messages.\n\nTo use React in production mode, set the environment variable `NODE_ENV` to `production`. A minifier that performs dead-code elimination such as [UglifyJS](https://github.com/mishoo/UglifyJS2) is recommended to completely remove the extra code present in development mode.\n\n## Example Usage\n\n```js\nvar React = require('react');\n```\n",
+    "licenseText": "MIT License\n\nCopyright (c) 2013-present, Facebook, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/react/-/react-16.4.2.tgz",
+    "hash": "2cd90154e3a9d9dd8da2991149fdca3c260e129f",
+    "registry": "npm",
+    "packageName": "react"
+  },
+  "registry": "npm",
+  "hash": "2cd90154e3a9d9dd8da2991149fdca3c260e129f"
+}

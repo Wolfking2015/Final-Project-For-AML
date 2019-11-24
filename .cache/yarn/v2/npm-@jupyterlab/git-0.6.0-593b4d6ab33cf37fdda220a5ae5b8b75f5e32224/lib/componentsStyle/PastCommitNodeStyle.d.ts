@@ -1,0 +1,11 @@
+export declare const pastCommitNodeStyle: string;
+export declare const pastCommitHeaderStyle: string;
+export declare const branchesStyle: string;
+export declare const branchStyle: string;
+export declare const remoteBranchStyle: string;
+export declare const localBranchStyle: string;
+export declare const workingBranchStyle: string;
+export declare const pastCommitExpandedStyle: string;
+export declare const pastCommitHeaderItemStyle: string;
+export declare const collapseStyle: string;
+export declare const pastCommitBodyStyle: string;

@@ -1,0 +1,73 @@
+{
+  "manifest": {
+    "name": "react-highlighter",
+    "version": "0.4.3",
+    "description": "Highlight select fragments of texts",
+    "main": "lib/highlighter.js",
+    "files": [
+      "lib",
+      "dist"
+    ],
+    "peerDependencies": {
+      "react": "^0.14.0 || ^15.0.0 || ^16.0.0"
+    },
+    "scripts": {
+      "test": "_mocha",
+      "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
+      "check-coverage": "istanbul check-coverage --statement 90 --function 100",
+      "test-cover": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && mcat coverage/lcov.info | coveralls --verbose",
+      "dist": "rimraf dist/* && webpack"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/helior/react-highlighter"
+    },
+    "keywords": [
+      "react-component",
+      "react",
+      "highlight"
+    ],
+    "author": {
+      "name": "Helior Colorado"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/helior/react-highlighter/issues"
+    },
+    "homepage": "https://github.com/helior/react-highlighter",
+    "devDependencies": {
+      "chai": "^4.1.2",
+      "coveralls": "^3.0.0",
+      "istanbul": "^0.4.5",
+      "jsdom": "^11.3.0",
+      "minicat": "^1.0.0",
+      "mocha": "^4.0.1",
+      "react": "^15.0.0 || ^16.0.0",
+      "react-dom": "^15.0.0 || ^16.0.0",
+      "rimraf": "^2.6.2",
+      "webpack": "^2.0.0 || ^3.0.0"
+    },
+    "dependencies": {
+      "blacklist": "^1.1.4",
+      "create-react-class": "^15.6.2",
+      "escape-string-regexp": "^1.0.5",
+      "prop-types": "^15.6.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-react-highlighter-0.4.3-e32c84d053259c30ca72c615aa759036d0d23048/package.json",
+    "readmeFilename": "README.md",
+    "readme": "[![npm version](https://badge.fury.io/js/react-highlighter.svg)](http://badge.fury.io/js/react-highlighter)\n[![Build Status](https://travis-ci.org/helior/react-highlighter.svg?branch=master)](https://travis-ci.org/helior/react-highlighter)\n[![Coverage Status](https://coveralls.io/repos/github/helior/react-highlighter/badge.svg?branch=master)](https://coveralls.io/github/helior/react-highlighter?branch=master)\n\n# react-highlighter\nHighlight select fragments of a string using an HTML element and/or a class.\n\n## Installation\n\n```\nnpm install react-highlighter --save\n```\n\n## Usage\n```js\nvar Highlight = require('react-highlighter');\n\n<Highlight search=\"brown\">The quick brown fox jumps over the lazy dog</Highlight>\n```\n## Props\n- `search`: The string of text (or Regular Expression) to highlight\n- `caseSensitive`: Determine whether string matching should be case-sensitive. Not applicable to regular expression searches. Defaults to `false`\n- `ignoreDiacritics`: Determine whether string matching should ignore diacritics. Defaults to `false`\n- `diacriticsBlacklist`: These chars are treated like characters that don't have any diacritics.  Not applicable ignoreDiacritics is `false`. Defaults to none\n- `matchElement`: HTML tag name to wrap around highlighted text. Defaults to `mark`\n- `matchClass`: HTML class to wrap around highlighted text. Defaults to `highlight`\n- `matchStyle`: Custom style for the match element around highlighted text.\n\n\n## Development\n### Testing\nUsing Mocha/Chai/React.addons.TestUtils for testing.\n```\nnpm test\n```\n\n### Code Coverage\nGenerate a report using Istanbul to make sure your tests are touching everything! FYI, Travis will fail the build if there isn't at least 90% of statement coverage and 100% function coverage.\n```\nnpm run coverage\n```\n\nCoveralls.io integration requires that the environment variable `COVERALLS_REPO_TOKEN` is set.\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2015 Helior Colorado\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/react-highlighter/-/react-highlighter-0.4.3.tgz#e32c84d053259c30ca72c615aa759036d0d23048",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/react-highlighter/-/react-highlighter-0.4.3.tgz",
+    "hash": "e32c84d053259c30ca72c615aa759036d0d23048",
+    "registry": "npm",
+    "packageName": "react-highlighter"
+  },
+  "registry": "npm",
+  "hash": "e32c84d053259c30ca72c615aa759036d0d23048"
+}

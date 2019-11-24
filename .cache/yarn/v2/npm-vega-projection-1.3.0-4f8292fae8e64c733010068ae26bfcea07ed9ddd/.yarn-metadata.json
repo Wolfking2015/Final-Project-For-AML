@@ -1,0 +1,53 @@
+{
+  "manifest": {
+    "name": "vega-projection",
+    "version": "1.3.0",
+    "description": "Projections for cartographic mapping.",
+    "keywords": [
+      "vega",
+      "geo",
+      "projection"
+    ],
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Jeffrey Heer",
+      "url": "http://idl.cs.washington.edu"
+    },
+    "main": "build/vega-projection.js",
+    "module": "index",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vega/vega.git"
+    },
+    "scripts": {
+      "rollup": "rollup -g d3-geo:d3 -f umd -n vega -o build/vega-projection.js -- index.js",
+      "prebuild": "rimraf build && mkdir build",
+      "build": "yarn rollup",
+      "postbuild": "terser build/vega-projection.js -c -m -o build/vega-projection.min.js",
+      "pretest": "yarn prebuild && yarn rollup",
+      "test": "tape 'test/**/*-test.js' && eslint index.js src test",
+      "prepublishOnly": "yarn test && yarn build",
+      "postpublish": "git push && git push --tags"
+    },
+    "dependencies": {
+      "d3-geo": "^1.11.6"
+    },
+    "gitHead": "b45fc90406ce2de167073b73d4ae5cf79c5e1705",
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-projection-1.3.0-4f8292fae8e64c733010068ae26bfcea07ed9ddd/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# vega-projection\n\nProjections for cartographic mapping.\n\nThis package provides a [projection](#projection) method for managing registered cartographic projections. By default, the projection registry includes all projection types provided by the [d3-geo](https://github.com/d3/d3-geo) module.\n\n## API Reference\n\n<a name=\"projection\" href=\"#projection\">#</a>\nvega.<b>projection</b>(<i>type</i>[, <i>projection</i>])\n[<>](https://github.com/vega/vega/blob/master/packages/vega-projection/src/projections.js \"Source\")\n\nRegistry function for adding and accessing projection constructor functions. The *type* argument is a String indicating the name of the projection type. If the *projection* argument is not specified, this method returns the matching projection constructor in the registry, or `null` if not found. If the *projection* argument is provided, it must be a projection constructor function to add to the registry under the given *type* name.\n\nBy default, the projection registry includes entries for all projection types provided by the [d3-geo](https://github.com/d3/d3-geo) module. Projections created using the constructor returned by this method are augmented with the following additional properties:\n\n- `type`: A string value indicating the projection type.\n- `path`: A D3 [geoPath](https://github.com/d3/d3-geo#geoPath) instance configured to use the projection. When using this path instance, be sure to set the [path context](https://github.com/d3/d3-geo#path_context) as needed.\n- `copy`: A zero-argument function the produces a copy of the projection.\n\n\n```js\n// mercator projection\nvar mercator = vega.projection('mercator');\nvar proj = mercator().translate([400, 200]);\nscale.type; // 'mercator'\nscale([0, 0]); // [400, 200] center point\n```\n",
+    "licenseText": "Copyright (c) 2015-2018, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-projection/-/vega-projection-1.3.0.tgz#4f8292fae8e64c733010068ae26bfcea07ed9ddd",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-projection/-/vega-projection-1.3.0.tgz",
+    "hash": "4f8292fae8e64c733010068ae26bfcea07ed9ddd",
+    "registry": "npm",
+    "packageName": "vega-projection"
+  },
+  "registry": "npm",
+  "hash": "4f8292fae8e64c733010068ae26bfcea07ed9ddd"
+}

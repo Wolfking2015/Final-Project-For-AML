@@ -1,0 +1,90 @@
+{
+  "manifest": {
+    "name": "react-paginate",
+    "version": "5.3.1",
+    "description": "A ReactJS component that creates a pagination.",
+    "main": "./dist/index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/AdeleD/react-paginate"
+    },
+    "keywords": [
+      "react-component",
+      "paginate",
+      "paginator",
+      "pagination"
+    ],
+    "author": {
+      "name": "Adèle Delamarche"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/AdeleD/react-paginate/issues"
+    },
+    "dependencies": {
+      "prop-types": "^15.6.1"
+    },
+    "peerDependencies": {
+      "react": "^16.0.0"
+    },
+    "devDependencies": {
+      "babel-cli": "^6.26.0",
+      "babel-core": "^6.26.0",
+      "babel-jest": "^23.0.0-alpha.0",
+      "babel-loader": "^7.1.4",
+      "babel-plugin-transform-class-properties": "^6.24.1",
+      "babel-preset-env": "^1.6.1",
+      "babel-preset-react": "^6.24.1",
+      "express": "^4.14.0",
+      "jest-cli": "^23.0.0-alpha.0",
+      "jquery": "^3.1.1",
+      "react": "^16.2.0",
+      "react-dom": "^16.2.0",
+      "react-hot-loader": "^3.0.0",
+      "serve-static": "^1.11.1",
+      "webpack": "^4.24.0",
+      "webpack-cli": "^3.1.2",
+      "webpack-dev-middleware": "^3.4.0"
+    },
+    "scripts": {
+      "test": "jest",
+      "prepublish": "babel ./react_components --out-dir ./dist --source-maps",
+      "start": "npm run demo",
+      "demo": "webpack --config demo/webpack.config.js --mode=development && node demo/data.js && node demo/server.js"
+    },
+    "jest": {
+      "verbose": true,
+      "testURL": "http://localhost/",
+      "transform": {
+        ".*": "<rootDir>/node_modules/babel-jest"
+      },
+      "roots": [
+        "__tests__"
+      ],
+      "unmockedModulePathPatterns": [
+        "<rootDir>/node_modules/react",
+        "<rootDir>/node_modules/react-dom",
+        "<rootDir>/node_modules/fbjs"
+      ],
+      "modulePathIgnorePatterns": [
+        "<rootDir>/node_modules/"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-react-paginate-5.3.1-bb8da341774e154c89b9e091ccb74ab1efa28ac2/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# react-paginate\n[![NPM](https://nodei.co/npm/react-paginate.png?downloads=true)](https://nodei.co/npm/react-paginate/)\n[![Build Status](https://travis-ci.org/AdeleD/react-paginate.svg?branch=master)](https://travis-ci.org/AdeleD/react-paginate)\n\n**A ReactJS component to render a pagination.**\n\nBy installing this component and writing only a little bit of CSS you can obtain this:\n\n<img src=\"https://cloud.githubusercontent.com/assets/2084833/24840237/7accb75a-1d1e-11e7-9abb-818431398b91.png\" alt=\"Pagination demo 2\" />\n\nor\n\n<img src=\"https://cloud.githubusercontent.com/assets/2084833/24840230/594e4ea4-1d1e-11e7-8b34-bde943b4793d.png\" alt=\"Pagination demo 1\" />\n\n## Installation\n\nInstall `react-paginate` with [npm](https://www.npmjs.com/):\n\n```\n$ npm install react-paginate --save\n```\n\nFor [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) users:\n\n```javascript\nimport ReactPaginate from 'react-paginate';\n```\n\nRead the code of [demo/js/demo.js][1]. You will quickly understand\nhow to make `react-paginate` work with a list of objects.\n\n## Demo\n\nClone the repository and move into:\n\n```console\n$ git clone git@github.com:AdeleD/react-paginate.git\n$ cd react-paginate\n```\n\nInstall dependencies:\n\n```console\n$ make install\n```\n\nPrepare the demo:\n\n```console\n$ make demo\n```\n\nRun the server:\n\n```console\n$ make serve\n```\n\nOpen your browser and go to [http://localhost:3000/](http://localhost:3000/)\n\n<img src=\"https://cloud.githubusercontent.com/assets/2084833/24840241/7c95b7b2-1d1e-11e7-97e3-83b9c7a1f832.gif\" alt=\"Pagination demo\" />\n\n## Props\n| Name                      | Type        | Description                                                                                   |\n| ---                       | ---         | ---                                                                                           |\n| `pageCount`               | `Number`    | **Required.** The total number of pages.                                                      |\n| `pageRangeDisplayed`      | `Number`    | **Required.** The range of pages displayed.                                                   |\n| `marginPagesDisplayed`    | `Number`    | **Required.** The number of pages to display for margins.                                     |\n| `previousLabel`           | `Node`      | Label for the `previous` button.                                                              |\n| `nextLabel`               | `Node`      | Label for the `next` button.                                                                  |\n| `breakLabel`              | `Node`      | Label for ellipsis.                                                                           |\n| `breakClassName`          | `String`    | The classname on tag `li` of the ellipsis element.                                            |\n| `onPageChange`            | `Function`  | The method to call when a page is clicked. Exposes the current page object as an argument.    |\n| `initialPage`             | `Number`    | The initial page selected.                                                                    |\n| `forcePage`               | `Number`    | To override selected page with parent prop.                                                   |\n| `disableInitialCallback`  | `boolean`   | Disable `onPageChange` callback with initial page. Default: `false`                           |\n| `containerClassName`      | `String`    | The classname of the pagination container.                                                    |\n| `pageClassName`           | `String`    | The classname on tag `li` of each page element.                                               |\n| `pageLinkClassName`       | `String`    | The classname on tag `a` of each page element.                                                |\n| `activeClassName`         | `String`    | The classname for the active page.                                                            |\n| `activeLinkClassName`     | `String`    | The classname on the active tag `a`.                                                          |\n| `previousClassName`       | `String`    | The classname on tag `li` of the `previous` button.                                           |\n| `nextClassName`           | `String`    | The classname on tag `li` of the `next` button.                                               |\n| `previousLinkClassName`   | `String`    | The classname on tag `a` of the `previous` button.                                            |\n| `nextLinkClassName`       | `String`    | The classname on tag `a` of the `next` button.                                                |\n| `disabledClassName`       | `String`    | The classname for disabled `previous` and `next` buttons.                                     |\n| `hrefBuilder`             | `Function`  | The method is called to generate the `href` attribute value on tag `a` of each page element.  |\n| `extraAriaContext`        | `String`    | Extra context to add to the `aria-label` HTML attribute.                                      |\n\n## Contribute\n\n1. [Submit an issue](https://github.com/AdeleD/react-paginate/issues)\n2. Fork the repository\n3. Create a dedicated branch (never ever work in `master`)\n4. The first time, run command: `webpack` into the directory\n5. Run `npm start`\n6. Fix bugs or implement features\n7. Always write tests\n\nRun tests:\n\n```console\n$ make test\n```\n\n[1]: https://github.com/AdeleD/react-paginate/blob/master/demo/js/demo.js\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2016 Adèle Delamarche\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/react-paginate/-/react-paginate-5.3.1.tgz#bb8da341774e154c89b9e091ccb74ab1efa28ac2",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/react-paginate/-/react-paginate-5.3.1.tgz",
+    "hash": "bb8da341774e154c89b9e091ccb74ab1efa28ac2",
+    "registry": "npm",
+    "packageName": "react-paginate"
+  },
+  "registry": "npm",
+  "hash": "bb8da341774e154c89b9e091ccb74ab1efa28ac2"
+}

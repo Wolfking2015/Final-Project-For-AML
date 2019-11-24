@@ -1,0 +1,72 @@
+{
+  "manifest": {
+    "name": "@jupyterlab/filebrowser-extension",
+    "version": "0.19.2",
+    "description": "JupyterLab - Filebrowser Widget Extension",
+    "homepage": "https://github.com/jupyterlab/jupyterlab",
+    "bugs": {
+      "url": "https://github.com/jupyterlab/jupyterlab/issues"
+    },
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Project Jupyter"
+    },
+    "files": [
+      "lib/*.d.ts",
+      "lib/*.js.map",
+      "lib/*.js"
+    ],
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jupyterlab/jupyterlab.git"
+    },
+    "scripts": {
+      "build": "tsc -b",
+      "clean": "rimraf lib",
+      "docs": "typedoc --options tdoptions.json --theme ../../typedoc-theme src",
+      "prepublishOnly": "npm run build",
+      "watch": "tsc -b --watch"
+    },
+    "dependencies": {
+      "@jupyterlab/application": "^0.19.1",
+      "@jupyterlab/apputils": "^0.19.1",
+      "@jupyterlab/coreutils": "^2.2.1",
+      "@jupyterlab/docmanager": "^0.19.1",
+      "@jupyterlab/filebrowser": "^0.19.1",
+      "@jupyterlab/launcher": "^0.19.1",
+      "@jupyterlab/services": "^3.2.1",
+      "@phosphor/algorithm": "^1.1.2",
+      "@phosphor/commands": "^1.6.1",
+      "@phosphor/messaging": "^1.2.2",
+      "@phosphor/widgets": "^1.6.0"
+    },
+    "devDependencies": {
+      "rimraf": "~2.6.2",
+      "typedoc": "~0.12.0",
+      "typescript": "~3.1.1"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "jupyterlab": {
+      "extension": true
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@jupyterlab/filebrowser-extension-0.19.2-837c8a4fe776697896ce4a1a7d38a7fe12dc973a/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# @jupyterlab/filebrowser-extension\n\nAn extension for JupyterLab which provides an entry point, commands, and keyboard shortcuts for the [@jupyterlab/filebrowser](../filebrowser) package.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@jupyterlab/filebrowser-extension/-/filebrowser-extension-0.19.2.tgz#837c8a4fe776697896ce4a1a7d38a7fe12dc973a",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@jupyterlab/filebrowser-extension/-/filebrowser-extension-0.19.2.tgz",
+    "hash": "837c8a4fe776697896ce4a1a7d38a7fe12dc973a",
+    "registry": "npm",
+    "packageName": "@jupyterlab/filebrowser-extension"
+  },
+  "registry": "npm",
+  "hash": "837c8a4fe776697896ce4a1a7d38a7fe12dc973a"
+}

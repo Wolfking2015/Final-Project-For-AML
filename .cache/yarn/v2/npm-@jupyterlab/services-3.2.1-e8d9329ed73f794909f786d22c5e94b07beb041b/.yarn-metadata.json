@@ -1,0 +1,80 @@
+{
+  "manifest": {
+    "name": "@jupyterlab/services",
+    "version": "3.2.1",
+    "description": "Client APIs for the Jupyter services REST APIs",
+    "keywords": [
+      "jupyter",
+      "notebook",
+      "services"
+    ],
+    "homepage": "https://github.com/jupyterlab/jupyterlab",
+    "bugs": {
+      "url": "https://github.com/jupyterlab/jupyterlab/issues"
+    },
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Project Jupyter"
+    },
+    "files": [
+      "lib/**/*.js",
+      "lib/*.js.map",
+      "lib/**/*.d.ts",
+      "lib/**/*.js.map",
+      "lib/*.js",
+      "lib/*.d.ts",
+      "dist/*.js",
+      "dist/**/*.js"
+    ],
+    "main": "lib/index.js",
+    "typings": "lib/index.d.ts",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jupyterlab/jupyterlab"
+    },
+    "scripts": {
+      "build": "tsc -b",
+      "clean": "rimraf docs && rimraf lib && rimraf test/build && rimraf test/coverage",
+      "docs": "typedoc --options tdoptions.json --theme ../../typedoc-theme src",
+      "prepublishOnly": "jlpm run build && webpack",
+      "watch": "tsc -b --watch"
+    },
+    "dependencies": {
+      "@jupyterlab/coreutils": "^2.2.1",
+      "@jupyterlab/observables": "^2.1.1",
+      "@phosphor/algorithm": "^1.1.2",
+      "@phosphor/coreutils": "^1.3.0",
+      "@phosphor/disposable": "^1.1.2",
+      "@phosphor/signaling": "^1.2.2"
+    },
+    "devDependencies": {
+      "@types/text-encoding": "0.0.33",
+      "rimraf": "~2.6.2",
+      "text-encoding": "~0.5.5",
+      "typedoc": "~0.12.0",
+      "typescript": "~3.1.1",
+      "webpack": "~4.12.0",
+      "webpack-cli": "^3.0.3"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "gitHead": "7fc900168981e58051253ecc66a18015a052cd2f",
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@jupyterlab/services-3.2.1-e8d9329ed73f794909f786d22c5e94b07beb041b/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# JupyterLab Services\n\nJavascript client for the Jupyter services REST APIs\n\n[API Docs](http://jupyterlab.github.io/jupyterlab/)\n\n[REST API Docs](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/notebook/master/notebook/services/api/api.yaml)\n\nNote: All functions and classes using the REST API allow a `serverSettings`\nparameter to configure requests.\nRequests are made using the `fetch` API, which is available in modern browsers\nor via `npm install fetch` for node users. The `whatwg-fetch` npm package\ncan be used to polyfill browsers that do not support the `fetch` API.\n\n## Package Install\n\n**Prerequisites**\n\n- [node](http://nodejs.org/)\n- [python](https://www.anaconda.com/download)\n\n```bash\nnpm install --save @jupyterlab/services\nconda install notebook  # notebook 4.3+ required\n```\n\n## Source Build\n\n**Prerequisites**\n\n- [git](http://git-scm.com/)\n- [node 0.12+](http://nodejs.org/)\n- [python](https://www.anaconda.com/download)\n\n```bash\ngit clone https://github.com/jupyterlab/jupyterlab.git\ncd packages/services\nnpm install\nnpm run build\nconda install notebook  # notebook 4.3+ required\n```\n\n**Rebuild**\n\n```bash\nnpm run clean\nnpm run build\n```\n\n## Run Tests\n\nFollow the source build instructions first.\n\n```bash\nnpm test\n```\n\n## Build Docs\n\nFollow the source build instructions first.\n\n```bash\nnpm run docs\n```\n\nNavigate to `docs/index.html`.\n\n## Supported Runtimes\n\nThe runtime versions which are currently _known to work_ are listed below.\nEarlier versions may also work, but come with no guarantees.\n\n- Node 0.12.7+\n- IE 11+\n- Firefox 32+\n- Chrome 38+\n\nNote: \"requirejs\" may need be included in a global context for `Comm` targets\nusing the a `target_module` (in the classic Notebook).\nThis can be as a `<script>` tag in the browser or by using the `requirejs`\npackage in node (`npm install requirejs` and setting\n`global.requirejs = require('requirejs');`).\n\n## Starting the Notebook Server\n\nFollow the package install instructions first.\n\nThe library requires a running Jupyter Notebook server, launched as:\n\n```bash\njupyter notebook\n```\n\n## Bundling for the Browser\n\nFollow the package install instructions first.\n\nSee `examples/browser` for an example of using Webpack to bundle the library.\n\nNote: Some browsers (such as IE11), require a polyfill for Promises.\nThe example demonstrates the use of the polyfill. See also notes about\nthe `fetch` API polyfill above.\n\n## Usage from Node.js\n\nFollow the package install instructions first.\n\nSee `examples/node` for an example of using an ES5 node script.\n\n## Usage Examples\n\n**Note:** This module is fully compatible with Node/Babel/ES6/ES5. The\nexamples below are written in TypeScript using ES6 syntax. Simply\nomit the type declarations when using a language other than TypeScript.\nA translator such as Babel can be used to convert from ES6 -> ES5.\n\n**Kernel**\n\n```typescript\nimport { KernelMessage, Kernel } from '@jupyterlab/services';\n\n// Get a list of available kernels and connect to one.\nKernel.listRunning().then(kernelModels => {\n    const kernel = Kernel.connectTo(kernelModels[0]);\n    console.log(kernel.name);\n  });\n});\n\n// Get info about the available kernels and start a new one.\nKernel.getSpecs().then(kernelSpecs => {\n  console.log('Default spec:', kernelSpecs.default);\n  console.log('Available specs', Object.keys(kernelSpecs.kernelspecs));\n  // use the default name\n  let options: Kernel.IOptions = {\n    name: kernelSpecs.default\n  };\n  Kernel.startNew(options).then(kernel => {\n    // Execute and handle replies.\n    let future = kernel.requestExecute({ code: 'a = 1' });\n    future.done.then(() => {\n      console.log('Future is fulfilled');\n    });\n    future.onIOPub = msg => {\n      console.log(msg.content); // Print rich output data.\n    };\n\n    // Restart the kernel and then send an inspect message.\n    kernel.restart().then(() => {\n      let request: KernelMessage.IInspectRequest = {\n        code: 'hello',\n        cursor_pos: 4,\n        detail_level: 0\n      };\n      kernel.requestInspect(request).then(reply => {\n        console.log(reply.content.data);\n      });\n    });\n\n    // Interrupt the kernel and then send a complete message.\n    kernel.interrupt().then(() => {\n      kernel.requestComplete({ code: 'impor', cursor_pos: 4 }).then(reply => {\n        console.log(reply.content.matches);\n      });\n    });\n\n    // Register a callback for when the kernel changes state.\n    kernel.statusChanged.connect(status => {\n      console.log('status', status);\n    });\n\n    // Kill the kernel.\n    kernel.shutdown().then(() => {\n      console.log('Kernel shut down');\n    });\n  });\n});\n```\n\n**Session**\n\n```typescript\nimport { Session } from '@jupyterlab/services';\n\n// Get a list of available sessions and connect to one.\nSession.listRunning().then(sessionModels => {\n  const session = Session.connectTo(sessionModels[0]);\n  console.log(session.kernel.name);\n});\n\n// Start a new session.\nlet options = {\n  kernelName: 'python',\n  path: '/tmp/foo.ipynb'\n};\n\nSession.startNew(options).then(session => {\n  // Execute and handle replies on the kernel.\n  let future = session.kernel.requestExecute({ code: 'a = 1' });\n  future.done.then(() => {\n    console.log('Future is fulfilled');\n  });\n\n  // Rename the session.\n  session.setPath('/local/bar.ipynb').then(() => {\n    console.log('Session renamed to', session.path);\n  });\n\n  // Register a callback for when the session dies.\n  session.terminated.connect(() => {\n    console.log('session died');\n  });\n\n  // Kill the session.\n  session.shutdown().then(() => {\n    console.log('session closed');\n  });\n});\n```\n\n**Comm**\n\n```typescript\nimport { Kernel } from '@jupyterlab/services';\n\n// Create a comm from the server side.\n//\n// Get info about the available kernels and connect to one.\nKernel.getSpecs()\n  .then(kernelSpecs => {\n    return Kernel.startNew({\n      name: kernelSpecs.default\n    });\n  })\n  .then(kernel => {\n    let comm = kernel.connectToComm('test').then(comm => {\n      comm.open('initial state');\n      comm.send('test');\n      comm.close('bye');\n    });\n  });\n\n// Create a comm from the client side.\nKernel.getSpecs()\n  .then(kernelSpecs => {\n    return Kernel.startNew({\n      name: kernelSpecs.default\n    });\n  })\n  .then(kernel => {\n    kernel.registerCommTarget('test2', (comm, commMsg) => {\n      if (commMsg.content.target_name !== 'test2') {\n        return;\n      }\n      comm.onMsg = msg => {\n        console.log(msg); // 'hello'\n      };\n      comm.onClose = msg => {\n        console.log(msg); // 'bye'\n      };\n    });\n\n    let code = [\n      'from ipykernel.comm import Comm',\n      'comm = Comm(target_name=\"test2\")',\n      'comm.send(data=\"hello\")',\n      'comm.close(data=\"bye\")'\n    ].join('\\n');\n    kernel.requestExecute({ code: code });\n  });\n```\n\n**Contents**\n\n```typescript\nimport { ContentsManager } from '@jupyterlab/services';\n\nlet contents = new ContentsManager();\n\n// Create a new python file.\ncontents.newUntitled({ path: '/foo', type: 'file', ext: 'py' }).then(model => {\n  console.log('new file:', model.path);\n});\n\n// Get the contents of a directory.\ncontents.get('/foo/bar').then(model => {\n  console.log('files:', model.content);\n});\n\n// Rename a file.\ncontents.rename('/foo/bar.txt', '/foo/baz.txt');\n\n// Save a file.\ncontents.save('/foo/test.ipynb');\n\n// Delete a file.\ncontents.delete('/foo/bar.txt');\n\n// Copy a file.\ncontents.copy('/foo/bar.txt', '/baz').then(model => {\n  console.log('new path', model.path);\n});\n\n// Create a checkpoint.\ncontents.createCheckpoint('/foo/bar.ipynb').then(model => {\n  let checkpoint = model;\n\n  // Restore a checkpoint.\n  contents.restoreCheckpoint('/foo/bar.ipynb', checkpoint.id);\n\n  // Delete a checkpoint.\n  contents.deleteCheckpoint('/foo/bar.ipynb', checkpoint.id);\n});\n\n// List checkpoints for a file.\ncontents.listCheckpoints('/foo/bar.txt').then(models => {\n  console.log(models[0].id);\n});\n```\n\n**Configuration**\n\n```typescript\nimport { ConfigWithDefaults, ConfigSection } from '@jupyterlab/services';\n\n// The base url of the Jupyter server.\n\nConfigSection.create({ name: 'notebook' }).then(section => {\n  let config = new ConfigWithDefaults({\n    section,\n    defaults: { default_cell_type: 'code' },\n    className: 'Notebook'\n  });\n  console.log(config.get('default_cell_type')); // 'code'\n  config.set('foo', 'bar').then(data => {\n    console.log(data); // \"{ 'foo': 'bar' }\"\n  });\n});\n```\n\n**Terminals**\n\n```typescript\nimport { TerminalSession } from '@jupyterlab/services';\n\n// Create a named terminal session and send some data.\nTerminalSession.startNew().then(session => {\n  session.send({ type: 'stdin', content: ['foo'] });\n});\n```\n",
+    "licenseText": "Copyright (c) 2015 Project Jupyter Contributors\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its\n   contributors may be used to endorse or promote products derived from\n   this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nSemver File License\n===================\n\nThe semver.py file is from https://github.com/podhmo/python-semver\nwhich is licensed under the \"MIT\" license.  See the semver.py file for details.\n\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@jupyterlab/services/-/services-3.2.1.tgz#e8d9329ed73f794909f786d22c5e94b07beb041b",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@jupyterlab/services/-/services-3.2.1.tgz",
+    "hash": "e8d9329ed73f794909f786d22c5e94b07beb041b",
+    "registry": "npm",
+    "packageName": "@jupyterlab/services"
+  },
+  "registry": "npm",
+  "hash": "e8d9329ed73f794909f786d22c5e94b07beb041b"
+}

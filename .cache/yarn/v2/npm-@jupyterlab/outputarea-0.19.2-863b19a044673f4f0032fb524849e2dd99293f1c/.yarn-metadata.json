@@ -1,0 +1,71 @@
+{
+  "manifest": {
+    "name": "@jupyterlab/outputarea",
+    "version": "0.19.2",
+    "description": "JupyterLab - Notebook Output Area",
+    "homepage": "https://github.com/jupyterlab/jupyterlab",
+    "bugs": {
+      "url": "https://github.com/jupyterlab/jupyterlab/issues"
+    },
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Project Jupyter"
+    },
+    "files": [
+      "lib/*.d.ts",
+      "lib/*.js.map",
+      "lib/*.js",
+      "style/*.css"
+    ],
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jupyterlab/jupyterlab.git"
+    },
+    "scripts": {
+      "build": "tsc -b",
+      "clean": "rimraf lib",
+      "docs": "typedoc --options tdoptions.json --theme ../../typedoc-theme src",
+      "prepublishOnly": "npm run build",
+      "watch": "tsc -b --watch"
+    },
+    "dependencies": {
+      "@jupyterlab/apputils": "^0.19.1",
+      "@jupyterlab/coreutils": "^2.2.1",
+      "@jupyterlab/observables": "^2.1.1",
+      "@jupyterlab/rendermime": "^0.19.1",
+      "@jupyterlab/rendermime-interfaces": "^1.2.1",
+      "@jupyterlab/services": "^3.2.1",
+      "@phosphor/algorithm": "^1.1.2",
+      "@phosphor/coreutils": "^1.3.0",
+      "@phosphor/disposable": "^1.1.2",
+      "@phosphor/messaging": "^1.2.2",
+      "@phosphor/signaling": "^1.2.2",
+      "@phosphor/widgets": "^1.6.0"
+    },
+    "devDependencies": {
+      "rimraf": "~2.6.2",
+      "typedoc": "~0.12.0",
+      "typescript": "~3.1.1"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@jupyterlab/outputarea-0.19.2-863b19a044673f4f0032fb524849e2dd99293f1c/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# @jupyterlab/outputarea\n\nA JupyterLab package which provides an implementation of the Jupyter notebook output area.\nExecution results from both the [notebook](../notebook) and the [code console](../console)\nare placed in the output area.\n\nOutput areas are able to render results of several different mime types, which are implemented\nin the [rendermime](../rendermime) package. This list of mime types may be extended via\nthe simplified mime-extension interface defined in [@jupyterlab/rendermime-interfaces](../rendermime-interfaces).\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@jupyterlab/outputarea/-/outputarea-0.19.2.tgz#863b19a044673f4f0032fb524849e2dd99293f1c",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@jupyterlab/outputarea/-/outputarea-0.19.2.tgz",
+    "hash": "863b19a044673f4f0032fb524849e2dd99293f1c",
+    "registry": "npm",
+    "packageName": "@jupyterlab/outputarea"
+  },
+  "registry": "npm",
+  "hash": "863b19a044673f4f0032fb524849e2dd99293f1c"
+}

@@ -1,0 +1,109 @@
+{
+  "manifest": {
+    "name": "url-loader",
+    "version": "1.0.1",
+    "author": {
+      "name": "Tobias Koppers @sokra"
+    },
+    "description": "URL Loader for webpack",
+    "license": "MIT",
+    "main": "dist/cjs.js",
+    "files": [
+      "dist"
+    ],
+    "scripts": {
+      "start": "npm run build -- -w",
+      "build": "cross-env NODE_ENV=production babel src -d dist --ignore 'src/**/*.test.js' --copy-files",
+      "clean": "del-cli dist",
+      "commitlint": "commitlint",
+      "commitmsg": "commitlint -e $GIT_PARAMS",
+      "lint": "eslint --cache src test",
+      "ci:lint:commits": "commitlint --from=${CIRCLE_BRANCH} --to=${CIRCLE_SHA1}",
+      "lint-staged": "lint-staged",
+      "prebuild": "npm run clean",
+      "prepare": "npm run build",
+      "release": "standard-version",
+      "release:ci": "conventional-github-releaser -p angular",
+      "release:validate": "commitlint --from=$(git describe --tags --abbrev=0) --to=$(git rev-parse HEAD)",
+      "security": "nsp check",
+      "test": "jest",
+      "test:watch": "jest --watch",
+      "test:coverage": "jest --collectCoverageFrom='src/**/*.js' --coverage",
+      "ci:lint": "npm run lint && npm run security",
+      "ci:test": "npm run test -- --runInBand",
+      "ci:coverage": "npm run test:coverage -- --runInBand",
+      "defaults": "webpack-defaults"
+    },
+    "dependencies": {
+      "loader-utils": "^1.1.0",
+      "mime": "^2.0.3",
+      "schema-utils": "^0.4.3"
+    },
+    "devDependencies": {
+      "@commitlint/cli": "^5.2.5",
+      "@commitlint/config-angular": "^5.1.1",
+      "@webpack-contrib/eslint-config-webpack": "^2.0.2",
+      "@webpack-contrib/test-utils": "^0.1.2",
+      "babel-cli": "^6.26.0",
+      "babel-jest": "^22.0.3",
+      "babel-plugin-transform-object-rest-spread": "^6.26.0",
+      "babel-polyfill": "^6.26.0",
+      "babel-preset-env": "^1.6.1",
+      "conventional-github-releaser": "^2.0.0",
+      "cross-env": "^5.1.1",
+      "del": "^3.0.0",
+      "del-cli": "^1.1.0",
+      "eslint": "^4.13.1",
+      "eslint-plugin-import": "^2.8.0",
+      "eslint-plugin-prettier": "^2.4.0",
+      "file-loader": "^1.1.6",
+      "husky": "^0.14.3",
+      "jest": "^22.0.3",
+      "lint-staged": "^6.0.0",
+      "memory-fs": "^0.4.1",
+      "nsp": "^3.1.0",
+      "pre-commit": "^1.2.2",
+      "prettier": "^1.9.2",
+      "standard-version": "^4.2.0",
+      "webpack": "^4.0.0",
+      "webpack-defaults": "^2.0.0-rc.2"
+    },
+    "engines": {
+      "node": ">= 6.9.0 || >= 8.9.0"
+    },
+    "peerDependencies": {
+      "webpack": "^3.0.0 || ^4.0.0"
+    },
+    "homepage": "https://github.com/webpack-contrib/url-loader",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/webpack-contrib/url-loader"
+    },
+    "bugs": {
+      "url": "https://github.com/webpack-contrib/url-loader/issues"
+    },
+    "pre-commit": "lint-staged",
+    "lint-staged": {
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-url-loader-1.0.1-61bc53f1f184d7343da2728a1289ef8722ea45ee/package.json",
+    "readmeFilename": "README.md",
+    "readme": "[![npm][npm]][npm-url]\n[![node][node]][node-url]\n[![deps][deps]][deps-url]\n[![tests][tests]][tests-url]\n[![coverage][cover]][cover-url]\n[![chat][chat]][chat-url]\n\n<div align=\"center\">\n  <a href=\"https://github.com/webpack/webpack\">\n    <img width=\"200\" height=\"200\"\n      src=\"https://cdn.rawgit.com/webpack/media/e7485eb2/logo/icon.svg\">\n  </a>\n  <h1>URL Loader</h1>\n  <p>Loads files as `base64` encoded URL</p>\n</div>\n\n<h2 align=\"center\">Install</h2>\n\n```bash\nnpm install --save-dev url-loader\n```\n\n<h2 align=\"center\"><a href=\"https://webpack.js.org/concepts/loaders\">Usage</a></h2>\n\nThe `url-loader` works like the [`file-loader`](https://github.com/webpack-contrib/file-loader), but can return a DataURL if the file is smaller than a byte limit.\n\n\n```js\nimport img from './image.png'\n```\n\n**webpack.config.js**\n```js\nmodule.exports = {\n  module: {\n    rules: [\n      {\n        test: /\\.(png|jpg|gif)$/,\n        use: [\n          {\n            loader: 'url-loader',\n            options: {\n              limit: 8192\n            }\n          }\n        ]\n      }\n    ]\n  }\n}\n```\n\n<h2 align=\"center\">Options</h2>\n\n|Name|Type|Default|Description|\n|:--:|:--:|:-----:|:----------|\n|**[`limit`](#limit)**|`{Number}`|`undefined`|Byte limit to inline files as Data URL|\n|**[`mimetype`](#mimetype)**|`{String}`|`extname`|Specify MIME type for the file (Otherwise it's inferred from the file extension)|\n|**[`fallback`](#fallback)**|`{String}`|`file-loader`|Specify `loader` for the file when file is greater than the limit (in bytes)|\n\n### `limit`\n\nIf the file is greater than the limit (in bytes) the [`file-loader`](https://github.com/webpack-contrib/file-loader) is used by default and all query parameters are passed to it.\nYou can use other loader using `fallback` option.\n\nThe limit can be specified via loader options and defaults to no limit.\n\n**webpack.config.js**\n```js\n{\n  loader: 'url-loader',\n  options: {\n    limit: 8192\n  }\n}\n```\n\n### `mimetype`\n\nSet the MIME type for the file. If unspecified the file extensions will be used to lookup the MIME type.\n\n**webpack.config.js**\n```js\n{\n  loader: 'url-loader',\n  options: {\n    mimetype: 'image/png'\n  }\n}\n```\n\n### `fallback`\n\n**webpack.config.js**\n```js\n{\n  loader: 'url-loader',\n  options: {\n    fallback: 'responsive-loader'\n  }\n}\n```\n\n<h2 align=\"center\">Maintainers</h2>\n\n<table>\n  <tbody>\n    <tr>\n      <td align=\"center\">\n        <a href=\"https://github.com/bebraw\">\n          <img width=\"150\" height=\"150\" src=\"https://github.com/bebraw.png?v=3&s=150\">\n          </br>\n          Juho Vepsäläinen\n        </a>\n      </td>\n      <td align=\"center\">\n        <a href=\"https://github.com/d3viant0ne\">\n          <img width=\"150\" height=\"150\" src=\"https://github.com/d3viant0ne.png?v=3&s=150\">\n          </br>\n          Joshua Wiens\n        </a>\n      </td>\n      <td align=\"center\">\n        <a href=\"https://github.com/sapegin\">\n          <img width=\"150\" height=\"150\" src=\"https://github.com/sapegin.png?v=3&s=150\">\n          </br>\n          Artem Sapegin\n        </a>\n      </td>\n      <td align=\"center\">\n        <a href=\"https://github.com/michael-ciniawsky\">\n          <img width=\"150\" height=\"150\" src=\"https://github.com/michael-ciniawsky.png?v=3&s=150\">\n          </br>\n          Michael Ciniawsky\n        </a>\n      </td>\n      <td align=\"center\">\n        <a href=\"https://github.com/evilebottnawi\">\n          <img width=\"150\" height=\"150\" src=\"https://github.com/evilebottnawi.png?v=3&s=150\">\n          </br>\n          Alexander Krasnoyarov\n        </a>\n      </td>\n    </tr>\n  <tbody>\n</table>\n\n\n[npm]: https://img.shields.io/npm/v/url-loader.svg\n[npm-url]: https://npmjs.com/package/url-loader\n\n[node]: https://img.shields.io/node/v/url-loader.svg\n[node-url]: https://nodejs.org\n\n[deps]: https://david-dm.org/webpack-contrib/url-loader.svg\n[deps-url]: https://david-dm.org/webpack-contrib/url-loader\n\n[tests]: https://circleci.com/gh/webpack-contrib/url-loader/tree/master.svg?style=svg\n[tests-url]: https://circleci.com/gh/webpack-contrib/url-loader/tree/master\n\n[cover]: https://codecov.io/gh/webpack-contrib/url-loader/branch/master/graph/badge.svg\n[cover-url]: https://codecov.io/gh/webpack-contrib/url-loader\n\n[chat]: https://badges.gitter.im/webpack/webpack.svg\n[chat-url]: https://gitter.im/webpack/webpack\n",
+    "licenseText": "Copyright JS Foundation and other contributors\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n'Software'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/url-loader/-/url-loader-1.0.1.tgz#61bc53f1f184d7343da2728a1289ef8722ea45ee",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/url-loader/-/url-loader-1.0.1.tgz",
+    "hash": "61bc53f1f184d7343da2728a1289ef8722ea45ee",
+    "registry": "npm",
+    "packageName": "url-loader"
+  },
+  "registry": "npm",
+  "hash": "61bc53f1f184d7343da2728a1289ef8722ea45ee"
+}

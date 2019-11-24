@@ -1,0 +1,122 @@
+{
+  "manifest": {
+    "name": "@jupyterlab/git",
+    "version": "0.6.0",
+    "description": "A JupyterLab extension for version control using git",
+    "main": "lib/index.js",
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Git Intern Team - Jenna Landy, Noah Stapp, Alena Mueller; AWS - Jaipreet Singh, Neelam Gehlot; Quansight - Saul Shanabrook"
+    },
+    "keywords": [
+      "jupyter",
+      "jupyterlab",
+      "jupyterlab-extension"
+    ],
+    "scripts": {
+      "build": "tsc",
+      "clean": "rimraf lib",
+      "prepublish": "npm run build",
+      "watch": "tsc -w",
+      "test": "jest",
+      "lint": "tslint --project .",
+      "tslint-check": "tslint-config-prettier-check ./tslint.json"
+    },
+    "files": [
+      "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
+      "style/*.css",
+      "style/images/*.svg"
+    ],
+    "jupyterlab": {
+      "extension": true,
+      "discovery": {
+        "server": {
+          "managers": [
+            "pip"
+          ],
+          "base": {
+            "name": "jupyterlab-git"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "@jupyterlab/application": "^0.19.1",
+      "@jupyterlab/apputils": "^0.19.1",
+      "@jupyterlab/console": "^0.19.1",
+      "@jupyterlab/coreutils": "^2.0.2",
+      "@jupyterlab/filebrowser": "^0.19.1",
+      "@jupyterlab/mainmenu": "^0.8.1",
+      "@jupyterlab/services": "^3.1.0",
+      "@jupyterlab/terminal": "^0.19.1",
+      "@jupyterlab/theming": "^0.9.0",
+      "@phosphor/widgets": "^1.6.0",
+      "identity-obj-proxy": "^3.0.0",
+      "nbdime": "^4.0.1",
+      "react": "~16.4.2",
+      "react-dom": "~16.4.2",
+      "react-toggle-display": "^2.2.0",
+      "typestyle": "^2.0.1"
+    },
+    "devDependencies": {
+      "@types/enzyme": "3.1.15",
+      "@types/jest": "^23.3.5",
+      "@types/react": "~16.4.13",
+      "@types/react-dom": "~16.0.5",
+      "enzyme": "3.7.0",
+      "enzyme-adapter-react-16": "1.7.0",
+      "husky": "1.3.1",
+      "jest": "^23.6.0",
+      "jest-fetch-mock": "^1.6.6",
+      "lint-staged": "8.1.5",
+      "prettier": "1.16.4",
+      "puppeteer": "^1.10.0",
+      "rimraf": "^2.6.1",
+      "ts-jest": "^23.10.4",
+      "tslint": "^5.11.0",
+      "tslint-config-prettier": "1.18.0",
+      "tslint-plugin-prettier": "^2.0.0",
+      "typescript": "~3.1.2",
+      "typescript-tslint-plugin": "0.3.1"
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.{ts,tsx}": [
+        "tslint --fix",
+        "git add"
+      ]
+    },
+    "prettier": {
+      "singleQuote": true
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jupyterlab/jupyterlab-git.git"
+    },
+    "bugs": {
+      "url": "https://github.com/jupyterlab/jupyterlab-git/issues"
+    },
+    "homepage": "https://github.com/jupyterlab/jupyterlab-git",
+    "resolutions": {
+      "@types/react": "~16.4.13"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/.tmp/ea2a3f35c0d0c80541e2122b695a830d/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# jupyterlab-git\n\n[![Binder](https://beta.mybinder.org/badge.svg)](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-git/master?urlpath=lab) [![Build Status](https://travis-ci.org/jupyterlab/jupyterlab-git.svg?branch=master)](https://travis-ci.org/jupyterlab/jupyterlab-git) [![Version](https://img.shields.io/npm/v/@jupyterlab/git.svg)](https://www.npmjs.com/package/@jupyterlab/git) [![Version](https://img.shields.io/pypi/v/jupyterlab-git.svg)](https://pypi.org/project/jupyterlab-git/) [![Downloads](https://img.shields.io/npm/dm/@jupyterlab/git.svg)](https://www.npmjs.com/package/@jupyterlab/git) [![Version](https://img.shields.io/conda/vn/conda-forge/jupyterlab-git.svg)](https://anaconda.org/conda-forge/jupyterlab-git) [![Downloads](https://img.shields.io/conda/dn/conda-forge/jupyterlab-git.svg)](https://anaconda.org/conda-forge/jupyterlab-git)\n\n\nA JupyterLab extension for version control using git\n\n![](http://g.recordit.co/N9Ikzbyk8P.gif)\n\n## Prerequisites\n\n- JupyterLab  \n\n## Usage\n\n- Open the git extension from the *Git* tab on the left panel\n\n## Install\n\nTo install perform the following steps:\n\n```bash\njupyter labextension install @jupyterlab/git\npip install jupyterlab-git\njupyter serverextension enable --py jupyterlab_git\n```\n\n## Development\n\n### Contributing\n\nIf you would like to contribute to the project, please read our [contributor documentation](https://github.com/jupyterlab/jupyterlab/blob/master/CONTRIBUTING.md).\n\nJupyterLab follows the official [Jupyter Code of Conduct](https://github.com/jupyter/governance/blob/master/conduct/code_of_conduct.md).\n\n### Team\n\nThe Jupyter Git extension is part of [Project Jupyter](http://jupyter.org/) and is developed by an open community of contributors. Our maintainer team is accompanied by a much larger group of contributors to JupyterLab and Project Jupyter as a whole.\n\nJupyterLab Git's current maintainers are listed in alphabetical order, with affiliation, and main areas of contribution:\n\n- Tim George, Cal Poly (UI/UX design, strategy, management, user needs analysis).\n- Brian Granger, Cal Poly (co-creator, strategy, vision, management, UI/UX design,\n  architecture).\n- Saul Shanabrook, Quansight(software engineering)\n- Jaipreet Singh, AWS (software engineering, UI/UX design, management)\n- William Wang, AWS (UI/UX design)\n\nMaintainer emeritus:\n\n- Ashutosh Bondre, Cal Poly (software engineering).\n- Noah Stapp, Cal Poly (software engineering).\n- Ji Zhang, Cal Poly (software engineering).\n- Jenna Landy, Cal Poly (sofware engineering).\n- Alena Mueller, Cal Poly (UI/UX design).\n- Neelam Gehlot, AWS (software engineering)\n\nThis list is provided to help provide context about who we are and how our team functions.\nIf you would like to be listed, please submit a pull request with your information.\n\n### Install\n\nRequires node 4+ and npm 4+\n\n```bash\n# Clone the repo to your local environment\ngit clone https://github.com/jupyterlab/jupyterlab-git.git\ncd jupyterlab-git\n# Install dependencies\nnpm install # or yarn\n# Build Typescript source\nnpm run build # or yarn build\n# Link your development version of the extension with JupyterLab\njupyter labextension link .\n# Rebuild Typescript source after making changes\nnpm run build # or yarn build\n```\n\n```bash\npip install .\njupyter serverextension enable --py jupyterlab_git\n```\n\nTo rebuild the package and the JupyterLab app:\n\n```bash\nnpm run build\njupyter lab build\n```\n",
+    "licenseText": "BSD 3-Clause License\n\nCopyright (c) 2017, Project Jupyter Contributors\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n* Redistributions of source code must retain the above copyright notice, this\n  list of conditions and the following disclaimer.\n\n* Redistributions in binary form must reproduce the above copyright notice,\n  this list of conditions and the following disclaimer in the documentation\n  and/or other materials provided with the distribution.\n\n* Neither the name of the copyright holder nor the names of its\n  contributors may be used to endorse or promote products derived from\n  this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "type": "tarball",
+    "reference": "file:../extensions/jupyterlab-git-0.6.0.tgz",
+    "registry": "npm",
+    "hash": ""
+  },
+  "registry": "npm",
+  "hash": "593b4d6ab33cf37fdda220a5ae5b8b75f5e32224"
+}

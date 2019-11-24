@@ -1,0 +1,28 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/helper-fsm",
+    "version": "1.5.12",
+    "description": "FSM implementation",
+    "main": "lib/index.js",
+    "author": {
+      "name": "Mauro Bringolf"
+    },
+    "license": "ISC",
+    "publishConfig": {
+      "access": "public"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@webassemblyjs/helper-fsm-1.5.12-6bc1442b037f8e30f2e57b987cee5c806dd15027/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@webassemblyjs/helper-fsm/-/helper-fsm-1.5.12.tgz#6bc1442b037f8e30f2e57b987cee5c806dd15027",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@webassemblyjs/helper-fsm/-/helper-fsm-1.5.12.tgz",
+    "hash": "6bc1442b037f8e30f2e57b987cee5c806dd15027",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/helper-fsm"
+  },
+  "registry": "npm",
+  "hash": "6bc1442b037f8e30f2e57b987cee5c806dd15027"
+}

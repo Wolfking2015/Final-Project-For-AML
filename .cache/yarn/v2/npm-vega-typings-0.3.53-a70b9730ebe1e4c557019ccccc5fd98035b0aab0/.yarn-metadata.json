@@ -1,0 +1,45 @@
+{
+  "manifest": {
+    "name": "vega-typings",
+    "version": "0.3.53",
+    "description": "Typings for Vega",
+    "types": "types",
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:vega/vega-typings.git"
+    },
+    "author": {
+      "name": "Dominik Moritz",
+      "email": "domoritz@gmail.com"
+    },
+    "license": "BSD-3-Clause",
+    "devDependencies": {
+      "dtslint": "^0.4.1",
+      "prettier": "^1.15.3",
+      "typescript": "^3.2.2"
+    },
+    "scripts": {
+      "format": "prettier $([ \"$CI\" = true ] && echo --list-different || echo --write) './**/*.{ts,tsx,js,json,css}'",
+      "test": "dtslint ."
+    },
+    "dependencies": {
+      "vega-util": "^1.7.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-typings-0.3.53-a70b9730ebe1e4c557019ccccc5fd98035b0aab0/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Vega-Typings\n\n[![npm version](https://img.shields.io/npm/v/vega-typings.svg)](https://www.npmjs.com/package/vega-typings)\n[![Build Status](https://travis-ci.org/vega/vega-typings.svg?branch=master)](https://travis-ci.org/vega/vega-typings)\n\nTypings for [Vega](https://github.com/vega/vega).\n\n## Release Process\n\nTo release a new version, make sure that everything works. Then run `yarn version` and bump the version number. Lastly, push to GitHub (with the release tag). [Travis](https://travis-ci.org/vega/vega-typings/builds) will build a bundle and make the [npm release](https://www.npmjs.com/package/vega-typings) automatically.\n",
+    "licenseText": "BSD 3-Clause License\n\nCopyright (c) 2018, Vega\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n* Redistributions of source code must retain the above copyright notice, this\n  list of conditions and the following disclaimer.\n\n* Redistributions in binary form must reproduce the above copyright notice,\n  this list of conditions and the following disclaimer in the documentation\n  and/or other materials provided with the distribution.\n\n* Neither the name of the copyright holder nor the names of its\n  contributors may be used to endorse or promote products derived from\n  this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-typings/-/vega-typings-0.3.53.tgz#a70b9730ebe1e4c557019ccccc5fd98035b0aab0",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-typings/-/vega-typings-0.3.53.tgz",
+    "hash": "a70b9730ebe1e4c557019ccccc5fd98035b0aab0",
+    "registry": "npm",
+    "packageName": "vega-typings"
+  },
+  "registry": "npm",
+  "hash": "a70b9730ebe1e4c557019ccccc5fd98035b0aab0"
+}

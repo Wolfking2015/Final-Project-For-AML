@@ -1,0 +1,50 @@
+{
+  "manifest": {
+    "name": "vega-event-selector",
+    "version": "2.0.1",
+    "description": "A CSS-inspired language to select, sequence, and compose DOM events.",
+    "keywords": [
+      "vega",
+      "event",
+      "selector"
+    ],
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Arvind Satyanarayan",
+      "url": "http://arvindsatya.com"
+    },
+    "main": "build/vega-event-selector.js",
+    "module": "index",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vega/vega.git"
+    },
+    "scripts": {
+      "rollup": "rollup -f umd -n vega -o build/vega-event-selector.js -- index.js",
+      "prebuild": "rimraf build && mkdir build",
+      "build": "yarn rollup",
+      "postbuild": "terser build/vega-event-selector.js -c -m -o build/vega-event-selector.min.js",
+      "pretest": "yarn prebuild && yarn rollup",
+      "test": "tape 'test/**/*-test.js' && eslint index.js src test",
+      "prepublishOnly": "yarn test && yarn build",
+      "postpublish": "git push && git push --tags"
+    },
+    "gitHead": "b45fc90406ce2de167073b73d4ae5cf79c5e1705",
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-event-selector-2.0.1-8f8680872f5e80148928ea67aa8c7fb238e8a046/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# vega-event-selector\n\nA CSS-inspired language to select, sequence, and compose DOM events into event streams.\n\nExports the following method:\n\n<a name=\"selector\" href=\"#selector\">#</a>\nvega.<b>selector</b>(<i>selector</i>[, <i>source</i>, <i>marks</i>])\n[<>](https://github.com/vega/vega/blob/master/packages/vega-event-selector/src/event-selector.js \"Source\")\n\nTakes an [event _selector_ string](https://vega.github.io/vega/docs/event-streams/#selector) as input and returns a parsed [event stream object](https://vega.github.io/vega/docs/event-streams/#object) definition. The optional _source_ argument takes a string indicating the source value to use by default (normally `\"view\"`). The optional _marks_ argument takes an object whose keys will be treated as the legal mark types, so long as the corresponding values are truthy. For more, see the [Vega Event Stream documentation](https://vega.github.io/vega/docs/event-streams).\n",
+    "licenseText": "Copyright (c) 2015-2018, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-event-selector/-/vega-event-selector-2.0.1.tgz#8f8680872f5e80148928ea67aa8c7fb238e8a046",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-event-selector/-/vega-event-selector-2.0.1.tgz",
+    "hash": "8f8680872f5e80148928ea67aa8c7fb238e8a046",
+    "registry": "npm",
+    "packageName": "vega-event-selector"
+  },
+  "registry": "npm",
+  "hash": "8f8680872f5e80148928ea67aa8c7fb238e8a046"
+}

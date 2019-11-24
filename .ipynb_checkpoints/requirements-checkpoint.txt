@@ -1,0 +1,11 @@
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+seaborn
+jupyter_contrib_nbextensions
+jupyterlab
+jupyterlab-git
+rise
+requests

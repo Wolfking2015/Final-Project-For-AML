@@ -1,0 +1,31 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/ieee754",
+    "version": "1.5.12",
+    "description": "IEEE754 decoder and encoder",
+    "license": "MIT",
+    "main": "lib/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "dependencies": {
+      "ieee754": "^1.1.11"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@webassemblyjs/ieee754-1.5.12-ee9574bc558888f13097ce3e7900dff234ea19a4/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@webassemblyjs/ieee754/-/ieee754-1.5.12.tgz#ee9574bc558888f13097ce3e7900dff234ea19a4",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@webassemblyjs/ieee754/-/ieee754-1.5.12.tgz",
+    "hash": "ee9574bc558888f13097ce3e7900dff234ea19a4",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/ieee754"
+  },
+  "registry": "npm",
+  "hash": "ee9574bc558888f13097ce3e7900dff234ea19a4"
+}

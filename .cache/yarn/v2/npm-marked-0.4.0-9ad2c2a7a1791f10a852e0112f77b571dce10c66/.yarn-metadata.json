@@ -1,0 +1,88 @@
+{
+  "manifest": {
+    "name": "marked",
+    "description": "A markdown parser built for speed",
+    "author": {
+      "name": "Christopher Jeffrey"
+    },
+    "version": "0.4.0",
+    "main": "./lib/marked.js",
+    "bin": {
+      "marked": "./bin/marked"
+    },
+    "man": [
+      "./man/marked.1"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/markedjs/marked.git"
+    },
+    "homepage": "https://marked.js.org/",
+    "bugs": {
+      "url": "http://github.com/markedjs/marked/issues"
+    },
+    "license": "MIT",
+    "keywords": [
+      "markdown",
+      "markup",
+      "html"
+    ],
+    "tags": [
+      "markdown",
+      "markup",
+      "html"
+    ],
+    "devDependencies": {
+      "eslint": "^4.15.0",
+      "eslint-config-standard": "^11.0.0-beta.0",
+      "eslint-plugin-import": "^2.8.0",
+      "eslint-plugin-node": "^5.2.1",
+      "eslint-plugin-promise": "^3.6.0",
+      "eslint-plugin-standard": "^3.0.1",
+      "eslint-plugin-vuln-regex-detector": "^1.0.4",
+      "front-matter": "^2.3.0",
+      "glob-to-regexp": "0.3.0",
+      "html-differ": "^1.3.4",
+      "jasmine": "^3.1.0",
+      "jasmine2-custom-message": "^0.9.0",
+      "markdown": "*",
+      "markdown-it": "*",
+      "showdown": "*",
+      "uglify-js": "^3.3.10"
+    },
+    "scripts": {
+      "test": "jasmine --config=jasmine.json",
+      "test:unit": "npm test -- test/unit/**/*-spec.js",
+      "test:specs": "npm test -- test/specs/**/*-spec.js",
+      "test:cm": "npm test -- test/specs/commonmark/**/*-spec.js",
+      "test:gfm": "npm test -- test/specs/gfm/**/*-spec.js",
+      "test:marked": "npm test -- test/specs/marked/**/*-spec.js",
+      "test:old": "node test",
+      "test:lint": "eslint bin/marked .",
+      "test:redos": "eslint --plugin vuln-regex-detector --rule '\"vuln-regex-detector/no-vuln-regex\": 2' lib/marked.js",
+      "bench": "node test --bench",
+      "lint": "eslint --fix bin/marked .",
+      "build": "uglifyjs lib/marked.js -cm  --comments /Copyright/ -o marked.min.js",
+      "preversion": "npm run build && (git diff --quiet || git commit -am 'minify')"
+    },
+    "engines": {
+      "node": ">=0.10.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-marked-0.4.0-9ad2c2a7a1791f10a852e0112f77b571dce10c66/package.json",
+    "readmeFilename": "README.md",
+    "readme": "<a href=\"https://marked.js.org\">\n  <img width=\"60px\" height=\"60px\" src=\"https://marked.js.org/img/logo-black.svg\" align=\"right\" />\n</a>\n\n# Marked\n\n[![npm](https://img.shields.io/npm/v/marked.svg)](https://www.npmjs.com/package/marked)\n[![gzip size](http://img.badgesize.io/https://cdn.jsdelivr.net/npm/marked@0.3.19/marked.min.js?compression=gzip)](https://cdn.jsdelivr.net/npm/marked@0.3.19/marked.min.js)\n[![install size](https://packagephobia.now.sh/badge?p=marked@0.3.19)](https://packagephobia.now.sh/result?p=marked@0.3.19)\n[![downloads](https://img.shields.io/npm/dt/marked.svg)](https://www.npmjs.com/package/marked)\n[![travis](https://travis-ci.org/markedjs/marked.svg?branch=master)](https://travis-ci.org/markedjs/marked)\n\n- ⚡ built for speed\n- ⬇️ low-level compiler for parsing markdown without caching or blocking for long periods of time\n- ⚖️ light-weight while implementing all markdown features from the supported flavors & specifications\n- 🌐 works in a browser, on a server, or from a command line interface (CLI)\n\n## Demo\n\nCheckout the [demo page](https://marked.js.org/demo/) to see marked in action ⛹️\n\n## Docs\n\nOur [documentation pages](https://marked.js.org) are also rendered using marked 💯\n\n## Installation\n\n**CLI:** `npm install -g marked`\n\n**In-browser:** `npm install marked --save`\n\n## Usage \n\n**CLI**\n\n``` bash\n$ marked -o hello.html\nhello world\n^D\n$ cat hello.html\n<p>hello world</p>\n```\n\n**Browser**\n\n```html\n<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\"/>\n  <title>Marked in the browser</title>\n</head>\n<body>\n  <div id=\"content\"></div>\n  <script src=\"https://cdn.jsdelivr.net/npm/marked/marked.min.js\"></script>\n  <script>\n    document.getElementById('content').innerHTML =\n      marked('# Marked in the browser\\n\\nRendered by **marked**.');\n  </script>\n</body>\n</html>\n```\n\n## License\n\nCopyright (c) 2011-2018, Christopher Jeffrey. (MIT License)\n\n",
+    "licenseText": "# License information\n\n## Contribution License Agreement\n\nIf you contribute code to this project, you are implicitly allowing your code\nto be distributed under the MIT license. You are also implicitly verifying that\nall code is your original work. `</legalese>`\n\n## Marked\n\nCopyright (c) 2011-2018, Christopher Jeffrey (https://github.com/chjj/)\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n\n## Markdown\n\nCopyright © 2004, John Gruber \nhttp://daringfireball.net/ \nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n* Neither the name “Markdown” nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nThis software is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall the copyright owner or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/marked/-/marked-0.4.0.tgz#9ad2c2a7a1791f10a852e0112f77b571dce10c66",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/marked/-/marked-0.4.0.tgz",
+    "hash": "9ad2c2a7a1791f10a852e0112f77b571dce10c66",
+    "registry": "npm",
+    "packageName": "marked"
+  },
+  "registry": "npm",
+  "hash": "9ad2c2a7a1791f10a852e0112f77b571dce10c66"
+}

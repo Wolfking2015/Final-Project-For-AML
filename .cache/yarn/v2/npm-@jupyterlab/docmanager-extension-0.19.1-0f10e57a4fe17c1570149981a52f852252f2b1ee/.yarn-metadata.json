@@ -1,0 +1,75 @@
+{
+  "manifest": {
+    "name": "@jupyterlab/docmanager-extension",
+    "version": "0.19.1",
+    "description": "JupyterLab - Document Manager Extension",
+    "homepage": "https://github.com/jupyterlab/jupyterlab",
+    "bugs": {
+      "url": "https://github.com/jupyterlab/jupyterlab/issues"
+    },
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Project Jupyter"
+    },
+    "files": [
+      "lib/*.d.ts",
+      "lib/*.js.map",
+      "lib/*.js",
+      "schema/*.json"
+    ],
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jupyterlab/jupyterlab.git"
+    },
+    "scripts": {
+      "build": "tsc -b",
+      "clean": "rimraf lib",
+      "docs": "typedoc --options tdoptions.json --theme ../../typedoc-theme src",
+      "prepublishOnly": "npm run build",
+      "watch": "tsc -b --watch"
+    },
+    "dependencies": {
+      "@jupyterlab/application": "^0.19.1",
+      "@jupyterlab/apputils": "^0.19.1",
+      "@jupyterlab/coreutils": "^2.2.1",
+      "@jupyterlab/docmanager": "^0.19.1",
+      "@jupyterlab/docregistry": "^0.19.1",
+      "@jupyterlab/mainmenu": "^0.8.1",
+      "@jupyterlab/services": "^3.2.1",
+      "@phosphor/algorithm": "^1.1.2",
+      "@phosphor/disposable": "^1.1.2",
+      "@phosphor/widgets": "^1.6.0"
+    },
+    "devDependencies": {
+      "rimraf": "~2.6.2",
+      "typedoc": "~0.12.0",
+      "typescript": "~3.1.1"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "jupyterlab": {
+      "extension": true,
+      "schemaDir": "schema"
+    },
+    "gitHead": "7fc900168981e58051253ecc66a18015a052cd2f",
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@jupyterlab/docmanager-extension-0.19.1-0f10e57a4fe17c1570149981a52f852252f2b1ee/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# @jupyterlab/docmanager-extension\n\nAn extension for JupyterLab which provides an entry point and commands for the [@jupyterlab/docmanager](../docmanager) package.\n",
+    "licenseText": "Copyright (c) 2015 Project Jupyter Contributors\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its\n   contributors may be used to endorse or promote products derived from\n   this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nSemver File License\n===================\n\nThe semver.py file is from https://github.com/podhmo/python-semver\nwhich is licensed under the \"MIT\" license.  See the semver.py file for details.\n\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@jupyterlab/docmanager-extension/-/docmanager-extension-0.19.1.tgz#0f10e57a4fe17c1570149981a52f852252f2b1ee",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@jupyterlab/docmanager-extension/-/docmanager-extension-0.19.1.tgz",
+    "hash": "0f10e57a4fe17c1570149981a52f852252f2b1ee",
+    "registry": "npm",
+    "packageName": "@jupyterlab/docmanager-extension"
+  },
+  "registry": "npm",
+  "hash": "0f10e57a4fe17c1570149981a52f852252f2b1ee"
+}

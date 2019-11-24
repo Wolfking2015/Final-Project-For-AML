@@ -1,0 +1,39 @@
+{
+  "manifest": {
+    "name": "path-posix",
+    "author": {
+      "name": "jden",
+      "email": "jason@denizac.org"
+    },
+    "version": "1.0.0",
+    "description": "posix-specific core path module",
+    "keywords": [
+      "path"
+    ],
+    "main": "index.js",
+    "scripts": {
+      "test": "node test/test-path"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:jden/node-path-posix.git"
+    },
+    "license": "ISC",
+    "readmeFilename": "README.md",
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-path-posix-1.0.0-06b26113f56beab042545a23bfa88003ccac260f/package.json",
+    "readme": "# path-posix\nposix-specific core path module\n\n## usage\n```js\nvar path = require('path-posix')\npath.resolve(__dirname, 'foo')\n```\n\nExtracted from lib/path.js in joyent/node@31d4847d8b18cf487775dee3471dd4653b7d860b (master as of 2015/01/26)\n\n## api\nsee [http://nodejs.org/api/path.html#path_path_resolve_from_to](http://nodejs.org/api/path.html#path_path_resolve_from_to)\n\n## installation\n\n    $ npm install path-posix\n\n\n## running the tests\n\nFrom package root:\n\n    $ npm install\n    $ npm test\n\n\n## license\n\nSee LICENSE.md",
+    "licenseText": "Node's license follows:\n\n====\n\nCopyright Joyent, Inc. and other Node contributors. All rights reserved.\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to\ndeal in the Software without restriction, including without limitation the\nrights to use, copy, modify, merge, publish, distribute, sublicense, and/or\nsell copies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS\nIN THE SOFTWARE.\n\n====\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/path-posix/-/path-posix-1.0.0.tgz#06b26113f56beab042545a23bfa88003ccac260f",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/path-posix/-/path-posix-1.0.0.tgz",
+    "hash": "06b26113f56beab042545a23bfa88003ccac260f",
+    "registry": "npm",
+    "packageName": "path-posix"
+  },
+  "registry": "npm",
+  "hash": "06b26113f56beab042545a23bfa88003ccac260f"
+}

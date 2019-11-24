@@ -1,0 +1,111 @@
+{
+  "manifest": {
+    "name": "vega-tooltip",
+    "version": "0.12.0",
+    "description": "A tooltip plugin for Vega-Lite and Vega visualizations.",
+    "main": "build/vega-tooltip.js",
+    "module": "build/index.js",
+    "unpkg": "build/vega-tooltip.min.js",
+    "jsdelivr": "build/vega-tooltip.min.js",
+    "typings": "build/index.d.ts",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vega/vega-tooltip.git"
+    },
+    "keywords": [
+      "vega-lite",
+      "vega",
+      "tooltip"
+    ],
+    "author": {
+      "name": "Interactive Data Lab"
+    },
+    "collaborators": [
+      "Dominik Moritz",
+      "Sira Horradarn",
+      "Zening Qu",
+      "Kanit Wongsuphasawat",
+      "Yuri Astrakhan",
+      "Jeffrey Heer"
+    ],
+    "license": "BSD-3-Clause",
+    "bugs": {
+      "url": "https://github.com/vega/vega-tooltip/issues"
+    },
+    "homepage": "https://github.com/vega/vega-tooltip#readme",
+    "scripts": {
+      "build": "rollup -c",
+      "clean": "rm -rf build examples/data && rm -f src/style.ts && mkdir build",
+      "copy:data": "rsync -r node_modules/vega-datasets/data/* examples/data",
+      "copy:build": "rsync -r build/* examples/build",
+      "deploy:gh": "npm run build && npm run copy:build && gh-pages -d examples && npm run clean",
+      "format": "tslint -p . --fix && prettier --write '{src,test}/**/*.ts'",
+      "lint": "tslint -p . && prettier --list-different '{src,test}/**/*.ts'",
+      "postbuild": "uglifyjs build/vega-tooltip.js -c -m -o build/vega-tooltip.min.js",
+      "prebuild": "npm run clean && npm run copy:data && ./build-style.sh && tsc",
+      "prepublishOnly": "npm run build",
+      "preversion": "npm run lint",
+      "start": "npm run build && concurrently --kill-others -n Server,Typescript,Rollup 'browser-sync start -s -f build examples --serveStatic examples' 'tsc -w' 'rollup -c -w'",
+      "pretest": "./build-style.sh",
+      "test": "jest"
+    },
+    "devDependencies": {
+      "@types/jest": "^23.1.3",
+      "@types/node": "^9.0.0",
+      "browser-sync": "^2.24.5",
+      "concurrently": "^3.6.0",
+      "gh-pages": "^1.2.0",
+      "jest": "^23.2.0",
+      "path": "^0.12.7",
+      "prettier": "^1.13.7",
+      "rollup": "^0.62.0",
+      "rollup-plugin-commonjs": "^9.1.3",
+      "rollup-plugin-node-resolve": "^3.3.0",
+      "ts-jest": "^22.4.6",
+      "tslint": "^5.10.0",
+      "tslint-config-prettier": "^1.13.0",
+      "typescript": "^2.9.2",
+      "uglify-js": "^3.4.2",
+      "vega-datasets": "^1.19.0",
+      "vega-typings": "^0.3.17"
+    },
+    "dependencies": {
+      "vega-util": "^1.7.0"
+    },
+    "jest": {
+      "transform": {
+        "^.+\\.tsx?$": "ts-jest"
+      },
+      "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+      "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "json",
+        "node"
+      ],
+      "testPathIgnorePatterns": [
+        "node_modules",
+        "<rootDir>/build",
+        "src"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-tooltip-0.12.0-014b21b08ea5fe14eb59c9b6643614c77a3b3e47/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Tooltip for Vega & Vega-Lite\n[![npm version](https://img.shields.io/npm/v/vega-tooltip.svg)](https://www.npmjs.com/package/vega-tooltip)\n[![](https://data.jsdelivr.com/v1/package/npm/vega-tooltip/badge?style=rounded)](https://www.jsdelivr.com/package/npm/vega-tooltip)\n[![Build Status](https://travis-ci.org/vega/vega-tooltip.svg?branch=master)](https://travis-ci.org/vega/vega-tooltip)\n[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=rounded)](https://github.com/prettier/prettier)\n\n\nA tooltip plugin for [Vega](http://vega.github.io/vega/) and [Vega-Lite](https://vega.github.io/vega-lite/) visualizations. This plugin implements a [custom tooltip handler](https://vega.github.io/vega/docs/api/view/#view_tooltip) for Vega that uses custom HTML tooltips instead of the HTML [`title` attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/title). Vega Tooltip is installed in the [Vega Editor](https://vega.github.io/editor/).\n\n**Vega Tooltip 0.9 and above use a new API as described below. Learn what has changed at https://github.com/vega/vega-tooltip/wiki/Changes-in-Vega-Tooltip-0.9.**\n\n![demo image](demo.png \"a tooltip for a Vega-Lite scatterplot\")\n\n## Demo\n\nhttp://vega.github.io/vega-tooltip/\n\n## Installing\n\n### NPM or Yarn\n\nUse `npm install vega-tooltip` or `yarn add vega-tooltip`.\n\n### Using Vega-tooltip with a CDN\n\nYou can import `vega-tooltip` directly from [`jsDelivr`](https://www.jsdelivr.com/package/npm/vega-tooltip). Replace `[VERSION]` with the version that you want to use.\n\n```html\n<!-- Import Vega 3 & Vega-Lite 2 (does not have to be from CDN) -->\n<script src=\"https://cdn.jsdelivr.net/npm/vega@3\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/vega-lite@2\"></script>\n\n<script src=\"https://cdn.jsdelivr.net/npm/vega-tooltip@[VERSION]\"></script>\n```\n\n## Usage and APIs\n\nIf you use [Vega-Embed](https://github.com/vega/vega-embed), you **don't need to install Vega Tooltip**! Vega Embed already comes with Vega Tooltip. You can however pass tooltip customizations.\n\n```js\nvegaEmbed(\"#vis\", spec, {tooltip: {theme: 'dark'}})\n  .then(function(result) {\n    // result.view contains the Vega view\n  })\n  .catch(console.error);\n```\n\nIf you want to ue a different version of the tooltip handler, you can override the default handler with the handler from Vega Tooltip (and you need to install it separately).\n\n```js\nvar handler = new vegaTooltip.Handler();\nvegaEmbed(\"#vis\", spec, {tooltip: handler.call})\n  .then(function(result) {\n    // result.view contains the Vega view\n  })\n  .catch(console.error);\n```\n\nSee the [API documentation](docs/APIs.md) for details.\n\n## Tutorials\n\n1. [Creating Your Tooltip](docs/creating_your_tooltip.md)\n2. [Customizing Your Tooltip](docs/customizing_your_tooltip.md)\n\n## Run Instructions\n\n1. In the project folder `vega-tooltip`, type command `yarn` to install dependencies.\n2. Then, type `yarn start`. This will build the library and start a web server.\n3. In your browser, navigate to `http://localhost:8000/`, where you can see various Vega-Lite and Vega visualizations with tooltip interaction.\n\n## Release Process\n\nTo release a new version, make sure that everything works. Then run `yarn version` and bump the version number. Lastly, push to GitHub (with the release tag). [Travis](https://travis-ci.org/vega/vega-tooltip/builds) will build a bundle and make the [npm release](https://www.npmjs.com/package/vega-tooltip) automatically.\n",
+    "licenseText": "Copyright 2016 Interactive Data Lab and contributors\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-tooltip/-/vega-tooltip-0.12.0.tgz#014b21b08ea5fe14eb59c9b6643614c77a3b3e47",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-tooltip/-/vega-tooltip-0.12.0.tgz",
+    "hash": "014b21b08ea5fe14eb59c9b6643614c77a3b3e47",
+    "registry": "npm",
+    "packageName": "vega-tooltip"
+  },
+  "registry": "npm",
+  "hash": "014b21b08ea5fe14eb59c9b6643614c77a3b3e47"
+}

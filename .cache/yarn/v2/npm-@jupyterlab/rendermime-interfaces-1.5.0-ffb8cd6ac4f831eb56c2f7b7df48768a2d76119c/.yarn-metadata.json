@@ -1,0 +1,63 @@
+{
+  "manifest": {
+    "name": "@jupyterlab/rendermime-interfaces",
+    "version": "1.5.0",
+    "description": "JupyterLab - Interfaces for Mime Renderers",
+    "homepage": "https://github.com/jupyterlab/jupyterlab",
+    "bugs": {
+      "url": "https://github.com/jupyterlab/jupyterlab/issues"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jupyterlab/jupyterlab.git"
+    },
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Project Jupyter"
+    },
+    "files": [
+      "lib/*.d.ts",
+      "lib/*.js.map",
+      "lib/*.js"
+    ],
+    "sideEffects": false,
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "scripts": {
+      "build": "tsc -b",
+      "clean": "rimraf lib",
+      "docs": "typedoc --options tdoptions.json --theme ../../typedoc-theme src",
+      "prepublishOnly": "npm run build",
+      "watch": "tsc -b --watch"
+    },
+    "dependencies": {
+      "@phosphor/coreutils": "^1.3.1",
+      "@phosphor/widgets": "^1.9.0"
+    },
+    "devDependencies": {
+      "rimraf": "~2.6.2",
+      "typedoc": "^0.14.2",
+      "typescript": "~3.5.1"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "gitHead": "477084d700c421af8feb53f4a1d8542ef672c2a8",
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@jupyterlab/rendermime-interfaces-1.5.0-ffb8cd6ac4f831eb56c2f7b7df48768a2d76119c/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# @jupyterlab/rendermime-interfaces\n\nA package for JupyterLab which provides interfaces for implementing mime renderer extensions.\n\nA general JupyterLab plugin involves a certain amount of boilerplate code\nthat can be annoying for authors of relatively extensions.\nThe interfaces in this package are meant to give an easier way for extension authors\nto provide a plugin that renders mime bundles and documents of a specific mime type.\n\nWhen using these interfaces, extensions only need to provide some metadata about\nwht kind of mime bundle they are able to render, and a `Widget` with\na `renderModel` method that renders the mime bundle.\n\nExamples can be found in [@jupyterlab/vega5-extension](../vega5-extension) and [@jupyterlab/pdf-extension](../pdf-extension).\n",
+    "licenseText": "Copyright (c) 2015 Project Jupyter Contributors\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its\n   contributors may be used to endorse or promote products derived from\n   this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nSemver File License\n===================\n\nThe semver.py file is from https://github.com/podhmo/python-semver\nwhich is licensed under the \"MIT\" license.  See the semver.py file for details.\n\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@jupyterlab/rendermime-interfaces/-/rendermime-interfaces-1.5.0.tgz#ffb8cd6ac4f831eb56c2f7b7df48768a2d76119c",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@jupyterlab/rendermime-interfaces/-/rendermime-interfaces-1.5.0.tgz",
+    "hash": "ffb8cd6ac4f831eb56c2f7b7df48768a2d76119c",
+    "registry": "npm",
+    "packageName": "@jupyterlab/rendermime-interfaces"
+  },
+  "registry": "npm",
+  "hash": "ffb8cd6ac4f831eb56c2f7b7df48768a2d76119c"
+}

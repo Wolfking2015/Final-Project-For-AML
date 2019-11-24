@@ -1,0 +1,64 @@
+{
+  "manifest": {
+    "name": "typestyle",
+    "version": "2.0.4",
+    "description": "TypeSafe CSS",
+    "main": "./lib/index.js",
+    "typings": "./lib/index",
+    "types": "./lib/index",
+    "module": "./lib.es2015/index.js",
+    "jsnext:main": "./lib.es2015/index.js",
+    "scripts": {
+      "build": "tsc -p . && tsc -p tsconfig.es2015.json && webpack",
+      "unittest": "mocha ./lib/tests/**/*.js",
+      "test": "npm run build && npm run unittest",
+      "preversion": "npm run test",
+      "postversion": "git push --follow-tags && npm publish",
+      "start": "npm run build -- -w & npm run unittest -- --watch"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/typestyle/typestyle.git"
+    },
+    "keywords": [],
+    "author": {},
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/typestyle/typestyle/issues"
+    },
+    "homepage": "https://github.com/typestyle/typestyle#readme",
+    "dependencies": {
+      "csstype": "^2.4.0",
+      "free-style": "2.6.1"
+    },
+    "devDependencies": {
+      "@types/mocha": "5.1.0",
+      "@types/node": "12.6.3",
+      "mocha": "5.2.0",
+      "ts-node": "6.1.1",
+      "typescript": "2.6.2",
+      "webpack": "3.5.5"
+    },
+    "greenkeeper": {
+      "ignore": [
+        "webpack"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-typestyle-2.0.4-b8da5feaf8a4f9d1f69066f3cc4659098bd08457/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# TypeStyle\n\n[![Join the chat at  gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/typestyle/general)\n\n> Making CSS type safe.\n\n[![Build Status][travis-image]][travis-url]\n[![NPM version][npm-image]][npm-url]\n[![Downloads](https://img.shields.io/npm/dm/typestyle.svg)](https://www.npmjs.com/package/typestyle)\n\nWriting CSS with TypeStyle will be just as fluent as writing JavaScript with TypeScript.\n\n![](https://raw.githubusercontent.com/typestyle/typestyle.github.io/source/public/images/autocomplete.gif)\n\nThere are quite a few css in js frameworks out there. This one is different:\n\n- Provides great TypeScript developer experience.\n- No custom AST transform or module loader support needed.\n- Works with any framework (react, angular2, [cyclejs](https://twitter.com/waynemaurer/status/788483714196078593), whatever, doesn't matter).\n- Zero config. Just use.\n- *super* **small** (~6k gz)\n\n> This project is powered by github 🌟s ^ go ahead and [star it please](https://github.com/typestyle/typestyle/stargazers).\n\nCheckout [the awesome list of reviews 🌹][reviews].\n\n## Overview\n\n* [Quickstart](#quickstart)\n* [Guide: Pseudo Classes, Animations, Media Queries, Server side rendering](#guide)\n* [Why](#why)\n\n## Quickstart\n\nUse it like you would use CSS modules or CSS in general with webpack etc, but this time you get to use TypeScript / JavaScript!\n\n**Install**\n`npm install typestyle --save`\n\n**Use**\n```tsx\n/** Import */\nimport {style} from \"typestyle\";\n\n/** convert a style object to a CSS class name */\nconst className = style({color: 'red'});\n\n/** Use the class name in a framework of choice */\n//  e.g. React\nconst MyButton =\n  ({onClick,children})\n    => <button className={className} onClick={onClick}>\n        {children}\n      </button>\n// or Angular2\n@Component({\n  selector: 'my-component',\n  template: `<div class=\"${className}\">Tada</div>`\n})\nexport class MyComponent {}\n```\n\n## Guide\nWe really really want to make CSS maintainable and simple. So we even wrote a free and open source book, covering the super simple core API, a handful of utility styles in [`csx`](https://github.com/typestyle/csx) and tons of other goodness 🌹. *[Jump to the guide][book]*\n\n[![](https://raw.githubusercontent.com/typestyle/typestyle.github.io/source/public/images/book/cover.png)][book]\n\n\n## Video Course\nThe guide contains everything you need to know. But if you prefer to watch video [we have a free course up on egghead][course].\n\n[![](https://raw.githubusercontent.com/typestyle/typestyle.github.io/source/public/images/course.png)][course]\n\n\n## Why\nYou are probably here cause you are unhappy with your current workflow. So why not just jump to the [guide][book] and give it a go. If you [still need reasons we have quite a few][why].\n\n[free-style]:https://github.com/blakeembrey/free-style\n[travis-image]:https://travis-ci.org/typestyle/typestyle.svg?branch=master\n[travis-url]:https://travis-ci.org/typestyle/typestyle\n[npm-image]:https://img.shields.io/npm/v/typestyle.svg?style=flat\n[npm-url]:https://npmjs.org/package/typestyle\n[types.ts]:https://github.com/typestyle/typestyle/blob/master/src/types.ts\n[csx]:https://github.com/typestyle/typestyle#csx\n[book]:https://typestyle.github.io\n[course]:https://egghead.io/courses/maintainable-css-using-typestyle\n[why]:https://typestyle.github.io/#/why\n[reviews]:https://typestyle.github.io/#/reviews\n",
+    "licenseText": "MIT License\n\nCopyright (c) 2016 typestyle\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/typestyle/-/typestyle-2.0.4.tgz#b8da5feaf8a4f9d1f69066f3cc4659098bd08457",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/typestyle/-/typestyle-2.0.4.tgz",
+    "hash": "b8da5feaf8a4f9d1f69066f3cc4659098bd08457",
+    "registry": "npm",
+    "packageName": "typestyle"
+  },
+  "registry": "npm",
+  "hash": "b8da5feaf8a4f9d1f69066f3cc4659098bd08457"
+}

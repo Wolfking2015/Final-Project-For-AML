@@ -1,0 +1,100 @@
+{
+  "manifest": {
+    "name": "vega-themes",
+    "version": "2.5.0",
+    "description": "Themes for stylized Vega and Vega-Lite visualizations.",
+    "keywords": [
+      "vega",
+      "vega-lite",
+      "themes",
+      "style"
+    ],
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "UW Interactive Data Lab",
+      "url": "https://idl.cs.washington.edu"
+    },
+    "contributors": [
+      {
+        "name": "Emily Gu",
+        "url": "https://github.com/emilygu"
+      },
+      {
+        "name": "Arvind Satyanarayan",
+        "url": "http://arvindsatya.com"
+      },
+      {
+        "name": "Jeffrey Heer",
+        "url": "http://idl.cs.washington.edu"
+      },
+      {
+        "name": "Dominik Moritz",
+        "url": "https://www.domoritz.de"
+      }
+    ],
+    "main": "build/vega-themes.js",
+    "module": "build/src/index.js",
+    "unpkg": "build/vega-themes.min.js",
+    "jsdelivr": "build/vega-themes.min.js",
+    "typings": "build/src/index.d.ts",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vega/vega-themes.git"
+    },
+    "scripts": {
+      "prepare": "beemo create-config --silent",
+      "clean": "rm -rf build examples/build",
+      "prettierbase": "beemo prettier 'examples/*.{html,scss,css}'",
+      "eslintbase": "beemo eslint 'src/**/*.ts'",
+      "format": "yarn eslintbase --fix && yarn prettierbase --write",
+      "lint": "yarn eslintbase && yarn prettierbase --check",
+      "prebuild": "mkdir -p build",
+      "build": "tsc && rollup -c",
+      "postbuild": "terser build/vega-themes.js -cm > build/vega-themes.min.js",
+      "deploy:gh": "yarn build && mkdir -p examples/build && rsync -r build/* examples/build && gh-pages -d examples",
+      "prepublishOnly": "yarn clean && yarn build",
+      "preversion": "yarn lint",
+      "serve": "browser-sync start -s -f build examples --serveStatic examples",
+      "start": "yarn build && concurrently --kill-others -n Server,Typescript,Rollup 'yarn serve' 'tsc -w' 'rollup -c -w'"
+    },
+    "devDependencies": {
+      "browser-sync": "^2.26.7",
+      "concurrently": "^4.1.2",
+      "gh-pages": "^2.1.1",
+      "rollup": "^1.22.0",
+      "rollup-plugin-json": "^4.0.0",
+      "terser": "^4.3.4",
+      "typescript": "~3.6.3",
+      "vega": "^5.5.2",
+      "vega-lite": "^4.0.0-beta.1",
+      "vega-lite-dev-config": "^0.3.0"
+    },
+    "peerDependencies": {
+      "vega": "*",
+      "vega-lite": "*"
+    },
+    "beemo": {
+      "module": "vega-lite-dev-config",
+      "drivers": [
+        "prettier",
+        "eslint"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-themes-2.5.0-464d0715a54c48591cd6340c28b0c4c9d39b1571/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Vega Themes\n\n[![npm version](https://img.shields.io/npm/v/vega-themes.svg)](https://www.npmjs.com/package/vega-themes)\n[![Build Status](https://travis-ci.org/vega/vega-themes.svg?branch=master)](https://travis-ci.org/vega/vega-themes)\n\nThemes for stylized [Vega](https://vega.github.io/vega/) and [Vega-Lite](https://vega.github.io/vega-lite/) visualizations. For Vega version 3+ and Vega-Lite 2+.\n\nA Vega *theme* is a [configuration object](https://vega.github.io/vega/docs/config/)\nwith default settings for a variety of visual properties such as colors, typefaces,\nline widths and spacing. This module exports a set of named themes, which can be\npassed as input to the Vega or Vega-Lite with [Vega-Embed](https://github.com/vega/vega-embed)\nor directly as a configuration object to the [Vega parser](https://vega.github.io/vega/docs/api/parser/).\n\nTry Vega-Themes in our [Observable Demo](https://beta.observablehq.com/@domoritz/vega-themes-demo).\n\nVega Themes comes with Vega-Embed:\n\n```js\nvegaEmbed(el, spec, {theme: 'quartz'});\n```\n\nIf you want to use a different version, pass the theme as a configuration:\n\n```js\nvegaEmbed(el, spec, {config: vegaThemes.quartz});\n```\n\nOnce instantiated, a visualization theme can not be changed. Instead, the\ninput specification must be re-parsed with a new theme.\n\n## Included Themes\n\n<a name=\"excel\" href=\"#excel\">#</a>\nvega.themes.<b>excel</b>\n[<>](https://github.com/vega/vega-themes/blob/master/src/theme-excel.js \"Source\")\n\nChart theme modeled after Microsoft Excel. [Try it here](https://vega.github.io/vega-themes/?theme=excel).\n\n<a name=\"ggplot2\" href=\"#ggplot2\">#</a>\nvega.themes.<b>ggplot2</b>\n[<>](https://github.com/vega/vega-themes/blob/master/src/theme-ggplot2.js \"Source\")\n\nChart theme modeled after ggplot2. [Try it here](https://vega.github.io/vega-themes/?theme=ggplot2).\n\n<a name=\"quartz\" href=\"#quartz\">#</a>\nvega.themes.<b>quartz</b>\n[<>](https://github.com/vega/vega-themes/blob/master/src/theme-quartz.js \"Source\")\n\nChart theme modeled after Quartz. [Try it here](https://vega.github.io/vega-themes/?theme=quartz).\n\n<a name=\"vox\" href=\"#vox\">#</a>\nvega.themes.<b>vox</b>\n[<>](https://github.com/vega/vega-themes/blob/master/src/theme-vox.js \"Source\")\n\nChart theme modeled after Vox. [Try it here](https://vega.github.io/vega-themes/?theme=vox).\n\n<a name=\"fivethirtyeight\" href=\"#fivethirtyeight\">#</a>\nvega.themes.<b>fivethirtyeight</b>\n[<>](https://github.com/vega/vega-themes/blob/master/src/theme-fivethirtyeight.js \"Source\")\n\nChart theme modeled after FiveThirtyEight. [Try it here](https://vega.github.io/vega-themes/?theme=fivethirtyeight).\n\n<a name=\"dark\" href=\"#dark\">#</a>\nvega.themes.<b>dark</b>\n[<>](https://github.com/vega/vega-themes/blob/master/src/theme-dark.js \"Source\")\n\nA dark theme. [Try it here](https://vega.github.io/vega-themes/?theme=dark).\n\n<a name=\"latimes\" href=\"#latimes\">#</a>\nvega.themes.<b>latimes</b>\n[<>](https://github.com/vega/vega-themes/blob/master/src/theme-latimes.js \"Source\")\n\nChart theme modeled after the Los Angeles Times. [Try it here](https://vega.github.io/vega-themes/?theme=latimes).\n\n<a name=\"urbaninstitute\" href=\"#urbaninstitute\">#</a>\nvega.themes.<b>urbaninstitute</b>\n[<>](https://github.com/vega/vega-themes/blob/master/src/theme-urbaninstitute.js \"Source\")\n\nChart theme modeled after the Urban Institute. [Try it here](https://vega.github.io/vega-themes/?theme=urbaninstitute).\n\n## Instructions for Developers\n\nTo view and test different themes, follow these steps:\n\n1. Install dependencies via `yarn`.\n2. Launch a local web server in the top-level directory with `yarn start`.\n3. Make changes. The website will automatically reload.\n\n## Release Process\n\nTo release a new version, make sure that everything works. Then run `yarn version` and bump the version number. Lastly, push to GitHub (with the release tag). [Travis](https://travis-ci.org/vega/vega-themes/builds) will build a bundle and make the [npm release](https://www.npmjs.com/package/vega-themes) automatically.\n",
+    "licenseText": "Copyright (c) 2016, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-themes/-/vega-themes-2.5.0.tgz#464d0715a54c48591cd6340c28b0c4c9d39b1571",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-themes/-/vega-themes-2.5.0.tgz",
+    "hash": "464d0715a54c48591cd6340c28b0c4c9d39b1571",
+    "registry": "npm",
+    "packageName": "vega-themes"
+  },
+  "registry": "npm",
+  "hash": "464d0715a54c48591cd6340c28b0c4c9d39b1571"
+}

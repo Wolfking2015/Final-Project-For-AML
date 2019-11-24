@@ -1,0 +1,71 @@
+{
+  "manifest": {
+    "name": "vega-parser",
+    "version": "3.9.0",
+    "description": "Parse Vega specifications to runtime dataflows.",
+    "keywords": [
+      "vega",
+      "parser",
+      "dataflow",
+      "reactive"
+    ],
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Jeffrey Heer",
+      "url": "http://idl.cs.washington.edu"
+    },
+    "main": "build/vega-parser.js",
+    "module": "index",
+    "jsnext:main": "index",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vega/vega-parser.git"
+    },
+    "scripts": {
+      "build": "npm run test && uglifyjs build/vega-parser.js -c -m -o build/vega-parser.min.js",
+      "rollup": "rollup -f umd -g d3-array:d3,d3-color:d3,d3-format:d3,d3-geo:d3,d3-time-format:d3,vega-dataflow:vega,vega-event-selector:vega,vega-expression:vega,vega-scale:vega,vega-scenegraph:vega,vega-statistics:vega,vega-util:vega -n vega -o build/vega-parser.js -- index.js",
+      "schema": "rollup -f umd -g vega-util:vega -n vega.schema -o build/vega-schema.js -- schema/index.js",
+      "pretest": "rm -rf build && mkdir build && npm run rollup && npm run schema",
+      "test": "tape 'test/**/*-test.js' && eslint index.js src test",
+      "prepublishOnly": "npm run build",
+      "postpublish": "git push && git push --tags && zip -j build/vega-parser.zip -- LICENSE README.md build/vega-schema.js build/vega-parser.js build/vega-parser.min.js"
+    },
+    "dependencies": {
+      "d3-array": "^2.0.2",
+      "d3-color": "^1.2.3",
+      "d3-format": "^1.3.2",
+      "d3-geo": "^1.11.3",
+      "d3-time-format": "^2.1.3",
+      "vega-dataflow": "^4.1.0",
+      "vega-event-selector": "^2.0.0",
+      "vega-expression": "^2.4.0",
+      "vega-scale": "^2.5.1",
+      "vega-scenegraph": "^3.2.3",
+      "vega-statistics": "^1.2.3",
+      "vega-util": "^1.7.0"
+    },
+    "devDependencies": {
+      "eslint": "5",
+      "rollup": "0.67.4",
+      "tape": "4",
+      "uglify-js": "3",
+      "vega-transforms": "^2.3.1"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-parser-3.9.0-a7bbe380c5ae70ddd501163302a948f25aadd686/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# vega-parser\n\nParse Vega specifications to runtime dataflow descriptions.\n\n## API Reference\n\n<a name=\"parse\" href=\"#parse\">#</a>\nvega.<b>parse</b>(<i>specification</i>[, <i>config</i>])\n[<>](https://github.com/vega/vega-loader/blob/master/src/parse.js \"Source\")\n\nParses a Vega JSON *specification* as input and produces a reactive dataflow\ngraph description for a visualization. The output description uses the format\nof the [vega-runtime](https://github.com/vega/vega-runtime) module. To create\na visualization, use the runtime dataflow description as the input to a Vega\n[View](https://github.com/vega/vega-view) instance.\n\nThe optional *config* object provides visual encoding defaults for marks,\nscales, axes and legends. Different configuration settings can be used to\nchange choices of layout, color, type faces, font sizes and more to realize\ndifferent chart themes. For more, see the configuration documentation below\nor view the source code defining Vega's\n[default configuration](https://github.com/vega/vega-parser/blob/master/src/config.js).\n\nIn addition to passing configuration options to this [parse](#parse) method,\nVega JSON specifications may also include a top-level `\"config\"` block\nspecifying configuration properties. Configuration options defined within a\nVega JSON file take precedence over those provided to the parse method.\n\n## Configuration\n\nThe Vega parser accepts a configuration file that defines default settings\nfor a variety of visual encoding choices. Different configuration files can be\nused to \"theme\" charts with a customized look and feel. A configuration file is\nsimply a JavaScript object with a set of named properties, grouped by type.\n\nFor more information regarding the supported configuration options, please\nsee the [Vega config documentation](https://vega.github.io/vega/docs/config/).\n",
+    "licenseText": "Copyright (c) 2016, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-parser/-/vega-parser-3.9.0.tgz#a7bbe380c5ae70ddd501163302a948f25aadd686",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-parser/-/vega-parser-3.9.0.tgz",
+    "hash": "a7bbe380c5ae70ddd501163302a948f25aadd686",
+    "registry": "npm",
+    "packageName": "vega-parser"
+  },
+  "registry": "npm",
+  "hash": "a7bbe380c5ae70ddd501163302a948f25aadd686"
+}

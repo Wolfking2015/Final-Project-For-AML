@@ -1,0 +1,62 @@
+{
+  "manifest": {
+    "name": "srcset",
+    "version": "1.0.0",
+    "description": "Parse and stringify the HTML <img> srcset attribute",
+    "keywords": [
+      "html",
+      "attribute",
+      "image",
+      "img",
+      "src",
+      "parse",
+      "stringify",
+      "srcset",
+      "responsive",
+      "picture",
+      "element"
+    ],
+    "author": {
+      "name": "Sindre Sorhus",
+      "email": "sindresorhus@gmail.com",
+      "url": "sindresorhus.com"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/sindresorhus/srcset.git"
+    },
+    "scripts": {
+      "test": "mocha"
+    },
+    "dependencies": {
+      "array-uniq": "^1.0.2",
+      "number-is-nan": "^1.0.0"
+    },
+    "devDependencies": {
+      "mocha": "*"
+    },
+    "engines": {
+      "node": ">=0.10.0"
+    },
+    "license": "MIT",
+    "files": [
+      "index.js"
+    ],
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-srcset-1.0.0-a5669de12b42f3b1d5e83ed03c71046fc48f41ef/package.json",
+    "readmeFilename": "readme.md",
+    "readme": "# srcset [![Build Status](https://travis-ci.org/sindresorhus/srcset.svg?branch=master)](https://travis-ci.org/sindresorhus/srcset)\n\n> Parse and stringify the HTML `<img>` [srcset](http://mobile.smashingmagazine.com/2013/08/21/webkit-implements-srcset-and-why-its-a-good-thing/) attribute.\n\nUseful if you're creating a polyfill, build-tool, etc.\n\n\n## Install\n\n```\n$ npm install --save srcset\n```\n\n\n## Usage\n\nHow an image with `srcset` might look like:\n\n```html\n<img alt=\"The Breakfast Combo\"\n     src=\"banner.jpg\"\n     srcset=\"banner-HD.jpg 2x, banner-phone.jpg 100w, banner-phone-HD.jpg 100w 2x\">\n```\n\nThen have some fun with it:\n\n```js\nvar srcset = require('srcset');\n\nvar parsed = srcset.parse('banner-HD.jpg 2x, banner-phone.jpg 100w');\nconsole.log(parsed);\n/*\n[\n\t{ url: 'banner-HD.jpg', density: 2 },\n\t{ url: 'banner-phone.jpg', width: 100 }\n]\n*/\n\nparsed.push({ url: 'banner-phone-HD.jpg', width: 100, density: 2 });\n\nvar stringified = srcset.stringify(parsed);\nconsole.log(stringified);\n/*\nbanner-HD.jpg 2x, banner-phone.jpg 100w, banner-phone-HD.jpg 100w 2x\n*/\n```\n\n\n## API\n\n### .parse()\n\nAccepts a srcset string and returns an array of objects with the possible properties: `url` (always), `width`, `height`, `density`.\n\n### .stringify()\n\nAccepts an array of objects with the possible properties: `url` (required), `width`, `height`, `density` and returns a srcset string.\n\n\n## License\n\nMIT © [Sindre Sorhus](http://sindresorhus.com)\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/srcset/-/srcset-1.0.0.tgz#a5669de12b42f3b1d5e83ed03c71046fc48f41ef",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/srcset/-/srcset-1.0.0.tgz",
+    "hash": "a5669de12b42f3b1d5e83ed03c71046fc48f41ef",
+    "registry": "npm",
+    "packageName": "srcset"
+  },
+  "registry": "npm",
+  "hash": "a5669de12b42f3b1d5e83ed03c71046fc48f41ef"
+}

@@ -1,0 +1,61 @@
+{
+  "manifest": {
+    "name": "react-toggle-display",
+    "version": "2.2.0",
+    "description": "Hide/show a component's children",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/ccnokes/react-toggle-display"
+    },
+    "main": "./dist/ToggleDisplay.js",
+    "scripts": {
+      "test": "babel-node ./__tests__/ToggleDisplay-test.js",
+      "build": "npm run clean && mkdir -p ./dist && babel ToggleDisplay.jsx --out-file dist/ToggleDisplay.js",
+      "clean": "rm -rf dist",
+      "prepublish": "npm run build"
+    },
+    "keywords": [
+      "react",
+      "reactjs",
+      "react-component",
+      "hide",
+      "show",
+      "toggle",
+      "component",
+      "functional-component"
+    ],
+    "author": {
+      "name": "Cameron Nokes"
+    },
+    "license": "MIT",
+    "devDependencies": {
+      "babel-cli": "6.1.18",
+      "babel-plugin-transform-es2015-modules-umd": "^6.12.0",
+      "babel-preset-es2015": "6.1.18",
+      "babel-preset-react": "6.1.18",
+      "babel-preset-stage-0": "6.1.18",
+      "cheerio": "0.19.0",
+      "react": "^15.5.4",
+      "react-dom": "^15.5.4",
+      "tape": "4.2.2"
+    },
+    "dependencies": {
+      "prop-types": "^15.5.8"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-react-toggle-display-2.2.0-20a66de23e69d5bd975c4bb3cfeaf18748266c49/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# react-toggle-display\n\n[![Build Status](https://travis-ci.org/ccnokes/react-toggle-display.svg?branch=master)](https://travis-ci.org/ccnokes/react-toggle-display)\n\nA stateless react component that toggles the display of it's children. It's like `ng-show`, `ng-hide` or `ng-if` but for react.\n\nThis allows you to DRY up statements like this:\n\n```javascript\n<div className={this.props.shouldHide ? 'hidden' : ''}>\n```\n\nExample usage:\n\n```javascript\nimport React, { Component } from 'react';\nimport ToggleDisplay from 'react-toggle-display';\n\nclass App extends Component {\n  constructor() {\n    super();\n    this.state = { show: false };\n  }\n\n  handleClick() {\n    this.setState({\n      show: !this.state.show\n    });\n  }\n\n  render() {\n    return (\n      <div className=\"App\">\n        <p className=\"App-intro\">\n          <button onClick={ () => this.handleClick() }>Toggle things</button>\n        </p>\n        <ToggleDisplay show={this.state.show}>\n          I am rendered in a span (by default) and hidden with display:none when show is false.\n        </ToggleDisplay>\n\n        <ToggleDisplay if={this.state.show} tag=\"section\">\n          I am rendered in a section and removed from the DOM when if is false.\n        </ToggleDisplay>\n      </div>\n    );\n  }\n}\n\nexport default App;\n\n```\n[View demo](https://jsfiddle.net/ccnokes/oqttsu83/)\n\n\n## Props\n\n`hide` - boolean\n\n`show` - boolean\n\n`if` - boolean\n\n`tag` - string. The tag name to use as the ToggleDisplay element. Defaults to span.\n\nThe two first props are simply the inverse of each other. Using both at the same time will result in canceling each other out.\n\n\n## Install\n\n```\nnpm install react-toggle-display\n```\n\n## Tests\n\nTo run tests: `npm test`\n\n\n\n## Contributors\n\nBig thanks to [willgm](https://github.com/willgm) for his contributions.\n\n\n## Change Notes\n\nNote that if you are using a version under 0.1.1, you will have to compile react-toggle-display's JSX yourself. I recommend just updating to 1.x so you don't have to worry about that. No breaking API changes in 1.x.\n\nWhile v2 does not change anything functionally, it was refactored to be a [\"stateless functional component\"](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components), which won't work in React versions less than 0.14.\n\nv2.2 adds the `prop-types` package to get rid of some warnings when using React 15.5\n\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/react-toggle-display/-/react-toggle-display-2.2.0.tgz#20a66de23e69d5bd975c4bb3cfeaf18748266c49",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/react-toggle-display/-/react-toggle-display-2.2.0.tgz",
+    "hash": "20a66de23e69d5bd975c4bb3cfeaf18748266c49",
+    "registry": "npm",
+    "packageName": "react-toggle-display"
+  },
+  "registry": "npm",
+  "hash": "20a66de23e69d5bd975c4bb3cfeaf18748266c49"
+}

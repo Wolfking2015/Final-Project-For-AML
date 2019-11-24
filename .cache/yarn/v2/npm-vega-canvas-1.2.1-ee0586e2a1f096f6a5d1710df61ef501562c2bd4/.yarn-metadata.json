@@ -1,0 +1,55 @@
+{
+  "manifest": {
+    "name": "vega-canvas",
+    "version": "1.2.1",
+    "description": "Canvas and Image utilities.",
+    "keywords": [
+      "vega",
+      "canvas",
+      "image"
+    ],
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Jeffrey Heer",
+      "url": "http://idl.cs.washington.edu"
+    },
+    "main": "build/vega-canvas.node.js",
+    "module": "index",
+    "unpkg": "build/vega-canvas.js",
+    "jsdelivr": "build/vega-canvas.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vega/vega.git"
+    },
+    "scripts": {
+      "rollup": "rollup -f cjs -n vega -o build/vega-canvas.node.js -- index.js && rollup -f umd -n vega -o build/vega-canvas.js -- index.browser.js",
+      "prebuild": "rimraf build && mkdir build",
+      "build": "yarn rollup",
+      "pretest": "yarn prebuild && yarn rollup",
+      "test": "tape 'test/**/*-test.js' && eslint index.js index.browser.js src test",
+      "prepublishOnly": "yarn test && yarn build",
+      "postpublish": "git push && git push --tags"
+    },
+    "browser": {
+      "./build/vega-canvas.node.js": "./build/vega-canvas.js",
+      "./index.js": "./index.browser.js"
+    },
+    "gitHead": "0f0e009069ae0291458398a747f024c693c201d9",
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-canvas-1.2.1-ee0586e2a1f096f6a5d1710df61ef501562c2bd4/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# vega-canvas\n\n[Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) and [Image](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image)  object instantiation utilities. Creates an [HTML5 Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API), using either the web browser DOM or a [node-canvas](https://github.com/Automattic/node-canvas) library.\n\nThis package attempts three forms of canvas creation, in this order:\n\n- If in a browser environment, use DOM methods to create a new canvas.\n- If the [node-canvas](https://github.com/Automattic/node-canvas) library is present, use that.\n- Otherwise, return `null`.\n\nTo ensure error-free build processes for client-side code, this module does not include any direct or optional dependencies on the [node-canvas](https://github.com/Automattic/node-canvas) library. Projects that use this pacakge and require canvas support for server-side (node.js) operations *must include a canvas dependency in their own `package.json` file*.\n\n## API Reference\n\n<a name=\"canvas\" href=\"#canvas\">#</a>\nvega.<b>canvas</b>([<i>width</i>, <i>height</i>, <i>type</i>])\n[<>](https://github.com/vega/vega/blob/master/packages/vega-canvas/index.js \"Source\")\n\nCreates a new [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) instance, with an optional *width* and *height* (in pixels). If *width* and *height* are omitted, creates a _0 x 0_ canvas. The optional *type* parameter is a [node-canvas type parameter](https://github.com/Automattic/node-canvas#createcanvas) to enable PDF or SVG output modes; this parameter is applied only if node-canvas is used. This method first attempts to create a canvas using the DOM `document.createElement` method. If that fails, the method then attempts to instantiate a canvas using the [node-canvas](https://github.com/Automattic/node-canvas) library. If that also fails, returns `null`.\n\n<a name=\"domCanvas\" href=\"#domCanvas\">#</a>\nvega.<b>domCanvas</b>([<i>width</i>, <i>height</i>])\n[<>](https://github.com/vega/vega/blob/master/packages/vega-canvas/src/domCanvas.js \"Source\")\n\nCreates a new [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) instance, with an optional *width* and *height* (in pixels). If *width* and *height* are omitted, creates a _0 x 0_ canvas. This method first attempts to create a canvas using the DOM `document.createElement` method. If that fails, returns `null`.\n\n<a name=\"nodeCanvas\" href=\"#nodeCanvas\">#</a>\nvega.<b>nodeCanvas</b>([<i>width</i>, <i>height</i>, <i>type</i>])\n[<>](https://github.com/vega/vega/blob/master/packages/vega-canvas/src/nodeCanvas.js \"Source\")\n\nCreates a new [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) instance, with an optional *width* and *height* (in pixels). If *width* and *height* are omitted, creates a _0 x 0_ canvas. The optional *type* parameter is a [node-canvas type parameter](https://github.com/Automattic/node-canvas#createcanvas) to enable PDF or SVG output modes.  This method attempts to instantiate a canvas using using the [node-canvas](https://github.com/Automattic/node-canvas) library. If that fails, returns `null`. This method is not exported in browser-only builds.\n\n<a name=\"image\" href=\"#image\">#</a>\nvega.<b>image</b>()\n[<>](https://github.com/vega/vega/blob/master/packages/vega-canvas/index.js \"Source\")\n\nReturns a reference to the [Image](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image) constructor. In a web browser environment, simply returns the built-in `Image` object. Otherwise, attempts to return the `Image` instance exported by a node canvas library. If all attempts to find a canvas library fail, returns `null`.\n",
+    "licenseText": "Copyright (c) 2015-2018, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-canvas/-/vega-canvas-1.2.1.tgz#ee0586e2a1f096f6a5d1710df61ef501562c2bd4",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-canvas/-/vega-canvas-1.2.1.tgz",
+    "hash": "ee0586e2a1f096f6a5d1710df61ef501562c2bd4",
+    "registry": "npm",
+    "packageName": "vega-canvas"
+  },
+  "registry": "npm",
+  "hash": "ee0586e2a1f096f6a5d1710df61ef501562c2bd4"
+}

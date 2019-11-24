@@ -1,0 +1,42 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/wasm-opt",
+    "version": "1.5.12",
+    "description": "",
+    "main": "lib/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xtuc/webassemblyjs.git"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "author": {
+      "name": "Sven Sauleau"
+    },
+    "license": "MIT",
+    "dependencies": {
+      "@webassemblyjs/ast": "1.5.12",
+      "@webassemblyjs/helper-buffer": "1.5.12",
+      "@webassemblyjs/wasm-gen": "1.5.12",
+      "@webassemblyjs/wasm-parser": "1.5.12",
+      "debug": "^3.1.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@webassemblyjs/wasm-opt-1.5.12-bd758a8bc670f585ff1ae85f84095a9e0229cbc9/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@webassemblyjs/wasm-opt/-/wasm-opt-1.5.12.tgz#bd758a8bc670f585ff1ae85f84095a9e0229cbc9",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@webassemblyjs/wasm-opt/-/wasm-opt-1.5.12.tgz",
+    "hash": "bd758a8bc670f585ff1ae85f84095a9e0229cbc9",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/wasm-opt"
+  },
+  "registry": "npm",
+  "hash": "bd758a8bc670f585ff1ae85f84095a9e0229cbc9"
+}

@@ -1,0 +1,58 @@
+{
+  "manifest": {
+    "name": "base16",
+    "version": "1.0.0",
+    "description": "Base16 themes as JS objects",
+    "main": "lib/index.js",
+    "jsnext:main": "src/index.js",
+    "scripts": {
+      "clean": "rimraf lib",
+      "build": "babel src --out-dir lib",
+      "lint": "eslint src",
+      "prepublish": "npm run lint && npm run clean && npm run build"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/gaearon/base16-js.git"
+    },
+    "keywords": [
+      "base16",
+      "color schemes"
+    ],
+    "author": {
+      "name": "Dan Abramov",
+      "email": "dan.abramov@me.com",
+      "url": "http://github.com/gaearon"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/gaearon/base16-js/issues"
+    },
+    "homepage": "https://github.com/gaearon/base16-js",
+    "devDependencies": {
+      "babel": "^5.5.8",
+      "babel-core": "^5.6.18",
+      "babel-eslint": "^3.1.15",
+      "eslint": "^0.23",
+      "eslint-config-airbnb": "0.0.6",
+      "eslint-plugin-react": "^2.3.0",
+      "rimraf": "^2.4.3"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-base16-1.0.0-e297f60d7ec1014a7a971a39ebc8a98c0b681e70/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# base16-js\n\n[Base16](https://github.com/chriskempson/base16) color schemes as JS objects.\n\n## Installation\n\n```\nnpm install --save base16\n```\n\n## Usage\n\n```js\nimport { solarized } from 'base16';\nconsole.log(solarized.base00); // #002b36\n```\n\n## Contributing\n\nNo pull requests changing or adding the themes will be accepted unless they match the changes committed to [base16-builder](https://github.com/chriskempson/base16-builder/tree/master/schemes).\n\n## Credits\n\nAll credits go to [Chris Kempson](https://github.com/chriskempson) and theme authors. This repository is just a JS mirror of [base16-builder schemes](https://github.com/chriskempson/base16-builder/tree/master/schemes).\n\nThe original work in creating JS counterparts was performed by [@dzannotti](https://github.com/dzannotti) as part of his work on [Redux DevTools](https://github.com/gaearon/redux-devtools). All I did was extract them into a separate repository.\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2015 Dan Abramov\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/base16/-/base16-1.0.0.tgz#e297f60d7ec1014a7a971a39ebc8a98c0b681e70",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/base16/-/base16-1.0.0.tgz",
+    "hash": "e297f60d7ec1014a7a971a39ebc8a98c0b681e70",
+    "registry": "npm",
+    "packageName": "base16"
+  },
+  "registry": "npm",
+  "hash": "e297f60d7ec1014a7a971a39ebc8a98c0b681e70"
+}

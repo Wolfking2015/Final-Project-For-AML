@@ -1,0 +1,64 @@
+{
+  "manifest": {
+    "name": "vega-hierarchy",
+    "version": "3.1.0",
+    "description": "Hierarchical layout transforms for Vega dataflows.",
+    "keywords": [
+      "vega",
+      "hierarchy",
+      "layout",
+      "tree",
+      "treemap",
+      "cluster",
+      "pack"
+    ],
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Jeffrey Heer",
+      "url": "http://idl.cs.washington.edu"
+    },
+    "main": "build/vega-hierarchy.js",
+    "module": "index",
+    "jsnext:main": "index",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vega/vega-hierarchy.git"
+    },
+    "scripts": {
+      "build": "npm run test && uglifyjs build/vega-hierarchy.js -c -m -o build/vega-hierarchy.min.js",
+      "pretest": "rm -rf build && mkdir build && rollup -g d3-collection:d3,d3-hierarchy:d3,vega-dataflow:vega,vega-util:vega -f umd -n vega.transforms -o build/vega-hierarchy.js -- index.js",
+      "test": "tape 'test/**/*-test.js' && eslint index.js src test",
+      "prepublishOnly": "npm run build",
+      "postpublish": "git push && git push --tags && zip -j build/vega-hierarchy.zip -- LICENSE README.md build/vega-hierarchy.js build/vega-hierarchy.min.js"
+    },
+    "dependencies": {
+      "d3-collection": "^1.0.7",
+      "d3-hierarchy": "^1.1.8",
+      "vega-dataflow": "^4.0.4",
+      "vega-util": "^1.7.0"
+    },
+    "devDependencies": {
+      "eslint": "5",
+      "rollup": "0.66.6",
+      "tape": "4",
+      "uglify-js": "3",
+      "vega-transforms": "^2.3.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-hierarchy-3.1.0-ce3df9ab09b3324144df9273d650391f082696ec/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# vega-hierarchy\n\nHierarchical layout transforms for Vega dataflows.\n\nThis module provides the following Vega data transforms:\n\n- [**Nest**](https://vega.github.io/vega/docs/transforms/nest/) [&lt;&gt;](https://github.com/vega/vega-hierarchy/blob/master/src/Nest.js \"Source\")\n- [**Pack**](https://vega.github.io/vega/docs/transforms/pack/) [&lt;&gt;](https://github.com/vega/vega-hierarchy/blob/master/src/Pack.js \"Source\")\n- [**Partition**](https://vega.github.io/vega/docs/transforms/partition/) [&lt;&gt;](https://github.com/vega/vega-hierarchy/blob/master/src/Partition.js \"Source\")\n- [**Stratify**](https://vega.github.io/vega/docs/transforms/stratify/) [&lt;&gt;](https://github.com/vega/vega-hierarchy/blob/master/src/Stratify.js \"Source\")\n- [**Tree**](https://vega.github.io/vega/docs/transforms/tree/) [&lt;&gt;](https://github.com/vega/vega-hierarchy/blob/master/src/Tree.js \"Source\")\n- [**Treemap**](https://vega.github.io/vega/docs/transforms/treemap/) [&lt;&gt;](https://github.com/vega/vega-hierarchy/blob/master/src/Treemap.js \"Source\")\n- [**TreeLinks**](https://vega.github.io/vega/docs/transforms/treelinks/) [&lt;&gt;](https://github.com/vega/vega-hierarchy/blob/master/src/TreeLinks.js \"Source\")\n",
+    "licenseText": "Copyright (c) 2016, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-hierarchy/-/vega-hierarchy-3.1.0.tgz#ce3df9ab09b3324144df9273d650391f082696ec",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-hierarchy/-/vega-hierarchy-3.1.0.tgz",
+    "hash": "ce3df9ab09b3324144df9273d650391f082696ec",
+    "registry": "npm",
+    "packageName": "vega-hierarchy"
+  },
+  "registry": "npm",
+  "hash": "ce3df9ab09b3324144df9273d650391f082696ec"
+}

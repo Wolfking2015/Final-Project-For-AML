@@ -1,0 +1,57 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/wast-parser",
+    "version": "1.5.12",
+    "description": "WebAssembly text format parser",
+    "keywords": [
+      "webassembly",
+      "javascript",
+      "ast",
+      "parser",
+      "wat",
+      "wast"
+    ],
+    "main": "lib/index.js",
+    "scripts": {
+      "test": "mocha"
+    },
+    "author": {
+      "name": "Sven Sauleau"
+    },
+    "license": "MIT",
+    "dependencies": {
+      "@webassemblyjs/ast": "1.5.12",
+      "@webassemblyjs/floating-point-hex-parser": "1.5.12",
+      "@webassemblyjs/helper-api-error": "1.5.12",
+      "@webassemblyjs/helper-code-frame": "1.5.12",
+      "@webassemblyjs/helper-fsm": "1.5.12",
+      "long": "^3.2.0",
+      "mamacro": "^0.0.3"
+    },
+    "devDependencies": {
+      "@webassemblyjs/helper-test-framework": "1.5.12"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xtuc/webassemblyjs.git"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@webassemblyjs/wast-parser-1.5.12-9cf5ae600ecae0640437b5d4de5dd6b6088d0d8b/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# @webassemblyjs/wast-parser\n\n> WebAssembly text format parser\n\n## Installation\n\n```sh\nyarn add @webassemblyjs/wast-parser\n```\n\n## Usage\n\n```js\nimport { parse } from \"@webassemblyjs/wast-parser\";\n\nconst ast = parse(source);\n```\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@webassemblyjs/wast-parser/-/wast-parser-1.5.12.tgz#9cf5ae600ecae0640437b5d4de5dd6b6088d0d8b",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@webassemblyjs/wast-parser/-/wast-parser-1.5.12.tgz",
+    "hash": "9cf5ae600ecae0640437b5d4de5dd6b6088d0d8b",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/wast-parser"
+  },
+  "registry": "npm",
+  "hash": "9cf5ae600ecae0640437b5d4de5dd6b6088d0d8b"
+}

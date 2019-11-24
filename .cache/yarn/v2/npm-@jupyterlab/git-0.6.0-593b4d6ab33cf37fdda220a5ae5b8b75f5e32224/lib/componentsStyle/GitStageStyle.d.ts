@@ -1,0 +1,10 @@
+export declare const sectionFileContainerStyle: string;
+export declare const sectionFileContainerDisabledStyle: string;
+export declare const sectionAreaStyle: string;
+export declare const sectionHeaderLabelStyle: string;
+export declare const changeStageButtonStyle: string;
+export declare const discardFileButtonStyle: string;
+export declare const discardAllWarningStyle: string;
+export declare const caretdownImageStyle: string;
+export declare const caretrightImageStyle: string;
+export declare const changeStageButtonLeftStyle: string;

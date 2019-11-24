@@ -1,0 +1,58 @@
+{
+  "manifest": {
+    "name": "blacklist",
+    "version": "1.1.4",
+    "description": "Returns a shallow copy of an object without blacklisted properties",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcousens/blacklist.git"
+    },
+    "homepage": "https://github.com/dcousens/blacklist",
+    "bugs": {
+      "url": "https://github.com/dcousens/blacklist/issues"
+    },
+    "scripts": {
+      "prebuild": "mkdir -p dist",
+      "build": "umd --commonJS blacklist index.js dist/blacklist.js",
+      "postbuild": "uglifyjs dist/blacklist.js > dist/blacklist.min.js",
+      "prepublish": "npm run build",
+      "standard": "standard",
+      "unit": "faucet",
+      "test": "npm run standard && npm run unit"
+    },
+    "keywords": [
+      "blacklist",
+      "filter",
+      "object",
+      "utility"
+    ],
+    "author": {
+      "name": "Daniel Cousens"
+    },
+    "license": "MIT",
+    "devDependencies": {
+      "faucet": "0.0.1",
+      "standard": "^7.1.2",
+      "tape": "^4.6.0",
+      "uglify-js": "^2.6.1",
+      "umd": "^3.0.1"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-blacklist-1.1.4-b2dd09d6177625b2caa69835a37b28995fa9a2f2/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# blacklist\n\n[![Build Status](https://travis-ci.org/dcousens/blacklist.png?branch=master)](https://travis-ci.org/dcousens/blacklist)\n[![Version](http://img.shields.io/npm/v/blacklist.svg)](https://www.npmjs.org/package/blacklist)\n\nThis module shallow copies an object, ignoring keys depending on the filter object passed to it.\n\nFilters can be provided as an object (truthy keys are blacklisted) or string arguments.\n\n### ES next alternative\n\nIf you can, use \n\n``` javascript\nvar { a, ... bc } = { a: 1, b: 2, c: 3 }\n```\n\n\n### Example\n``` javascript\nvar someInput = { a: 1, b: 2, c: 3 }\n\n// ...\n\nvar blacklist = require('blacklist')\n\nblacklist(someInput, 'b', 'c')\n// => { a: 1 }\n\nblacklist(someInput, {\n\ta: true,   // a will not be in the result\n\tb: false,  // b will be in the result\n\tc: 1 > 2   // false, therefore c will be in the result\n})\n// => { b: 2, c: 3 }\n```\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2015 Daniel Cousens\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/blacklist/-/blacklist-1.1.4.tgz#b2dd09d6177625b2caa69835a37b28995fa9a2f2",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/blacklist/-/blacklist-1.1.4.tgz",
+    "hash": "b2dd09d6177625b2caa69835a37b28995fa9a2f2",
+    "registry": "npm",
+    "packageName": "blacklist"
+  },
+  "registry": "npm",
+  "hash": "b2dd09d6177625b2caa69835a37b28995fa9a2f2"
+}

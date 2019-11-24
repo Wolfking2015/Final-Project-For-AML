@@ -1,0 +1,68 @@
+{
+  "manifest": {
+    "name": "vega-scenegraph",
+    "version": "3.2.3",
+    "description": "Vega scenegraph and renderers.",
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Jeffrey Heer",
+      "url": "http://idl.cs.washington.edu"
+    },
+    "contributors": [
+      {
+        "name": "Arvind Satyanarayan",
+        "url": "http://arvindsatya.com"
+      },
+      {
+        "name": "Emily Gu",
+        "url": "https://github.com/emilygu"
+      }
+    ],
+    "main": "build/vega-scenegraph.js",
+    "module": "index",
+    "jsnext:main": "index",
+    "repository": {
+      "type": "git",
+      "url": "http://github.com/vega/vega-scenegraph.git"
+    },
+    "scripts": {
+      "build": "npm run test && uglifyjs build/vega-scenegraph.js -c -m -o build/vega-scenegraph.min.js",
+      "pretest": "rm -rf build && mkdir build && rollup -f umd -g d3-path:d3,d3-shape:d3,vega-canvas:vega,vega-loader:vega,vega-util:vega -n vega -o build/vega-scenegraph.js -- index.js && bin/schema > build/vega-scenegraph-schema.json",
+      "test": "tape 'test/**/*-test.js' && eslint index.js src test",
+      "prepublishOnly": "npm run build",
+      "postpublish": "git push && git push --tags && zip -j build/vega-scenegraph.zip -- LICENSE README.md build/vega-scenegraph-schema.json build/vega-scenegraph.js build/vega-scenegraph.min.js"
+    },
+    "dependencies": {
+      "d3-path": "^1.0.7",
+      "d3-shape": "^1.2.2",
+      "vega-canvas": "^1.1.0",
+      "vega-loader": "^3.0.1",
+      "vega-util": "^1.7.0"
+    },
+    "devDependencies": {
+      "canvas": "^1.6.13",
+      "eslint": "5",
+      "jsdom": "11",
+      "rollup": "0.66.6",
+      "tape": "4",
+      "tv4": "1",
+      "uglify-js": "3"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-scenegraph-3.2.3-72060c7f3b0e4421c4317a2f7a9a901870920a25/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# vega-scenegraph\n\n[Vega](http://github.com/vega/vega) scenegraph and renderers.\n\nRenderers and event handlers for Vega's mark-based scenegraph. This module\nsupports both pixel-based (canvas) and vector graphics (SVG) output. Renderers\ncan either (re-)draw a complete scene or perform incremental re-rendering for\na set of provided \"dirty\" items. A fast SVG string renderer is also provided\nto generate static SVG for export.\n\nThe [node-canvas](https://github.com/Automattic/node-canvas) library is used\nfor server-side canvas rendering and bounds calculation. Node-canvas requires\nthe native Cairo graphics library and attempts to compile native code as part\nof the installation process. In some instances this may result in installation\nhiccups. Should you run into issues, you are likely to resolve them more\nquickly if you first search for help regarding node-canvas (as opposed to\nvega-scenegraph) installation. However, node-canvas is an optional dependency,\nand is not needed for SVG rendering. Bounds calculation can be performed\nwithout node-canvas, though in the case of text marks the resulting bounds\nmay be inaccurate due to approximate text size calculations.\n\n## Scenegraph Definition\n\nThe Vega scenegraph is a hierarchical (tree) data structure. The levels of the\ntree alternate between an enclosing *mark* definition and contained sets of\nmark instances called *items*.\n\nFor example, here is a simple scenegraph containing three rectangles:\n```\n{\n  \"marktype\": \"rect\",\n  \"items\": [\n    {\"x\": 0, \"y\": 0, \"width\": 50, \"height\": 50, \"fill\": \"steelblue\"},\n    {\"x\": 100, \"y\": 50, \"width\": 50, \"height\": 50, \"fill\": \"firebrick\"},\n    {\"x\": 50, \"y\": 100, \"width\": 50, \"height\": 50, \"fill\": \"forestgreen\"}\n  ]\n}\n```\n\nThe supported mark types are rectangles (`rect`), plotting symbols (`symbol`),\ngeneral paths or polygons (`path`), circular arcs (`arc`), filled areas\n(`area`), lines (`line`), images (`image`), text labels (`text`), and chart\ngridlines or rules (`rule`). Each item has a set of supported properties (`x`,\n`y`, `width`, `fill`, and so on) appropriate to the mark type.\n\nScenegraphs may also contain `group` marks, which serve as containers for\nother marks. For example, a top-level group mark may look like:\n```\n{\n  \"marktype\": \"group\",\n  \"items\": [\n    {\n      \"x\": 0,\n      \"y\": 0,\n      \"width\": 200,\n      \"height\": 200,\n      \"items\": [...] // array of contained mark instances\n    }\n  ]\n}\n```\n\nIn this example, the group *mark* contains only a single group *item*. In\npractice, a group mark may contain any number of group items, for example to\ndescribe a scene with multiple layers or sub-plots.\n\nFor more information regarding supported mark properties, please see the\n[Vega marks documentation](https://vega.github.io/vega/docs/marks/).\n\n## Scenegraph Serialization\n\nThe top-level export of this package includes `fromJSON` and `toJSON` methods\nto support scenegraph serialization. The `fromJSON` method expects a JSON\nstring as input (similar to the examples listed above). It will then add\nadditional parent pointers to the tree structure. For example, each item will\nhave a `mark` property pointing to it's parent mark, and each mark will have a\n`group` property pointing to it's parent group (if any). The `toJSON` method\nmaps a scenegraph instance to a JSON string, stripping any parent pointers or\nother non-standard properties.\n\n## Test Suite\n\nThe vega-scengraph test suite compares rendered output for both Canvas (PNG)\nand SVG (text) renderers. Due to differences among platforms, pixel-level\nrendering by node-canvas can differ across operating systems.\nAs a result, some test cases may break when running on a system other than\nMac OS X (our standard platform for testing). If you are running on Linux or\nWindows and experience test failures, it does not necessarily indicate an\nissue with vega-scenegraph. In such cases, we recommend running the\nnode-canvas test-server (`npm run test-server` from the node-canvas\nrepository) to compare server-side and client-side rendering.\n",
+    "licenseText": "Copyright (c) 2015-2016, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-scenegraph/-/vega-scenegraph-3.2.3.tgz#72060c7f3b0e4421c4317a2f7a9a901870920a25",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-scenegraph/-/vega-scenegraph-3.2.3.tgz",
+    "hash": "72060c7f3b0e4421c4317a2f7a9a901870920a25",
+    "registry": "npm",
+    "packageName": "vega-scenegraph"
+  },
+  "registry": "npm",
+  "hash": "72060c7f3b0e4421c4317a2f7a9a901870920a25"
+}

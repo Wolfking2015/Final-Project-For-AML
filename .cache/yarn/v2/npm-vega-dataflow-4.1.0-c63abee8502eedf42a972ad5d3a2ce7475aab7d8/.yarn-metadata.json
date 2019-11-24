@@ -1,0 +1,59 @@
+{
+  "manifest": {
+    "name": "vega-dataflow",
+    "version": "4.1.0",
+    "description": "Reactive dataflow processing.",
+    "keywords": [
+      "vega",
+      "dataflow",
+      "reactive",
+      "streaming",
+      "data"
+    ],
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Jeffrey Heer",
+      "url": "http://idl.cs.washington.edu"
+    },
+    "main": "build/vega-dataflow.js",
+    "module": "index",
+    "jsnext:main": "index",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/vega/vega-dataflow.git"
+    },
+    "scripts": {
+      "build": "npm run test && uglifyjs build/vega-dataflow.js -c -m -o build/vega-dataflow.min.js",
+      "pretest": "rm -rf build && mkdir build && rollup -g vega-loader:vega,vega-util:vega -f umd -n vega -o build/vega-dataflow.js -- index.js",
+      "test": "tape 'test/**/*-test.js' && eslint index.js src test",
+      "prepublishOnly": "npm run build",
+      "postpublish": "git push && git push --tags && zip -j build/vega-dataflow.zip -- LICENSE README.md build/vega-dataflow.js build/vega-dataflow.min.js"
+    },
+    "dependencies": {
+      "vega-loader": "^3.1.0",
+      "vega-util": "^1.7.0"
+    },
+    "devDependencies": {
+      "eslint": "5",
+      "rollup": "0.67.4",
+      "tape": "4",
+      "uglify-js": "3"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-vega-dataflow-4.1.0-c63abee8502eedf42a972ad5d3a2ce7475aab7d8/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# vega-dataflow\n\nReactive dataflow processing.\n\nDefines a reactive dataflow graph that can process both scalar values and\nstreaming relational data. A central `Dataflow` instance manages and\nschedules a collection of `Operator` instances, each of which is a node in\na dataflow graph. Each operator maintains a local state *value*, and may\nalso process streaming data objects (or *tuples*) passing through. Operators\nmay depend on a set of named `Parameters`, which can either be fixed values\nor live references to other operator values.\n\nUpon modifications to operator parameters or input data, changes are\npropagated through the graph in topological order. `Pulse` objects propagate\nfrom operators to their dependencies, and carry queues of added, removed\nand/or modified tuples.\n\nThis module contains only the core reactive dataflow processing engine.\nOther modules provide a library of `Operator` types for data stream query\nprocessing, including data generation, sampling, filtering, binning,\naggregation, cross-stream lookup, visual encoding, and spatial layout.\n\nFor more information about data stream transforms, see the\n[Vega transform documentation](https://vega.github.io/vega/docs/transforms/).\n",
+    "licenseText": "Copyright (c) 2016, University of Washington Interactive Data Lab\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n  may be used to endorse or promote products derived from this software\n  without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/vega-dataflow/-/vega-dataflow-4.1.0.tgz#c63abee8502eedf42a972ad5d3a2ce7475aab7d8",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/vega-dataflow/-/vega-dataflow-4.1.0.tgz",
+    "hash": "c63abee8502eedf42a972ad5d3a2ce7475aab7d8",
+    "registry": "npm",
+    "packageName": "vega-dataflow"
+  },
+  "registry": "npm",
+  "hash": "c63abee8502eedf42a972ad5d3a2ce7475aab7d8"
+}

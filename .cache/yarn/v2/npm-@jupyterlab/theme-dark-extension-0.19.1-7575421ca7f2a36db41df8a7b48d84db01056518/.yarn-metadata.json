@@ -1,0 +1,85 @@
+{
+  "manifest": {
+    "name": "@jupyterlab/theme-dark-extension",
+    "version": "0.19.1",
+    "description": "JupyterLab - Default Dark Theme",
+    "homepage": "https://github.com/jupyterlab/jupyterlab",
+    "bugs": {
+      "url": "https://github.com/jupyterlab/jupyterlab/issues"
+    },
+    "license": "BSD-3-Clause",
+    "author": {
+      "name": "Project Jupyter"
+    },
+    "files": [
+      "lib/*.d.ts",
+      "lib/*.js.map",
+      "lib/*.js",
+      "static/*.css",
+      "static/*.ttf",
+      "static/*.eot",
+      "static/*.woff",
+      "static/*.woff2"
+    ],
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jupyterlab/jupyterlab.git"
+    },
+    "scripts": {
+      "build": "tsc -b",
+      "build:src": "tsc -b src",
+      "build:webpack": "webpack",
+      "clean": "rimraf lib && rimraf static",
+      "prepublishOnly": "npm run build",
+      "watch": "tsc -b --watch",
+      "watch:src": "tsc -b src --watch",
+      "watch:webpack": "webpack --watch"
+    },
+    "dependencies": {
+      "@jupyterlab/application": "^0.19.1",
+      "@jupyterlab/apputils": "^0.19.1",
+      "font-awesome": "~4.7.0"
+    },
+    "devDependencies": {
+      "css-loader": "~0.28.7",
+      "mini-css-extract-plugin": "^0.4.0",
+      "npm-run-all": "~4.1.1",
+      "rimraf": "~2.6.2",
+      "svg-url-loader": "~2.3.1",
+      "svgo": "~1.0.4",
+      "svgo-loader": "~2.1.0",
+      "ts-loader": "~5.0.0",
+      "typedoc": "~0.12.0",
+      "typescript": "~3.1.1",
+      "url-loader": "~1.0.1",
+      "webpack": "~4.12.0",
+      "webpack-cli": "^3.0.3"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "jupyterlab": {
+      "extension": true,
+      "themeDir": "static"
+    },
+    "gitHead": "7fc900168981e58051253ecc66a18015a052cd2f",
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-@jupyterlab/theme-dark-extension-0.19.1-7575421ca7f2a36db41df8a7b48d84db01056518/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# @jupyterlab/theme-dark-extension\n\nA JupyterLab theme extension which provides the default dark-colored theme.\n",
+    "licenseText": "Copyright (c) 2015 Project Jupyter Contributors\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its\n   contributors may be used to endorse or promote products derived from\n   this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nSemver File License\n===================\n\nThe semver.py file is from https://github.com/podhmo/python-semver\nwhich is licensed under the \"MIT\" license.  See the semver.py file for details.\n\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/@jupyterlab/theme-dark-extension/-/theme-dark-extension-0.19.1.tgz#7575421ca7f2a36db41df8a7b48d84db01056518",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/@jupyterlab/theme-dark-extension/-/theme-dark-extension-0.19.1.tgz",
+    "hash": "7575421ca7f2a36db41df8a7b48d84db01056518",
+    "registry": "npm",
+    "packageName": "@jupyterlab/theme-dark-extension"
+  },
+  "registry": "npm",
+  "hash": "7575421ca7f2a36db41df8a7b48d84db01056518"
+}

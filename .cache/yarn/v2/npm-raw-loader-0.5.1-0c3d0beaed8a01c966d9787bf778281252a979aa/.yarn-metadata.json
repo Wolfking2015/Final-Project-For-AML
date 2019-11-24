@@ -1,0 +1,36 @@
+{
+  "manifest": {
+    "name": "raw-loader",
+    "version": "0.5.1",
+    "author": {
+      "name": "Tobias Koppers @sokra"
+    },
+    "description": "raw loader module for webpack",
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:webpack/raw-loader.git"
+    },
+    "licenses": [
+      {
+        "type": "MIT",
+        "url": "http://www.opensource.org/licenses/mit-license.php"
+      }
+    ],
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-raw-loader-0.5.1-0c3d0beaed8a01c966d9787bf778281252a979aa/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# raw loader for webpack\n\n## Usage\n\n``` javascript\nvar fileContent = require(\"raw!./file.txt\");\n// => returns file.txt content as string\n```\n\nDon't forget to polyfill `require` if you want to use it in node.\nSee `webpack` documentation.\n\n## License\n\nMIT (http://www.opensource.org/licenses/mit-license.php)",
+    "license": "MIT"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/raw-loader/-/raw-loader-0.5.1.tgz#0c3d0beaed8a01c966d9787bf778281252a979aa",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/raw-loader/-/raw-loader-0.5.1.tgz",
+    "hash": "0c3d0beaed8a01c966d9787bf778281252a979aa",
+    "registry": "npm",
+    "packageName": "raw-loader"
+  },
+  "registry": "npm",
+  "hash": "0c3d0beaed8a01c966d9787bf778281252a979aa"
+}

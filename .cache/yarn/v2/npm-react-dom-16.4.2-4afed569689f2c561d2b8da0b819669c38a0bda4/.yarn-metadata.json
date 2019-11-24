@@ -1,0 +1,68 @@
+{
+  "manifest": {
+    "name": "react-dom",
+    "version": "16.4.2",
+    "description": "React package for working with the DOM.",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/react.git"
+    },
+    "keywords": [
+      "react"
+    ],
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/facebook/react/issues"
+    },
+    "homepage": "https://reactjs.org/",
+    "dependencies": {
+      "fbjs": "^0.8.16",
+      "loose-envify": "^1.1.0",
+      "object-assign": "^4.1.1",
+      "prop-types": "^15.6.0"
+    },
+    "peerDependencies": {
+      "react": "^16.0.0"
+    },
+    "files": [
+      "LICENSE",
+      "README.md",
+      "index.js",
+      "server.js",
+      "server.browser.js",
+      "server.node.js",
+      "test-utils.js",
+      "unstable-native-dependencies.js",
+      "cjs/",
+      "umd/"
+    ],
+    "browser": {
+      "./server.js": "./server.browser.js"
+    },
+    "browserify": {
+      "transform": [
+        "loose-envify"
+      ]
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-react-dom-16.4.2-4afed569689f2c561d2b8da0b819669c38a0bda4/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# `react-dom`\n\nThis package serves as the entry point of the DOM-related rendering paths. It is intended to be paired with the isomorphic React, which will be shipped as `react` to npm.\n\n## Installation\n\n```sh\nnpm install react react-dom\n```\n\n## Usage\n\n### In the browser\n\n```js\nvar React = require('react');\nvar ReactDOM = require('react-dom');\n\nclass MyComponent extends React.Component {\n  render() {\n    return <div>Hello World</div>;\n  }\n}\n\nReactDOM.render(<MyComponent />, node);\n```\n\n### On the server\n\n```js\nvar React = require('react');\nvar ReactDOMServer = require('react-dom/server');\n\nclass MyComponent extends React.Component {\n  render() {\n    return <div>Hello World</div>;\n  }\n}\n\nReactDOMServer.renderToString(<MyComponent />);\n```\n\n## API\n\n### `react-dom`\n\n- `findDOMNode`\n- `render`\n- `unmountComponentAtNode`\n\n### `react-dom/server`\n\n- `renderToString`\n- `renderToStaticMarkup`\n",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "licenseText": "MIT License\n\nCopyright (c) 2013-present, Facebook, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.2.tgz#4afed569689f2c561d2b8da0b819669c38a0bda4",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.2.tgz",
+    "hash": "4afed569689f2c561d2b8da0b819669c38a0bda4",
+    "registry": "npm",
+    "packageName": "react-dom"
+  },
+  "registry": "npm",
+  "hash": "4afed569689f2c561d2b8da0b819669c38a0bda4"
+}

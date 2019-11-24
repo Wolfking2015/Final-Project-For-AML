@@ -1,0 +1,67 @@
+{
+  "manifest": {
+    "name": "sort-package-json",
+    "version": "1.7.1",
+    "description": "Sort an Object or package.json based on the well-known package.json keys",
+    "keywords": [
+      "keys",
+      "object",
+      "sort"
+    ],
+    "homepage": "https://github.com/keithamus/sort-package-json#readme",
+    "bugs": {
+      "url": "https://github.com/keithamus/sort-package-json/issues"
+    },
+    "license": "MIT",
+    "author": {
+      "name": "Keith Cirkel",
+      "email": "npm@keithcirkel.co.uk",
+      "url": "http://keithcirkel.co.uk/"
+    },
+    "files": [
+      "index.js"
+    ],
+    "main": "index.js",
+    "bin": {
+      "sort-package-json": "index.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+ssh://git@github.com/keithamus/sort-package-json.git"
+    },
+    "scripts": {
+      "semantic-release": "travis-after-all && semantic-release pre && npm publish && semantic-release post",
+      "test": "node test.js"
+    },
+    "config": {
+      "ghooks": {
+        "pre-commit": "npm t",
+        "commit-msg": "validate-commit-msg"
+      }
+    },
+    "dependencies": {
+      "sort-object-keys": "^1.1.1"
+    },
+    "devDependencies": {
+      "ghooks": "^1.0.1",
+      "semantic-release": "^4.3.5",
+      "travis-after-all": "^1.4.4",
+      "validate-commit-msg": "^2.0.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-sort-package-json-1.7.1-f2e5fbffe8420cc1bb04485f4509f05e73b4c0f2/package.json",
+    "readmeFilename": "README.md",
+    "readme": "Sort Package.json\n\n[![Build Status](https://travis-ci.org/keithamus/sort-package-json.svg)](https://travis-ci.org/keithamus/sort-package-json)\n\nPass it a JSON string, it'll return a new JSON string, sorted by the keys typically found in a package.json\n\nPass it an object, it'll return an object sorted by the keys typically found in a package.json\n\n```js\nJSON.stringify(sortPackageJson({\n  dependencies: {},\n  version: '1.0.0',\n  keywords: ['thing'],\n  name: 'foo',\n}), null, 2)\n/* string:\n{\n  \"name\": \"foo\",\n  \"version\": \"1.0.0\",\n  \"keywords\": [\n    \"thing\"\n  ],\n  \"dependencies\": {}\n}\n*/\n```\n\n### CLI Usage:\n\n```bash\n$ cd my-project\n$ cat package.json\n{\n  \"dependencies\": {},\n  \"version\": \"1.0.0\",\n  \"keywords\": [\n    \"thing\"\n  ],\n  \"name\": \"foo\"\n}\n$ npm i -g sort-package-json\n$ sort-package-json\nOk, your package.json is sorted\n$ cat package.json\n{\n  \"name\": \"foo\",\n  \"version\": \"1.0.0\",\n  \"keywords\": [\n    \"thing\"\n  ],\n  \"dependencies\": {}\n}\n```\n\n### Install\n\n#### API\n```sh\nnpm install --save sort-package-json\n```\n\n#### CLI\n```sh\nnpm install --global sort-package-json\n```\n\n### PFAQ: Potential Frequently Asked Questions\n\n#### How does it sort?\n\nIt sorts using [`sort-object-keys`](http://github.com/keithamus/sort-object-keys). It sorts using the well-known keys of a package.json. For the full list it's just easier to [read the code](./index.js). It sorts sub-keys too - sometimes by a well-known order, other times alphabetically. The initial order was derived from the [package.json docs](https://docs.npmjs.com/files/package.json) with a few extras added for good measure.\n\n#### It doesn't sort X?\n\nCool. Send a PR! It might get denied if it is a specific vendor key of an unpopular project (e.g. `\"my-super-unknown-project\"`). We sort keys like \"browserify\" because it is a project with millions of users. If your project has, say, over 100 users, then we'll add it. Sound fair?\n\n#### Isn't this just like Project X?\n\nCould be. I wanted this one because at the time of writing, nothing is:\n\n - Zero config\n - Able to be used in a library\n - Quiet (i.e. not spitting out annoying log messages, when used in a library mode)\n\n\n#### What?! Why would you want to do this?!\n\nWell, it's nice to have the keys of a package.json in a well sorted order. Almost everyone would agree having \"name\" at the top of a package.json is sensible (rather than sorted alphabetically or somewhere silly like the bottom), so why not the rest of the package.json?\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/sort-package-json/-/sort-package-json-1.7.1.tgz#f2e5fbffe8420cc1bb04485f4509f05e73b4c0f2",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/sort-package-json/-/sort-package-json-1.7.1.tgz",
+    "hash": "f2e5fbffe8420cc1bb04485f4509f05e73b4c0f2",
+    "registry": "npm",
+    "packageName": "sort-package-json"
+  },
+  "registry": "npm",
+  "hash": "f2e5fbffe8420cc1bb04485f4509f05e73b4c0f2"
+}

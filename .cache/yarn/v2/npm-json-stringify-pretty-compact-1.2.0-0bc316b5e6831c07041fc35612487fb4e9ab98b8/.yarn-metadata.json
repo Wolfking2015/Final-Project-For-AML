@@ -1,0 +1,57 @@
+{
+  "manifest": {
+    "name": "json-stringify-pretty-compact",
+    "version": "1.2.0",
+    "author": {
+      "name": "Simon Lydell"
+    },
+    "license": "MIT",
+    "description": "The best of both `JSON.stringify(obj)` and `JSON.stringify(obj, null, indent)`.",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/lydell/json-stringify-pretty-compact.git"
+    },
+    "files": [
+      "index.js",
+      "index.d.ts"
+    ],
+    "keywords": [
+      "JSON",
+      "stringify",
+      "pretty",
+      "print",
+      "pretty-print",
+      "compact",
+      "indent",
+      "format",
+      "formatter"
+    ],
+    "scripts": {
+      "lint": "standard",
+      "unit": "mocha --ui tdd",
+      "test": "npm run lint && npm run unit"
+    },
+    "devDependencies": {
+      "chai": "^4.1.2",
+      "mocha": "^4.1.0",
+      "standard": "^10.0.3"
+    },
+    "_registry": "npm",
+    "_loc": "/home/jovyan/.cache/yarn/v2/npm-json-stringify-pretty-compact-1.2.0-0bc316b5e6831c07041fc35612487fb4e9ab98b8/package.json",
+    "readmeFilename": "README.md",
+    "readme": "Overview [![Build Status](https://travis-ci.org/lydell/json-stringify-pretty-compact.svg?branch=master)](https://travis-ci.org/lydell/json-stringify-pretty-compact) [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)\n========\n\nThe output of `JSON.stringify` comes in two flavors: _compact_ and _pretty._ The\nformer is usually too compact to be read by humans, while the latter sometimes\nis too spacious. This module trades performance (and the “replacer” argument)\nfor a compromise between the two. The result is a _pretty_ compact string, where\n“pretty” means both “kind of” and “nice”.\n\n```json\n{\n  \"bool\": true,\n  \"short array\": [1, 2, 3],\n  \"long array\": [\n    {\"x\": 1, \"y\": 2},\n    {\"x\": 2, \"y\": 1},\n    {\"x\": 1, \"y\": 1},\n    {\"x\": 2, \"y\": 2}\n  ]\n}\n```\n\nWhile the “pretty” mode of `JSON.stringify` puts every item of arrays and\nobjects on its own line, this module puts the whole array or object on a single\nline, unless the line becomes too long (the default maximum is 80 characters).\nMaking arrays and objects multi-line is the only attempt made to enforce the\nmaximum line length; if that doesn’t help then so be it.\n\n\nInstallation\n============\n\n`npm install json-stringify-pretty-compact`\n\n```js\nvar stringify = require(\"json-stringify-pretty-compact\")\n```\n\n\nUsage\n=====\n\n`stringify(obj, [options])`\n---------------------------\n\nIt’s like `JSON.stringify(obj, null, options.indent)`, except that objects and\narrays are on one line if they fit (according to `options.maxLength`).\n\n`options`:\n\n- indent: Defaults to 2. Works exactly like the third parameter of\n  `JSON.stringify`.\n- maxLength: Defaults to 80. Lines will be tried to be kept at maximum this many\n  characters long.\n- margins: Defaults to `false`. Whether or not to add “margins” around brackets\n  and braces:\n  - `false`: `{\"a\": [1]}`\n  - `true`: `{ \"a\": [ 1 ] }`\n\n`stringify(obj, {maxLength: 0, indent: indent})` gives the exact same result as\n`JSON.stringify(obj, null, indent)`.\n\n`stringify(obj, {maxLength: Infinity})` gives the exact same result as\n`JSON.stringify(obj)`, except that there are spaces after colons and commas.\n\n\nLicense\n=======\n\n[MIT](LICENSE).\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2014, 2016, 2017 Simon Lydell\nCopyright (c) 2017 Randall Randall\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.yarnpkg.com/json-stringify-pretty-compact/-/json-stringify-pretty-compact-1.2.0.tgz#0bc316b5e6831c07041fc35612487fb4e9ab98b8",
+    "type": "tarball",
+    "reference": "https://registry.yarnpkg.com/json-stringify-pretty-compact/-/json-stringify-pretty-compact-1.2.0.tgz",
+    "hash": "0bc316b5e6831c07041fc35612487fb4e9ab98b8",
+    "registry": "npm",
+    "packageName": "json-stringify-pretty-compact"
+  },
+  "registry": "npm",
+  "hash": "0bc316b5e6831c07041fc35612487fb4e9ab98b8"
+}
