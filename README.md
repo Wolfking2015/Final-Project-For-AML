@@ -1,5 +1,5 @@
 # Final Project for BIOF 509:
-# Analysis of the Airlines Arrival Delay Causes
+# Predict flight status using supervised learning algorithms
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Wolfking2015/final-project/master?urlpath=lab/tree/final-project.ipynb)
 [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Wolfking2015/final-project/blob/master/final-project.ipynb)
@@ -14,7 +14,7 @@ Analysis of flight status is important for both flight companies and clients. Fo
 2.Define the prediction target---the flight status.\
 3.Select relative features.\
 4.Make prediction using supervised learning models.\
-5.Analyze how selection of features may affect the selection of models.\
+5.Analyze how selection of features may affect the selection of models.
 
 ## Database source: Kaggle
 The database is about the on-time performance of the domestic flgiht provided by The U.S. Department of Transportation's (DOT) Bureau of Transportation Statistics (BTS). The database is open source on Kaggle. \
