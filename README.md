@@ -1,5 +1,5 @@
 # Final Project for BIOF 509:
-# Predict flight status using supervised learning methods
+# Predict flight status using supervised learning algorithms
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Wolfking2015/final-project/master?urlpath=lab/tree/final-project.ipynb)
 [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Wolfking2015/final-project/blob/master/final-project.ipynb)
